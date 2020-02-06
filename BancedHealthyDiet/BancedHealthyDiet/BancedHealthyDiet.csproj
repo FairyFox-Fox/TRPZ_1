@@ -64,6 +64,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\DataIntializator.cs" />
+    <Compile Include="Models\DataSet.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Nutrition.cs" />
     <Compile Include="Models\Product.cs" />
