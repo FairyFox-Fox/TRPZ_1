@@ -4,9 +4,54 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BancedHealthyDiet"
+         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <materialDesign:Card Width="350" Height="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0" Grid.Row="0" Source="{Binding Path=ImagePath}"  Width="120" Height="80" Stretch="Uniform"/>
+                        <TextBlock  Grid.Row="1" Grid.Column="0" Text="{Binding Path=RecipeName}"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        <ScrollViewer Grid.Row="0" Grid.Column="1">
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Instruction}" TextWrapping="Wrap" />
+                        </ScrollViewer>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding StringFormat=Calories for 100 gramm: {0},Path=TotalNutrition.Calories }"/>
+                        <StackPanel  Grid.Row="3" Grid.Column="0" Orientation="Vertical" Margin="2,0,2,0" Height="Auto" Width="Auto">
+                            <TextBlock Text="{Binding StringFormat=Minerals: {0},Path=TotalNutrition.Minerals}"/>
+                            <TextBlock Text="{Binding StringFormat= Proteins: {0},Path=TotalNutrition. Proteins}"/>
+                            <TextBlock Text="{Binding StringFormat=Fats: {0},Path=TotalNutrition.Fats}"/>
+                        </StackPanel>
+                        <StackPanel  Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="2,0,2,0" Height="Auto" Width="Auto">
+                            <TextBlock Text="{Binding StringFormat=Vitamins: {0},Path=TotalNutrition.Vitamins}"/>
+                            <TextBlock Text="{Binding StringFormat=Carbonhydrates: {0},Path=TotalNutrition. Carbonhydrates}"/>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <ListView x:Name="calalogList"  Grid.Row="1" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Multiple" SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseClick">
+                    <i:InvokeCommandAction 
+                        Command="{Binding DataContext.GoToItem, ElementName= calalogList}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </ListView>
     </Grid>
 </Window>

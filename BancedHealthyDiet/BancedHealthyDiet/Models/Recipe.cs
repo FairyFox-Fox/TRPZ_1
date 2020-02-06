@@ -22,6 +22,18 @@ namespace BancedHealthyDiet.Models
                 id = value;
             }
         }
+
+        private string imagePath;
+        public string ImagePath
+        {
+            get => imagePath;
+            set
+            {
+                if (String.IsNullOrEmpty(imagePath))
+                    throw new ArgumentException("ImagePath is not valid");
+                imagePath = value;
+            }
+        }
         private string recipeName;
         public string RecipeName
         {

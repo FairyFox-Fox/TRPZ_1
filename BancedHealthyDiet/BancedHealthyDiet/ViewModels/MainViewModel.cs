@@ -42,6 +42,37 @@ namespace BancedHealthyDiet.ViewModels
             var dataSet = DataSet.GetInsatnce();
             this.recipesCollection = new ObservableCollection<Recipe>(dataSet.Recipes);
         }
+        private Recipe selectedRecipe;
+        private List<Recipe> selectedRecipes;
+        public List<Recipe> SelectedRecipes
+        {
+            get=>selectedRecipes??(selectedRecipes = new List<Recipe>());
+            set
+            {
+                selectedRecipes = value;
+                OnPropertyChanged(nameof(SelectedRecipes));
+            }
+        }
+
+        public Recipe SelectedRecipe
+        {
+            get => selectedRecipe;
+            set
+            {
+                selectedRecipe = value;
+                OnPropertyChanged(nameof(SelectedRecipe));
+            }
+        }
+        private void AddSelectedRecipe(Recipe selectedRecipe)
+        {
+            if(SelectedRecipe!=null)
+            {
+                if(!selectedRecipes.Contains(selectedRecipe))
+                    selectedRecipes.Add(selectedRecipe);
+            }
+        }
+
+      
 
     }
 }
