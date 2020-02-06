@@ -91,5 +91,27 @@ namespace BancedHealthyDiet.Models
             }
         }
 
+        public static Nutrition operator +(Nutrition firstNutrition,Nutrition secondNutrition)
+        {
+            return new Nutrition
+            {
+                Calories = firstNutrition.Calories + secondNutrition.Calories,
+                Minerals = firstNutrition.Minerals + secondNutrition.Minerals,
+                Proteins = firstNutrition.Proteins + secondNutrition.Proteins,
+                Fats = firstNutrition.Fats + secondNutrition.Fats,
+                Vitamins = firstNutrition.Vitamins + secondNutrition.Vitamins,
+                Carbonhydrates = firstNutrition.Carbonhydrates + secondNutrition.Carbonhydrates
+            };
+        }
+
+        public Nutrition(double calories=0, double minerals=0, double vitamins=0, double fats=0, double carbonhydrates=0, double proteins=0)
+        {
+            this.calories = calories;
+            this.minerals = minerals;
+            this.vitamins = vitamins;
+            this.fats = fats;
+            this.carbonhydrates = carbonhydrates;
+            this.proteins = proteins;
+        }
     }
 }
