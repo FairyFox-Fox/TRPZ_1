@@ -43,5 +43,9 @@ namespace BancedHealthyDiet.Models
                 measurementUnit = value;
             }
         }
+        public Ingredient()
+        {
+            this.id = this.Product.Id;
+        }
     }
 }

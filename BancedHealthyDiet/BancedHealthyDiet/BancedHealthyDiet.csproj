@@ -67,6 +67,7 @@
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Nutrition.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
