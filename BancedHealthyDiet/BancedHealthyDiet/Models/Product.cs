@@ -28,7 +28,7 @@ namespace BancedHealthyDiet.Models
             get => productName;
             set
             {
-                if (String.IsNullOrEmpty(productName))
+                if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Product name is not valid");
                 productName = value;
             }
@@ -45,9 +45,10 @@ namespace BancedHealthyDiet.Models
                 throw new ArgumentNullException("Nutrition");
             }
         }
-        public Product(string name)
+        public Product(string name, Nutrition nutrition)
         {
             this.productName = name;
+            this.nutrition = nutrition;
         }
     }
 }

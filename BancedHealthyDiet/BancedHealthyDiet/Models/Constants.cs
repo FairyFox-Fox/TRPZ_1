@@ -8,7 +8,7 @@ namespace BancedHealthyDiet.Models
 {
     public  static class Constants
     {
-        private static readonly List<string> measurements = new List<String> { "г.", "кг.", "л.", "стак. (200 мл)", "мл", "чайн. л.", "стол. л.", "по вкусу" };
+        private static readonly List<string> measurements = new List<String> { "gr", "kg", "l", "glasses (200 ml)", "ml", "tsp", "tbsp", "on taste" };
        
     }
 }

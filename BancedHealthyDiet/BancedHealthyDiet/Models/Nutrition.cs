@@ -25,7 +25,7 @@ namespace BancedHealthyDiet.Models
             get => proteins;
             set
             {
-                if (proteins < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Proteins");
                 proteins = value;
             }
@@ -37,7 +37,7 @@ namespace BancedHealthyDiet.Models
             get => carbonhydrates;
             set
             {
-                if (carbonhydrates < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Carbonhydrates");
                 carbonhydrates = value;
             }
@@ -49,7 +49,7 @@ namespace BancedHealthyDiet.Models
             get => fats;
             set
             {
-                if (fats < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Fats");
                 fats = value;
             }
@@ -61,7 +61,7 @@ namespace BancedHealthyDiet.Models
             get => vitamins;
             set
             {
-                if (vitamins < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Vitamins");
                 vitamins = value;
             }
@@ -73,7 +73,7 @@ namespace BancedHealthyDiet.Models
             get => minerals;
             set
             {
-                if (minerals < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Minerals");
                 minerals = value;
             }
@@ -85,7 +85,7 @@ namespace BancedHealthyDiet.Models
             get => calories;
             set
             {
-                if (calories < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Calories");
                 calories = value;
             }

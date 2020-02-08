@@ -73,7 +73,7 @@
             <ColumnDefinition Width="0,5*"/>
             <ColumnDefinition Width="0,5*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" x:Name="calalogList"  Grid.Row="1" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Multiple" SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
+        <ListView Grid.Column="0" x:Name="calalogList"  Grid.Row="0" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Multiple" SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
                   ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
             <!--<i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseClick">
@@ -82,7 +82,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>-->
         </ListView>
-        <Grid  Visibility="{Binding ShouldShowUsercontrol1}" Grid.Column="1">
+        <Grid  Visibility="{Binding ShouldShowUsercontrol1}" Grid.Column="1" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition/>

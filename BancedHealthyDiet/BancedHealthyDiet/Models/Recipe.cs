@@ -29,7 +29,7 @@ namespace BancedHealthyDiet.Models
             get => imagePath;
             set
             {
-                if (String.IsNullOrEmpty(imagePath))
+                if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("ImagePath is not valid");
                 imagePath = value;
             }
@@ -40,7 +40,7 @@ namespace BancedHealthyDiet.Models
             get => recipeName;
             set
             {
-                if (String.IsNullOrEmpty(recipeName))
+                if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("RecipeName is not valid");
                 recipeName = value;
             }
@@ -52,7 +52,7 @@ namespace BancedHealthyDiet.Models
             get => instruction;
             set
             {
-                if (String.IsNullOrEmpty(instruction))
+                if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Instruction is not valid");
                 instruction = value;
             }
@@ -82,5 +82,15 @@ namespace BancedHealthyDiet.Models
                 totalNutrition = value;
             }
         }
+
+        public Recipe(string imagePath, string recipeName, string instruction, List<Ingredient> ingredients)
+        {
+            ImagePath = imagePath;
+            RecipeName = recipeName;
+            Instruction = instruction;
+            Ingredients = ingredients;
+        }
+
+       
     }
 }

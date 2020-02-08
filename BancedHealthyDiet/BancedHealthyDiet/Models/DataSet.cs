@@ -29,7 +29,7 @@ namespace BancedHealthyDiet.Models
             }
         }
         private static DataSet dataSetInstance;
-        private DataSet()
+        private  DataSet()
         {
             products = new List<Product>();
             recipes = new List<Recipe>();

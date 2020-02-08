@@ -15,9 +15,10 @@ namespace BancedHealthyDiet.Models
             get => product;
             set
             {
-                if(product==null)
+                if(value==null)
                     throw new ArgumentNullException("Product");
-                product = value;
+                else
+                    product = value;
             }
         }
         private double weight;
@@ -26,26 +27,33 @@ namespace BancedHealthyDiet.Models
             get => weight;
             set
             {
-                if (weight < 0)
+                if (value < 0)
                     throw new ArgumentOutOfRangeException("Weight");
                 weight = value;
             }
         }
 
         private string measurementUnit;
+      
+
+        public Ingredient(Product product, double weight, string measurementUnit)
+        {
+            Product = product;
+            this.id = this.Product.Id;
+            Weight = weight;
+            MeasurementUnit = measurementUnit;
+        }
+
         public string MeasurementUnit
         {
             get => measurementUnit;
             set
             {
-                if (String.IsNullOrEmpty(measurementUnit))
+                if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("MeasurementUnit name is not valid");
                 measurementUnit = value;
             }
         }
-        public Ingredient()
-        {
-            this.id = this.Product.Id;
-        }
+     
     }
 }
