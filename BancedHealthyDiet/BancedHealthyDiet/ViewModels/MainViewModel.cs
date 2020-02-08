@@ -1,10 +1,12 @@
-﻿using BancedHealthyDiet.Models;
+﻿using BancedHealthyDiet.Commands;
+using BancedHealthyDiet.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BancedHealthyDiet.ViewModels
 {
@@ -63,7 +65,7 @@ namespace BancedHealthyDiet.ViewModels
                 OnPropertyChanged(nameof(SelectedRecipe));
             }
         }
-        private void AddSelectedRecipe(Recipe selectedRecipe)
+        public void AddSelectedRecipe(Recipe selectedRecipe)
         {
             if(SelectedRecipe!=null)
             {
@@ -72,7 +74,25 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
-      
+        ICommand showRecipeDeatilViewCommand;
+        private bool isDetailViewCollapsed;
+        public bool IsDetailViewCollapsed
+        {
+            get => isDetailViewCollapsed;
+        }
+        public ICommand ShowRecipeDeatilViewCommand
+        {
+            get
+            {
+                if (isDetailViewCollapsed == null)
+                    showRecipeDeatilViewCommand = new RelayCommand(method=>ShowRecipeDeatilView());
+                return showRecipeDeatilViewCommand;
+            }
+        }
 
+        private void ShowRecipeDeatilView()
+        {
+            isDetailViewCollapsed = true;
+        }
     }
 }

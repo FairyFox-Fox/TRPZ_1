@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BancedHealthyDiet.Commands
 {
-    class RelayCommand : ICommand
+   public class RelayCommand : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -17,7 +17,7 @@ namespace BancedHealthyDiet.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
