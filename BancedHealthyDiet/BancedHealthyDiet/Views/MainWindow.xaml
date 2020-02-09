@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:BancedHealthyDiet"
          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:converter="clr-namespace:BancedHealthyDiet.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <converter:BoolToVisibility x:Key="BoolToVisibilty"/>
         <DataTemplate x:Key="listofIngredientsTemplate">
             <Grid Margin="12,2,0,0">
                 <Grid.ColumnDefinitions>
@@ -26,11 +28,11 @@
                 </Grid.RowDefinitions>
                 <materialDesign:PackIcon Grid.Column="0" Foreground="#FF69033A" Margin="0,0,4,0" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="CheckboxMarkedCircleOutline" />
                 <GridSplitter Grid.Column="1" Foreground="#FF69033A"  ShowsPreview="False" Width="3"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock FontSize="14" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Product.ProductName}" ></TextBlock>
+                <TextBlock FontSize="14" Grid.Column="2"  HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Product.ProductName, StringFormat=N2}" ></TextBlock>
                 <GridSplitter Grid.Column="3" Foreground="#FF69033A"  ShowsPreview="False" Width="3"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock FontSize="14" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding Weight}" ></TextBlock>
+                <TextBlock FontSize="14" Grid.Column="4" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Text="{Binding Weight, StringFormat=N2}" ></TextBlock>
                 <GridSplitter Grid.Column="5" Foreground="#FF69033A"  ShowsPreview="False" Width="3"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock FontSize="14"  Grid.Column="6" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding MeasurementUnit }" ></TextBlock>
+                <TextBlock FontSize="14"  Grid.Column="6" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Text="{Binding MeasurementUnit, StringFormat=N2 }" ></TextBlock>
                 <GridSplitter  Grid.Row="1" Grid.ColumnSpan="7" Foreground="#FF69033A"  ShowsPreview="False" Height="3"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
             </Grid>
         </DataTemplate>
@@ -46,22 +48,24 @@
                             <RowDefinition Height="100"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Image Grid.Column="0" Grid.Row="0" Source="{Binding Path=ImagePath}"  Width="120" Height="80" Stretch="Uniform"/>
-                        <TextBlock  Grid.Row="1" Grid.Column="0" Text="{Binding Path=RecipeName}"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock  Grid.Row="1" Grid.Column="0" FontWeight="Bold" Text="{Binding Path=RecipeName}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Width="Auto"></TextBlock>
                         <ScrollViewer Grid.Row="0" Grid.Column="1">
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Instruction}" TextWrapping="Wrap" />
                         </ScrollViewer>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding StringFormat=Calories for 100 gramm: {0},Path=TotalNutrition.Calories }"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" FontWeight="DemiBold" Text="{Binding StringFormat=Calories for 100 gramm: {0:N2},Path=TotalNutrition.Calories }"/>
                         <StackPanel  Grid.Row="3" Grid.Column="0" Orientation="Vertical" Margin="2,0,2,0" Height="Auto" Width="Auto">
-                            <TextBlock Text="{Binding StringFormat=Minerals: {0},Path=TotalNutrition.Minerals}"/>
-                            <TextBlock Text="{Binding StringFormat= Proteins: {0},Path=TotalNutrition. Proteins}"/>
-                            <TextBlock Text="{Binding StringFormat=Fats: {0},Path=TotalNutrition.Fats}"/>
+                            <TextBlock Text="{Binding StringFormat={}{0:N2},Path=TotalNutrition.Minerals}"/>
+                            <TextBlock Text="{Binding StringFormat= {}{0:N2},Path=TotalNutrition. Proteins}"/>
+                            <TextBlock Text="{Binding StringFormat={}{0:N2},Path=TotalNutrition.Fats}"/>
                         </StackPanel>
                         <StackPanel  Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="2,0,2,0" Height="Auto" Width="Auto">
-                            <TextBlock Text="{Binding StringFormat=Vitamins: {0},Path=TotalNutrition.Vitamins}"/>
-                            <TextBlock Text="{Binding StringFormat=Carbonhydrates: {0},Path=TotalNutrition. Carbonhydrates}"/>
+                            <TextBlock Text="{Binding StringFormat={}{0:N2},Path=TotalNutrition.Vitamins}"/>
+                            <TextBlock Text="{Binding StringFormat={}{0:N2},Path=TotalNutrition. Carbonhydrates}"/>
                         </StackPanel>
                     </Grid>
                 </materialDesign:Card>
@@ -73,18 +77,23 @@
             <ColumnDefinition Width="0,5*"/>
             <ColumnDefinition Width="0,5*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" x:Name="calalogList"  Grid.Row="0" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Multiple" SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
+        <ListBox Grid.Column="0" x:Name="calalogList"   Grid.Row="0" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Single"  SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
                   ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction  Command="{Binding Path=DataContext.ShowRecipeDeatilViewCommand,RelativeSource={RelativeSource AncestorType={x:Type  ListBox}}}"  />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseClick">
+                <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction 
-                        Command="{Binding DataContext.AddSelectedRecipe, ElementName= calalogList}"/>
+                        Command="{Binding DataContext.ShowRecipeDeatilViewCommand, ElementName= calalogList}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>-->
-        </ListView>
-        <Grid  Visibility="{Binding ShouldShowUsercontrol1}" Grid.Column="1" Grid.Row="0">
+        </ListBox>
+        <Grid  Visibility="{Binding IsDetailViewCollapsed, Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -95,7 +104,7 @@
             <materialDesign:ColorZone Mode="Dark"  Grid.Row="0" Grid.ColumnSpan="2"  Padding="0">
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="Auto" FontSize="20" Text="{Binding SelectedRecipe.RecipeName}" />
             </materialDesign:ColorZone>
-            <Image Grid.Column="0" Grid.Row="1" Source="{Binding SelectedRecipe.ImagePath,UpdateSourceTrigger=PropertyChanged}" />
+            <Image Grid.Column="0" Grid.Row="1"  Source="{Binding SelectedRecipe.ImagePath,UpdateSourceTrigger=PropertyChanged}" />
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
                 <TextBlock Margin="4,0,0,0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Text="Ingredients:"/>
                 <ItemsControl ItemsSource="{Binding SelectedRecipe.Ingredients,UpdateSourceTrigger=PropertyChanged}"  x:Name="ingredientsList"  ItemTemplate="{StaticResource listofIngredientsTemplate}"/>
@@ -144,8 +153,10 @@
                     <Separator  Grid.Row="11"    />
                 <TextBlock  Grid.Row="12" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Minerals(gr)</TextBlock>
                 <TextBlock  Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" Text="{Binding SelectedRecipe.TotalNutrition.Minerals, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Right"></TextBlock>
-                </Grid>
-            <ScrollViewer Grid.Row="2" Grid.Column="1" Padding="4">
+                <Separator  Grid.Row="13"    />
+                <Button Grid.Column="0" Grid.Row="14" HorizontalAlignment="Center" Background="DarkSlateGray" BorderBrush="DarkSlateGray" Content="Click to add to menu" Command="{Binding AddRecipeToList}" CommandParameter="{Binding  SelectedRecipe}"/>
+            </Grid>
+            <ScrollViewer Grid.Row="2" Grid.Column="1" Padding="4" Margin="4,4,0,0">
                 <TextBlock Text="{Binding SelectedRecipe.Instruction, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
             </ScrollViewer>
         </Grid>

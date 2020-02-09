@@ -98,6 +98,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\DataIntializator.cs" />
     <Compile Include="Models\DataSet.cs" />
