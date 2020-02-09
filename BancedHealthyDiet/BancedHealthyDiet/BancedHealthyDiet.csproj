@@ -89,6 +89,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\IPageViewModel.cs" />
+    <Compile Include="ViewModels\TestViewModel.cs" />
+    <Compile Include="Views\RecipesListViewModel.cs">
+      <DependentUpon>RecipesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecipeView.xaml.cs">
+      <DependentUpon>RecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestViewModel.xaml.cs">
+      <DependentUpon>TestViewModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TotalNutritionView.xaml.cs">
+      <DependentUpon>TotalNutritionView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,10 +122,28 @@
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\RecipesListViewModel.cs" />
+    <Compile Include="ViewModels\TotalNutritionViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\RecipesListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestViewModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TotalNutritionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

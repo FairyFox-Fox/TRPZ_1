@@ -1,5 +1,4 @@
-﻿using BancedHealthyDiet.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BancedHealthyDiet
-
+namespace BancedHealthyDiet.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TotalNutritionViewModel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TotalNutritionView : UserControl
     {
-        public MainWindow()
+        public TotalNutritionView()
         {
             InitializeComponent();
-            var vindow = new MainViewModel();
-            this.DataContext = vindow;
         }
     }
 }

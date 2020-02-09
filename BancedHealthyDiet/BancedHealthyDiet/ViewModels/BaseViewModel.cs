@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BancedHealthyDiet.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +16,21 @@ namespace BancedHealthyDiet.ViewModels
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        private IPageViewModel currentPageViewModel;
+
+        public IPageViewModel CurrentPageViewModel
+        {
+            get => currentPageViewModel;
+            set
+            {
+                if(currentPageViewModel != value)
+                {
+                    currentPageViewModel = value;
+                    OnPropertyChanged(nameof(CurrentPageViewModel));
+                }
+               
             }
         }
     }

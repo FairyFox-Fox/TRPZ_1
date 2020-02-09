@@ -14,19 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BancedHealthyDiet
-
+namespace BancedHealthyDiet.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TestViewModel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TestView : UserControl
     {
-        public MainWindow()
+        public TestView()
         {
             InitializeComponent();
-            var vindow = new MainViewModel();
-            this.DataContext = vindow;
+            var vm = new TestViewModel();
+            this.DataContext = vm;
         }
     }
 }
