@@ -102,8 +102,25 @@ namespace BancedHealthyDiet.Models
             RecipeName = recipeName;
             Instruction = instruction;
             Ingredients = ingredients;
+            TotalWeight = GetTotalWeight(Ingredients);
+            TotalNutrition = new Nutrition().CalculateTotalNutrition(this);
+            //nutrition.CalculateTotalNutrition(this);
+            
         }
+        private double GetTotalWeight(List<Ingredient> ingredients)
+        {
+            var totalWeight = 0.0;
+            foreach (var ingred in ingredients)
+            {
+                totalWeight += ingred.CheckWeight();
+            }
+            return totalWeight;
+        }
+          
+            
 
-       
+      
+
+
     }
 }

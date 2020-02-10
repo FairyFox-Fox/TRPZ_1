@@ -12,7 +12,6 @@
              d:DesignHeight="750" d:DesignWidth="1500">
     <UserControl.Resources>
         <converter:BoolToVisibility x:Key="BoolToVisibilty"/>
-        <converter:NutritionFor100gramConverter x:Key="To100gram"/>
         <DataTemplate x:Key="listofIngredientsTemplate">
             <Grid Margin="12,2,0,0">
                 <Grid.ColumnDefinitions>

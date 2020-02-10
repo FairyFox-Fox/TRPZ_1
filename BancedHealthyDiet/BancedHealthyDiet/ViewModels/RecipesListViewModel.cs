@@ -13,57 +13,8 @@ namespace BancedHealthyDiet.ViewModels
 {
    public class RecipesListViewModel : BaseViewModel, IPageViewModel
     {
-        private void CalculateTotalNutrition(Recipe recipe)
-        {
-            var totalNutrition = new Nutrition();
-            recipe.TotalWeight = CalculateTotalWeight(recipe);
-            foreach (var ingredient in recipe.Ingredients)
-            {
-               
-                totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, CheckWeight(ingredient));
-
-            }
-            recipe.TotalNutrition = totalNutrition;
-
-        }
-        private Nutrition CalculateNutrition(Nutrition firstNutrition, Nutrition secondNutrition, double weight)
-        {
-
-            return new Nutrition
-            {
-                Calories = firstNutrition.Calories  + secondNutrition.Calories / 100 * weight,
-                Minerals = firstNutrition.Minerals  + secondNutrition.Minerals / 100 * weight,
-                Proteins = firstNutrition.Proteins + secondNutrition.Proteins / 100 * weight,
-                Fats = firstNutrition.Fats  + secondNutrition.Fats / 100 * weight,
-                Vitamins = firstNutrition.Vitamins + secondNutrition.Vitamins / 100 * weight,
-                Carbonhydrates = firstNutrition.Carbonhydrates  + secondNutrition.Carbonhydrates / 100 * weight
-            };
-        }
-
-        private double CheckWeight(Ingredient ingredient)
-        {
-            switch (ingredient.MeasurementUnit)
-            {
-                case "gr":
-                    return ingredient.Weight;
-                case "kg":
-                    return ingredient.Weight * 1000;
-                case "l":
-                   return ingredient.Weight * 1000;
-                case "glasses (200 ml)":
-                   return ingredient.Weight * 200;
-                case "ml":
-                    return ingredient.Weight; 
-                case "tsp":
-                    return ingredient.Weight * 5;
-                case "tbsp":
-                   return ingredient.Weight * 15;
-                case "on taste":
-                    return ingredient.Weight * 0;
-                default:
-                    return ingredient.Weight;
-            }
-        }
+       
+       
 
         private ObservableCollection<Recipe> recipesCollection;
         public ObservableCollection<Recipe> RcipesCollection
@@ -74,8 +25,8 @@ namespace BancedHealthyDiet.ViewModels
         {
             var dataSet = DataSet.GetInsatnce();
             this.recipesCollection = new ObservableCollection<Recipe>(dataSet.Recipes);
-            foreach (var recipe in recipesCollection)
-                CalculateTotalNutrition(recipe);
+            //foreach (var recipe in recipesCollection)
+            //    CalculateTotalNutrition(recipe);
         }
         private Recipe selectedRecipe;
         private List<Recipe> selectedRecipes;
@@ -121,21 +72,7 @@ namespace BancedHealthyDiet.ViewModels
                     ButtonTotalNutritionCollapsed = false;
                 }
                 Messenger.Default.Send<List<Recipe>>(SelectedRecipes);
-
-
             }
-           
-        }
-
-        public double CalculateTotalWeight(Recipe recipe)
-        {
-            var totalWeight = 0.0;
-            foreach (var ingred in recipe.Ingredients)
-            {
-                totalWeight+= CheckWeight(ingred);
-            }
-            return totalWeight;
-
         }
 
         ICommand showRecipeDeatilViewCommand;

@@ -54,6 +54,31 @@ namespace BancedHealthyDiet.Models
                 measurementUnit = value;
             }
         }
-     
+
+        internal double CheckWeight()
+        {
+            switch (MeasurementUnit)
+            {
+                case "gr":
+                    return Weight;
+                case "kg":
+                    return Weight * 1000;
+                case "l":
+                    return Weight * 1000;
+                case "glasses (200 ml)":
+                    return Weight * 200;
+                case "ml":
+                    return Weight;
+                case "tsp":
+                    return Weight * 5;
+                case "tbsp":
+                    return Weight * 15;
+                case "on taste":
+                    return Weight * 0;
+                default:
+                    return Weight;
+            }
+        }
+
     }
 }

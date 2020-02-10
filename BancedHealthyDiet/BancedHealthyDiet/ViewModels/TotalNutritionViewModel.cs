@@ -30,26 +30,7 @@ namespace BancedHealthyDiet.ViewModels
         public ObservableCollection<Nutrition> Consumo { get; private set; }
         public TotalNutritionViewModel(List<Recipe> selectedRecipes)
         {
-            CalulateTotalNutrition(selectedRecipes);
-        }
-
-        public SeriesCollection SeriesOfValuesNutritionCollection { get; private set; }
-        public SeriesCollection SeriesCollection { get;  private set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
-
-        public void CalulateTotalNutrition(List<Recipe> recipes)
-        {
-            var totalNutrition = new Nutrition();
-            foreach (var recipe in recipes)
-            {
-                if(recipe.TotalNutrition!=null)
-                {
-                    totalNutrition += recipe.TotalNutrition;
-                }
-
-            }
-            this.TotalNutrition = totalNutrition;
+            TotalNutrition = new Nutrition().CalulateTotalNutrition(selectedRecipes);
             Consumo = new ObservableCollection<Nutrition>();
             SeriesCollection = new SeriesCollection
             {
@@ -68,11 +49,17 @@ namespace BancedHealthyDiet.ViewModels
                     Values = new ChartValues<double> { totalNutrition.Carbonhydrates, totalNutrition.Fats, totalNutrition.Proteins, totalNutrition.Vitamins,
                     totalNutrition.Minerals}
                 }
-                           
+
             };
             Labels = new[] { "Carbonhydrates", "Fats", "Proteins", "Vitamins", "Minerals" };
             Formatter = value => value.ToString("N");
-
         }
+
+        public SeriesCollection SeriesOfValuesNutritionCollection { get; private set; }
+        public SeriesCollection SeriesCollection { get; private set; }
+        public string[] Labels { get; private set; }
+        public Func<double, string> Formatter { private get; set; }
+
+      
     }
 }
