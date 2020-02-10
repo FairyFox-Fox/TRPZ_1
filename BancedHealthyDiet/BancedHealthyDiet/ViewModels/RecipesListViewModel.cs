@@ -1,4 +1,5 @@
 ﻿using BancedHealthyDiet.Commands;
+using BancedHealthyDiet.Data;
 using BancedHealthyDiet.Models;
 using GalaSoft.MvvmLight.Messaging;
 using System;
