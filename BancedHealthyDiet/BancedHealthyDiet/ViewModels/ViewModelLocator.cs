@@ -17,7 +17,7 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace BancedHealthyDiet.ViewModel
+namespace BancedHealthyDiet.ViewModels
 {
     /// <summary>
     /// This class contains static references to all the view models in the
