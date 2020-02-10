@@ -1,5 +1,6 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Models;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,10 +16,11 @@ namespace BancedHealthyDiet.ViewModels
         private void CalculateTotalNutrition(Recipe recipe)
         {
             var totalNutrition = new Nutrition();
+            recipe.TotalWeight = CalculateTotalWeight(recipe);
             foreach (var ingredient in recipe.Ingredients)
             {
-                CheckWeight(ingredient);
-                totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, ingredient.Weight);
+               
+                totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, CheckWeight(ingredient));
 
             }
             recipe.TotalNutrition = totalNutrition;
@@ -29,43 +31,37 @@ namespace BancedHealthyDiet.ViewModels
 
             return new Nutrition
             {
-                Calories = firstNutrition.Calories / 100 * weight + secondNutrition.Calories / 100 * weight,
-                Minerals = firstNutrition.Minerals / 100 * weight + secondNutrition.Minerals / 100 * weight,
-                Proteins = firstNutrition.Proteins / 100 * weight + secondNutrition.Proteins / 100 * weight,
-                Fats = firstNutrition.Fats / 100 * weight + secondNutrition.Fats / 100 * weight,
-                Vitamins = firstNutrition.Vitamins / 100 * weight + secondNutrition.Vitamins / 100 * weight,
-                Carbonhydrates = firstNutrition.Carbonhydrates / 100 * weight + secondNutrition.Carbonhydrates / 100 * weight
+                Calories = firstNutrition.Calories  + secondNutrition.Calories / 100 * weight,
+                Minerals = firstNutrition.Minerals  + secondNutrition.Minerals / 100 * weight,
+                Proteins = firstNutrition.Proteins + secondNutrition.Proteins / 100 * weight,
+                Fats = firstNutrition.Fats  + secondNutrition.Fats / 100 * weight,
+                Vitamins = firstNutrition.Vitamins + secondNutrition.Vitamins / 100 * weight,
+                Carbonhydrates = firstNutrition.Carbonhydrates  + secondNutrition.Carbonhydrates / 100 * weight
             };
         }
 
-        private void CheckWeight(Ingredient ingredient)
+        private double CheckWeight(Ingredient ingredient)
         {
             switch (ingredient.MeasurementUnit)
             {
                 case "gr":
-                    return;
+                    return ingredient.Weight;
                 case "kg":
-                    ingredient.Weight = ingredient.Weight * 1000;
-                    break;
+                    return ingredient.Weight * 1000;
                 case "l":
-                    ingredient.Weight = ingredient.Weight * 1000;
-                    break;
+                   return ingredient.Weight * 1000;
                 case "glasses (200 ml)":
-                    ingredient.Weight = ingredient.Weight * 200;
-                    break;
+                   return ingredient.Weight * 200;
                 case "ml":
-                    return;
+                    return ingredient.Weight; 
                 case "tsp":
-                    ingredient.Weight = ingredient.Weight * 5;
-                    break;
+                    return ingredient.Weight * 5;
                 case "tbsp":
-                    ingredient.Weight = ingredient.Weight * 15;
-                    break;
+                   return ingredient.Weight * 15;
                 case "on taste":
-                    ingredient.Weight = ingredient.Weight * 0;
-                    break;
+                    return ingredient.Weight * 0;
                 default:
-                    return;
+                    return ingredient.Weight;
             }
         }
 
@@ -120,8 +116,26 @@ namespace BancedHealthyDiet.ViewModels
             if (SelectedRecipe != null)
             {
                 if (!SelectedRecipes.Contains(selectedRecipe))
+                {
                     SelectedRecipes.Add(selectedRecipe);
+                    ButtonTotalNutritionCollapsed = false;
+                }
+                Messenger.Default.Send<List<Recipe>>(SelectedRecipes);
+
+
             }
+           
+        }
+
+        public double CalculateTotalWeight(Recipe recipe)
+        {
+            var totalWeight = 0.0;
+            foreach (var ingred in recipe.Ingredients)
+            {
+                totalWeight+= CheckWeight(ingred);
+            }
+            return totalWeight;
+
         }
 
         ICommand showRecipeDeatilViewCommand;
@@ -155,8 +169,24 @@ namespace BancedHealthyDiet.ViewModels
 
         }
 
-      
+
+        private bool buttonTotalNutritionCollapsed = true;
+        public bool ButtonTotalNutritionCollapsed
+        {
+            get
+            {
+                return buttonTotalNutritionCollapsed;
+            }
+            set
+            {
+                buttonTotalNutritionCollapsed = value;
+                OnPropertyChanged(nameof(ButtonTotalNutritionCollapsed));
+            }
+
+        }
        
-        
+      
+
+
     }
 }

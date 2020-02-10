@@ -71,6 +71,19 @@ namespace BancedHealthyDiet.Models
                 ingredients = value;
             }
         }
+
+        private double totalWeight;
+        public double TotalWeight
+        {
+            get => totalWeight;
+            set
+            {
+                if (value > 0)
+                    totalWeight = value;
+                else
+                    throw new ArgumentOutOfRangeException("TotalWeight");
+            }
+        }
         private Nutrition totalNutrition;
         public Nutrition TotalNutrition
         {
@@ -78,7 +91,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if(value==null)
-                    throw new ArgumentNullException("TotalNutrition");
+                    throw new ArgumentNullException("TotalNutritionr");
                 totalNutrition = value;
             }
         }

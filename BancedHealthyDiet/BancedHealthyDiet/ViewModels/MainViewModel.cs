@@ -1,5 +1,6 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Models;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,10 +23,19 @@ namespace BancedHealthyDiet.ViewModels
         {
             get
             {
-                if (goToTotalNutrition == null)
-                    goToTotalNutrition = new RelayCommand(action => CurrentPageViewModel = new TotalNutritionViewModel());
+                Messenger.Default.Register<List<Recipe>>(this, HandleListOfSelectedRecipes);
+                if (goToTotalNutrition == null )
+                    goToTotalNutrition = new RelayCommand(action => CurrentPageViewModel = new TotalNutritionViewModel(SelectedRecipes));
                 return goToTotalNutrition;
             }
         }
+
+        public List<Recipe> SelectedRecipes { get; private set; }
+
+        private void HandleListOfSelectedRecipes(List<Recipe> obj)
+        {
+            this.SelectedRecipes = obj;
+        }
+
     }
 }
