@@ -29,8 +29,8 @@ namespace BancedHealthyDiet.Data
                     recipes = value;
             }
         }
-        private static DataSet dataSetInstance;
-        private  DataSet()
+        //private static DataSet dataSetInstance;
+        public DataSet()
         {
             products = new List<Product>();
             recipes = new List<Recipe>();
@@ -38,11 +38,11 @@ namespace BancedHealthyDiet.Data
             dataIntializator.SeedWithData(this);
 
         }
-        public static DataSet GetInsatnce()
-        {
-            if (dataSetInstance == null)
-                dataSetInstance = new DataSet();
-            return dataSetInstance;
-        }
+        //public static DataSet GetInsatnce()
+        //{
+        //    if (dataSetInstance == null)
+        //        dataSetInstance = new DataSet();
+        //    return dataSetInstance;
+        //}
     }
 }

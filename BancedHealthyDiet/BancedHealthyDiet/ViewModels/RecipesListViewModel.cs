@@ -14,9 +14,9 @@ namespace BancedHealthyDiet.ViewModels
 {
    public class RecipesListViewModel : BaseViewModel, IPageViewModel
     {
-       
-       
 
+
+        private readonly DataSet dataSet;
         private ObservableCollection<Recipe> recipesCollection;
         public ObservableCollection<Recipe> RcipesCollection
         {
@@ -24,10 +24,8 @@ namespace BancedHealthyDiet.ViewModels
         }
         public RecipesListViewModel()
         {
-            var dataSet = DataSet.GetInsatnce();
+            this.dataSet = new DataSet();
             this.recipesCollection = new ObservableCollection<Recipe>(dataSet.Recipes);
-            //foreach (var recipe in recipesCollection)
-            //    CalculateTotalNutrition(recipe);
         }
         private Recipe selectedRecipe;
         private List<Recipe> selectedRecipes;
