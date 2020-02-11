@@ -30,7 +30,7 @@ namespace BancedHealthyDiet.ViewModels
         public ObservableCollection<Nutrition> Consumo { get; private set; }
         public TotalNutritionViewModel(List<Recipe> selectedRecipes)
         {
-            TotalNutrition = new Nutrition().CalulateTotalNutrition(selectedRecipes);
+            TotalNutrition = new Nutrition().CalсulateTotalNutrition(selectedRecipes);
             Consumo = new ObservableCollection<Nutrition>();
             SeriesCollection = new SeriesCollection
             {

@@ -113,7 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\ISerializator.cs" />
+    <Compile Include="Data\DataComunicator.cs" />
+    <Compile Include="Data\Interfaces\IDataComunicator.cs" />
+    <Compile Include="Data\Interfaces\ISerializator.cs" />
     <Compile Include="Data\JsonSerializator.cs" />
     <Compile Include="Models\IPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -175,6 +177,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

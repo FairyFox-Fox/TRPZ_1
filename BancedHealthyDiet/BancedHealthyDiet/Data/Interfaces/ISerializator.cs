@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BancedHealthyDiet.Data
+namespace BancedHealthyDiet.Data.Interfaces
 {
     public interface ISerializator
     {

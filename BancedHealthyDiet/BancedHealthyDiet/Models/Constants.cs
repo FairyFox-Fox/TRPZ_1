@@ -8,7 +8,7 @@ namespace BancedHealthyDiet.Models
 {
     public  static class Constants
     {
-        private static readonly List<string> measurements = new List<String> { "gr", "kg", "l", "glasses (200 ml)", "ml", "tsp", "tbsp", "on taste" };
+        public static readonly List<string> measurements = new List<String> { "gr", "kg", "l", "glasses (200 ml)", "ml", "tsp", "tbsp", "on taste" };
         public const string FILE_PATH_TO_PRODUCTS = "D:\\DataSet\\Products";
         public const string FILE_PATH_TO_RECIPES = "D:\\DataSet\\Recipes";
     }

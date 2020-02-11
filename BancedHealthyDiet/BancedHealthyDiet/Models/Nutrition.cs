@@ -142,7 +142,7 @@ namespace BancedHealthyDiet.Models
         }
 
 
-        public Nutrition CalulateTotalNutrition(List<Recipe> recipes)
+        public Nutrition CalсulateTotalNutrition(List<Recipe> recipes)
         {
             var totalNutrition = new Nutrition();
             foreach (var recipe in recipes)

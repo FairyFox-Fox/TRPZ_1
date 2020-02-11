@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Data
 {
-    internal  class DataSet
+   public class DataSet
     {
         private List<Product> products;
         public List<Product> Products
@@ -29,7 +29,6 @@ namespace BancedHealthyDiet.Data
                     recipes = value;
             }
         }
-        //private static DataSet dataSetInstance;
         public DataSet()
         {
             products = new List<Product>();
@@ -38,11 +37,8 @@ namespace BancedHealthyDiet.Data
             dataIntializator.SeedWithData(this);
 
         }
-        //public static DataSet GetInsatnce()
-        //{
-        //    if (dataSetInstance == null)
-        //        dataSetInstance = new DataSet();
-        //    return dataSetInstance;
-        //}
+
+        
+
     }
 }
