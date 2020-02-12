@@ -23,7 +23,7 @@
         </ResourceDictionary>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml">
           <!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BancedHealthyDiet.ViewModel" />-->
-          <ViewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BancedHealthyDiet.ViewModels" />
+          <ViewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:ViewModels="clr-namespace:BancedHealthyDiet.ViewModels" />
         </ResourceDictionary>
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
