@@ -24,6 +24,7 @@ namespace BancedHealthyDiet.ViewModels
         }
         public RecipesListViewModel()
         {
+            //this
             data = new DataComunicator();
             this.recipesCollection = new ObservableCollection<Recipe>(data.GetAllRecipes());
         }
@@ -100,9 +101,7 @@ namespace BancedHealthyDiet.ViewModels
 
         private void ShowRecipeDeatilView()
         {
-
             IsDetailViewCollapsed = false;
-
         }
 
 

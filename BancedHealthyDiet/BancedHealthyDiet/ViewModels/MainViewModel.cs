@@ -18,6 +18,16 @@ namespace BancedHealthyDiet.ViewModels
         {
             this.CurrentPageViewModel = new RecipesListViewModel();
         }
+        private ICommand goToRecipeView;
+        public ICommand GoToRecipeView
+        {
+            get
+            {
+                if (goToRecipeView == null)
+                    goToRecipeView = new RelayCommand(action => CurrentPageViewModel = new RecipesListViewModel());
+                return goToRecipeView;
+            }
+        }
         private ICommand goToTotalNutrition;
         public ICommand GoToTotalNutrition
         {
@@ -29,6 +39,7 @@ namespace BancedHealthyDiet.ViewModels
                 return goToTotalNutrition;
             }
         }
+
 
         public List<Recipe> SelectedRecipes { get; private set; }
 
