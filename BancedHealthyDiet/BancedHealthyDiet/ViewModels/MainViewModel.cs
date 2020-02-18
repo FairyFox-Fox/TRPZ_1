@@ -1,6 +1,7 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Models;
 using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,6 +46,7 @@ namespace BancedHealthyDiet.ViewModels
 
         private void HandleListOfSelectedRecipes(List<Recipe> obj)
         {
+            IConfiguration
             this.SelectedRecipes = obj;
         }
 

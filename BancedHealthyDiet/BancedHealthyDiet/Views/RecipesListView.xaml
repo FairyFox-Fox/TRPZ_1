@@ -83,7 +83,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" x:Name="calalogList"   Grid.Row="0" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Single"  SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
+        <ListBox Grid.Column="0" x:Name="RecipeListBox"   Grid.Row="0" ItemsSource="{Binding RcipesCollection,NotifyOnSourceUpdated=True}" SelectionMode="Single"  SelectedItem="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" 
                   ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
@@ -91,7 +91,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
-        <Grid  Visibility="{Binding IsDetailViewCollapsed, Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0">
+        <Grid  x:Name="DetailViewGrid" Visibility="{Binding IsDetailViewCollapsed, Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition/>
@@ -154,14 +154,15 @@
                 <TextBlock  Grid.Row="12" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Minerals(gr)</TextBlock>
                 <TextBlock  Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" Text="{Binding SelectedRecipe.TotalNutrition.Minerals, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Right"></TextBlock>
                 <Separator  Grid.Row="13"    />
-                <Button Grid.Column="0" Grid.Row="14" HorizontalAlignment="Center" Background="DarkSlateGray" BorderBrush="DarkSlateGray" Content="Click to add to menu" Command="{Binding AddRecipeToList}" CommandParameter="{Binding  SelectedRecipe}"/>
+                <Button Grid.Column="0" Grid.Row="14" HorizontalAlignment="Center" Background="DarkSlateGray" BorderBrush="DarkSlateGray" Content="Click to add to menu"
+                        Command="{Binding AddRecipeToList}" CommandParameter="{Binding  SelectedRecipe}"/>
             </Grid>
             <ScrollViewer Grid.Row="2" Grid.Column="1" Padding="4" Margin="4,4,0,0">
                 <TextBlock Text="{Binding SelectedRecipe.Instruction, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
             </ScrollViewer>
             
         </Grid>
-        <Button  Visibility="{Binding ButtonTotalNutritionCollapsed, Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"  Content="Calculate total nutrition" 
+        <Button x:Name="BtnTotalNutrition" Visibility="{Binding ButtonTotalNutritionCollapsed, Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"  Content="Calculate total nutrition" 
                 Command="{Binding DataContext.GoToTotalNutrition, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}" />
     </Grid>
 </UserControl>

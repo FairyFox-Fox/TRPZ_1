@@ -32,7 +32,7 @@ namespace BancedHealthyDiet.ViewModels
         {
             TotalNutrition = new Nutrition().CalсulateTotalNutrition(selectedRecipes);
             Consumo = new ObservableCollection<Nutrition>();
-            SeriesCollection = new SeriesCollection
+            SeriesOfCaloriesCollection = new SeriesCollection
             {
                 new PieSeries
                 {
@@ -51,13 +51,13 @@ namespace BancedHealthyDiet.ViewModels
                 }
 
             };
-            Labels = new[] { "Carbonhydrates", "Fats", "Proteins", "Vitamins", "Minerals" };
+            LabelsForTotalCalories = new[] { "Carbonhydrates", "Fats", "Proteins", "Vitamins", "Minerals" };
             Formatter = value => value.ToString("N");
         }
 
         public SeriesCollection SeriesOfValuesNutritionCollection { get; private set; }
-        public SeriesCollection SeriesCollection { get; private set; }
-        public string[] Labels { get; private set; }
+        public SeriesCollection SeriesOfCaloriesCollection { get; private set; }
+        public string[] LabelsForTotalCalories { get; private set; }
         public Func<double, string> Formatter { private get; set; }
 
       
