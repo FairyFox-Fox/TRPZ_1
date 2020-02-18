@@ -46,7 +46,6 @@ namespace BancedHealthyDiet.ViewModels
 
         private void HandleListOfSelectedRecipes(List<Recipe> obj)
         {
-            IConfiguration
             this.SelectedRecipes = obj;
         }
 
