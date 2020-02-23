@@ -10,9 +10,9 @@ namespace BancedHealthyDiet.Models
     public class NutririonCalculator: INutritionCalculator
     {
 
-        public Nutrition CalсulateTotalNutrition(List<Recipe> recipes)
+        public NutritionDTO CalсulateTotalNutrition(List<RecipeDTO> recipes)
         {
-            var totalNutrition = new Nutrition();
+            var totalNutrition = new NutritionDTO();
             foreach (var recipe in recipes)
             {
                 if (recipe.TotalNutrition != null)
@@ -25,10 +25,10 @@ namespace BancedHealthyDiet.Models
             return totalNutrition;
         }
 
-        private Nutrition CalculateNutrition(Nutrition firstNutrition, Nutrition secondNutrition, double weight)
+        private NutritionDTO CalculateNutrition(NutritionDTO firstNutrition, NutritionDTO secondNutrition, double weight)
         {
 
-            return new Nutrition
+            return new NutritionDTO
             {
                 Calories = firstNutrition.Calories + secondNutrition.Calories / 100 * weight,
                 Minerals = firstNutrition.Minerals + secondNutrition.Minerals / 100 * weight,
@@ -39,9 +39,9 @@ namespace BancedHealthyDiet.Models
             };
         }
 
-        public Nutrition CalculateTotalNutrition(Recipe recipe)
+        public NutritionDTO CalculateTotalNutrition(RecipeDTO recipe)
         {
-            var totalNutrition = new Nutrition();
+            var totalNutrition = new NutritionDTO();
             foreach (var ingredient in recipe.Ingredients)
             {
                 totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, ingredient.CheckWeight());

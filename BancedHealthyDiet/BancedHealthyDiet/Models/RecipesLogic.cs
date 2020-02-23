@@ -19,13 +19,14 @@ namespace BancedHealthyDiet.Models
             this.dataset = dataset;
         }
 
-        public IEnumerable<Recipe> GetRecipes()
+        public IEnumerable<RecipeDTO> GetRecipes()
         {
            // var mapper = new MapperConfiguration(config => config.CreateMap<Data.Entitites.Recipe, Recipe>()).CreateMapper();
             //return mapper.Map<IEnumerable< Data.Entitites.Recipe>,List<Recipe>>( dataset.Recipes.GetAll());
-            var recipes = dataset.Recipes.GetAll().Select(recipe=>new Recipe(recipe.Id, recipe.ImagePath,recipe.RecipeName,recipe.Instruction,recipe.Ingredients.
-                Select(ingred=>new Ingredient(ingred.Id,new Product(ingred.Product.Id,ingred.Product.ProductName,
-                new Nutrition(ingred.Product.Nutrition.Id,ingred.Product.Nutrition.Calories, ingred.Product.Nutrition.Minerals, ingred.Product.Nutrition.Vitamins, ingred.Product.Nutrition.Fats
+            //AUTOMAPPER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var recipes = dataset.Recipes.GetAll().Select(recipe=>new RecipeDTO(recipe.Id, recipe.ImagePath,recipe.RecipeName,recipe.Instruction,recipe.Ingredients.
+                Select(ingred=>new IngredientDTO(ingred.Id,new ProductDTO(ingred.Product.Id,ingred.Product.ProductName,
+                new NutritionDTO(ingred.Product.Nutrition.Id,ingred.Product.Nutrition.Calories, ingred.Product.Nutrition.Minerals, ingred.Product.Nutrition.Vitamins, ingred.Product.Nutrition.Fats
                 , ingred.Product.Nutrition.Carbonhydrates, ingred.Product.Nutrition.Proteins))
                 , ingred.Weight,ingred.MeasurementUnit)).ToList()));
             return recipes;

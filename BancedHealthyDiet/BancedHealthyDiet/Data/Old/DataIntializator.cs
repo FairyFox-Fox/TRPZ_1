@@ -19,8 +19,8 @@ namespace BancedHealthyDiet.Data
 
         internal void SeedWithData(DataSet dataSet)
         {
-            dataSet.Products = serializator.DeserializeListFromFile<Product>(Constants.FILE_PATH_TO_PRODUCTS);
-            dataSet.Recipes = serializator.DeserializeListFromFile<Recipe>(Constants.FILE_PATH_TO_RECIPES);
+            dataSet.Products = serializator.DeserializeListFromFile<ProductDTO>(Constants.FILE_PATH_TO_PRODUCTS);
+            dataSet.Recipes = serializator.DeserializeListFromFile<RecipeDTO>(Constants.FILE_PATH_TO_RECIPES);
         }
         //internal void InitWithData(DataSet dataSet)
         //{

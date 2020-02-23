@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class Recipe
+    public class RecipeDTO
     {
         private Guid id;
         public Guid Id
@@ -58,10 +58,10 @@ namespace BancedHealthyDiet.Models
             }
         }
 
-        private List<Ingredient> ingredients;
-        public List<Ingredient> Ingredients
+        private List<IngredientDTO> ingredients;
+        public List<IngredientDTO> Ingredients
         {
-            get => ingredients ?? (ingredients= new List<Ingredient>());
+            get => ingredients ?? (ingredients= new List<IngredientDTO>());
             set
             {
                 if (value == null)
@@ -84,8 +84,8 @@ namespace BancedHealthyDiet.Models
                     throw new ArgumentOutOfRangeException("TotalWeight");
             }
         }
-        private Nutrition totalNutrition;
-        public Nutrition TotalNutrition
+        private NutritionDTO totalNutrition;
+        public NutritionDTO TotalNutrition
         {
             get => totalNutrition;
             set
@@ -96,7 +96,7 @@ namespace BancedHealthyDiet.Models
             }
         }
 
-        public Recipe(Guid id,string imagePath, string recipeName, string instruction, List<Ingredient> ingredients)
+        public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction, List<IngredientDTO> ingredients)
         {
             Id = id;
             ImagePath = imagePath;
@@ -108,7 +108,7 @@ namespace BancedHealthyDiet.Models
             TotalNutrition = new NutririonCalculator().CalculateTotalNutrition(this);
             
         }
-        private double GetTotalWeight(List<Ingredient> ingredients)
+        private double GetTotalWeight(List<IngredientDTO> ingredients)
         {
             var totalWeight = 0.0;
             foreach (var ingred in ingredients)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class Product
+    public class ProductDTO
     {
         private Guid id;
         public Guid Id
@@ -34,8 +34,8 @@ namespace BancedHealthyDiet.Models
             }
         }
 
-        private Nutrition nutrition; 
-        public Nutrition Nutrition
+        private NutritionDTO nutrition; 
+        public NutritionDTO Nutrition
         {
             get => nutrition;
             set
@@ -45,7 +45,7 @@ namespace BancedHealthyDiet.Models
                 throw new ArgumentNullException("Nutrition");
             }
         }
-        public Product(Guid id,string name, Nutrition nutrition)
+        public ProductDTO(Guid id,string name, NutritionDTO nutrition)
         {
             Id = id;
             this.productName = name;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BancedHealthyDiet.Models
 {
-    public class Nutrition
+    public class NutritionDTO
     {
         private Guid id;
         public Guid Id
@@ -92,9 +92,9 @@ namespace BancedHealthyDiet.Models
             }
         }
 
-        public static Nutrition operator +(Nutrition firstNutrition,Nutrition secondNutrition)
+        public static NutritionDTO operator +(NutritionDTO firstNutrition,NutritionDTO secondNutrition)
         {
-            return new Nutrition
+            return new NutritionDTO
             {
                 Calories = firstNutrition.Calories + secondNutrition.Calories,
                 Minerals = firstNutrition.Minerals + secondNutrition.Minerals,
@@ -104,12 +104,12 @@ namespace BancedHealthyDiet.Models
                 Carbonhydrates = firstNutrition.Carbonhydrates + secondNutrition.Carbonhydrates
             };
         }
-        public Nutrition()
+        public NutritionDTO()
         {
             this.Id = Guid.NewGuid();
         }
 
-        public Nutrition(Guid id,double calories=0, double minerals=0, double vitamins=0, double fats=0, double carbonhydrates=0, double proteins=0)
+        public NutritionDTO(Guid id,double calories=0, double minerals=0, double vitamins=0, double fats=0, double carbonhydrates=0, double proteins=0)
         {
             Id = id;
             this.calories = calories;

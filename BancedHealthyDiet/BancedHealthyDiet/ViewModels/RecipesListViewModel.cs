@@ -19,10 +19,10 @@ namespace BancedHealthyDiet.ViewModels
         private IRecipeLogic data;
 
         //private readonly IDataComunicator data;
-        private ObservableCollection<Recipe> recipesCollection;
-        public ObservableCollection<Recipe> RcipesCollection
+        private ObservableCollection<RecipeDTO> recipesCollection;
+        public ObservableCollection<RecipeDTO> RcipesCollection
         {
-            get => recipesCollection=new ObservableCollection<Recipe>(data.GetRecipes()) ?? (recipesCollection = new ObservableCollection<Recipe>());
+            get => recipesCollection=new ObservableCollection<RecipeDTO>(data.GetRecipes()) ?? (recipesCollection = new ObservableCollection<RecipeDTO>());
         }
         public RecipesListViewModel(IRecipeLogic data)
         {
@@ -33,11 +33,11 @@ namespace BancedHealthyDiet.ViewModels
         {
                 
         }
-        private Recipe selectedRecipe;
-        private List<Recipe> selectedRecipes;
-        public List<Recipe> SelectedRecipes
+        private RecipeDTO selectedRecipe;
+        private List<RecipeDTO> selectedRecipes;
+        public List<RecipeDTO> SelectedRecipes
         {
-            get => selectedRecipes ?? (selectedRecipes = new List<Recipe>());
+            get => selectedRecipes ?? (selectedRecipes = new List<RecipeDTO>());
             set
             {
                 selectedRecipes = value;
@@ -45,7 +45,7 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
-        public Recipe SelectedRecipe
+        public RecipeDTO SelectedRecipe
         {
             get => selectedRecipe;
             set
@@ -76,7 +76,7 @@ namespace BancedHealthyDiet.ViewModels
                     SelectedRecipes.Add(selectedRecipe);
                     ButtonTotalNutritionCollapsed = false;
                 }
-                Messenger.Default.Send<List<Recipe>>(SelectedRecipes);
+                Messenger.Default.Send<List<RecipeDTO>>(SelectedRecipes);
             }
         }
 

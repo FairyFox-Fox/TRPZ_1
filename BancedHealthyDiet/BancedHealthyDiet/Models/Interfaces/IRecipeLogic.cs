@@ -8,7 +8,7 @@ namespace BancedHealthyDiet.Models.Interfaces
 {
     public interface IRecipeLogic
     {
-        IEnumerable<Recipe> GetRecipes();
+        IEnumerable<RecipeDTO> GetRecipes();
         void Dispose();
     }
 }

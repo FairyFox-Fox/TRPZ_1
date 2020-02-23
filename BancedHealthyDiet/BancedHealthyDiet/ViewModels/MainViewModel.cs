@@ -31,16 +31,16 @@ namespace BancedHealthyDiet.ViewModels
         {
             get
             {
-                Messenger.Default.Register<List<Recipe>>(this, HandleListOfSelectedRecipes);
+                Messenger.Default.Register<List<RecipeDTO>>(this, HandleListOfSelectedRecipes);
                 if (goToTotalNutrition == null )
                     goToTotalNutrition = new RelayCommand(action => CurrentPageViewModel = new TotalNutritionViewModel(SelectedRecipes));
                 return goToTotalNutrition;
             }
         }
 
-        public List<Recipe> SelectedRecipes { get; private set; }
+        public List<RecipeDTO> SelectedRecipes { get; private set; }
 
-        private void HandleListOfSelectedRecipes(List<Recipe> obj)
+        private void HandleListOfSelectedRecipes(List<RecipeDTO> obj)
         {
             this.SelectedRecipes = obj;
         }

@@ -28,9 +28,9 @@ namespace BancedHealthyDiet.ViewModels
         {
                 
         }
-        private Nutrition totalNutrition;
+        private NutritionDTO totalNutrition;
 
-        public Nutrition TotalNutrition
+        public NutritionDTO TotalNutrition
         {
             get => totalNutrition;
             set
@@ -41,11 +41,11 @@ namespace BancedHealthyDiet.ViewModels
             }
 
         }
-        public ObservableCollection<Nutrition> Consumo { get; private set; }
-        public TotalNutritionViewModel(List<Recipe> selectedRecipes)
+        public ObservableCollection<NutritionDTO> Consumo { get; private set; }
+        public TotalNutritionViewModel(List<RecipeDTO> selectedRecipes)
         {
             TotalNutrition = nutritionCalculator.CalсulateTotalNutrition(selectedRecipes);
-            Consumo = new ObservableCollection<Nutrition>();
+            Consumo = new ObservableCollection<NutritionDTO>();
             SeriesCollection = new SeriesCollection
             {
                 new PieSeries

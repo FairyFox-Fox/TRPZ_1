@@ -15,7 +15,7 @@ namespace BancedHealthyDiet.Data
         {
             this.dataSet = new DataSet();
         }
-        public IList<Recipe> GetAllRecipes()
+        public IList<RecipeDTO> GetAllRecipes()
         {
             return dataSet.Recipes;
         }
