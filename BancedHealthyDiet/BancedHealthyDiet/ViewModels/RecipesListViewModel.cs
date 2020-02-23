@@ -29,6 +29,10 @@ namespace BancedHealthyDiet.ViewModels
             this.data = data;
             // this.recipesCollection = new ObservableCollection<Recipe>(data.GetRecipes());
         }
+        public RecipesListViewModel()
+        {
+                
+        }
         private Recipe selectedRecipe;
         private List<Recipe> selectedRecipes;
         public List<Recipe> SelectedRecipes

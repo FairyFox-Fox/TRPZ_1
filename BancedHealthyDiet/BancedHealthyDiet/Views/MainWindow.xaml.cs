@@ -1,8 +1,11 @@
 ﻿
 using BancedHealthyDiet.Data.Entitites;
+using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using BancedHealthyDiet.ViewModels;
+using DependencyInjectionService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +35,10 @@ namespace BancedHealthyDiet
             InitializeComponent();
             //var viewModel = new ViewModelLocator().MainViewModel;
             //DataContext = viewModel;
-            var vindow = new MainViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext())),new RecipesListViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext()))));
-            this.DataContext = vindow;
-            //using (var context = new BalanceDietAppContext())
+
+          //  var vindow = new ViewModelLocator().MainViewModel;// new MainViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext())), node);// new RecipesListViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext()))
+            //this.DataContext = vindow;
+            //using (var context = new BalanceDietAppContext()) //container.Resolve<RecipesListViewModel>()
             //{
             //    var nut1 = new Nutrition { Calories = 884, Minerals = 0, Vitamins = 0.0000418, Fats = 100, Carbonhydrates = 0, Proteins = 0 };
             //    var nut2 = new Nutrition { Calories = 31, Minerals = 0, Vitamins = 0, Fats = 0, Carbonhydrates = 3.6, Proteins = 2 };

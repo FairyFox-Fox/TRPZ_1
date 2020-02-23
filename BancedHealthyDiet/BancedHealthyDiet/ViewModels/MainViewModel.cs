@@ -22,6 +22,10 @@ namespace BancedHealthyDiet.ViewModels
             this.data = data;
             this.CurrentPageViewModel = recipesListViewModel;//new RecipeListB(model)
         }
+        public MainViewModel()
+        {
+
+        }
         private ICommand goToTotalNutrition;
         public ICommand GoToTotalNutrition
         {

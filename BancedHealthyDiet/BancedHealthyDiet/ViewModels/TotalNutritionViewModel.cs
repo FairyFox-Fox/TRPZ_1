@@ -24,6 +24,10 @@ namespace BancedHealthyDiet.ViewModels
             //this
             this.nutritionCalculator = nutritionCalculator;
         }
+        public TotalNutritionViewModel()
+        {
+                
+        }
         private Nutrition totalNutrition;
 
         public Nutrition TotalNutrition

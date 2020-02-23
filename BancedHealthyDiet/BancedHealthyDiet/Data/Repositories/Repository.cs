@@ -15,7 +15,8 @@ namespace BancedHealthyDiet.Data.Repositories
 
         public Repository(BalanceDietAppContext appContext)
         {
-            this.appContext = appContext;
+            // this.appContext = appContext;
+            this.appContext = new BalanceDietAppContext();
             dbSet = appContext.Set<TEntity>();
         }
         public TEntity Get(Guid id)

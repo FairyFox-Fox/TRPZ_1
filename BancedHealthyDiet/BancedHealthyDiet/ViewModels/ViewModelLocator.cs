@@ -13,6 +13,7 @@
 */
 
 
+using BancedHealthyDiet.Data.Entitites;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Models;
@@ -35,11 +36,14 @@ namespace BancedHealthyDiet.ViewModels
         {
             container = new IOC();
             container.Register<IUnitOfWork, UnitOfWork>();
+            container.Register<BalanceDietAppContext>();
             container.Register<IRecipeLogic, RecipesLogic>();
             container.Register<INutritionCalculator, NutririonCalculator>();
             container.Register<RecipesListViewModel>();
             container.Register<TotalNutritionViewModel>();
+            var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
+            //var main = container.Resolve<MainViewModel>();
         }
         public MainViewModel MainViewModel
         {
