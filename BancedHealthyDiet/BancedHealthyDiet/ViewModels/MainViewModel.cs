@@ -1,5 +1,6 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,13 @@ namespace BancedHealthyDiet.ViewModels
 {
     public class MainViewModel:BaseViewModel, IPageViewModel
     {
+        private IRecipeLogic data;
 
-        public MainViewModel()
+
+        public MainViewModel(IRecipeLogic data, RecipesListViewModel recipesListViewModel)
         {
-            this.CurrentPageViewModel = new RecipesListViewModel();
+            this.data = data;
+            this.CurrentPageViewModel = recipesListViewModel;//new RecipeListB(model)
         }
         private ICommand goToTotalNutrition;
         public ICommand GoToTotalNutrition

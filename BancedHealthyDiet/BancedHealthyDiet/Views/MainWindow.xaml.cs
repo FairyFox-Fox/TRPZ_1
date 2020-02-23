@@ -1,5 +1,7 @@
 ﻿
 using BancedHealthyDiet.Data.Entitites;
+using BancedHealthyDiet.Data.Repositories;
+using BancedHealthyDiet.Models;
 using BancedHealthyDiet.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,7 +30,9 @@ namespace BancedHealthyDiet
         public MainWindow()
         {
             InitializeComponent();
-            var vindow = new MainViewModel();
+            //var viewModel = new ViewModelLocator().MainViewModel;
+            //DataContext = viewModel;
+            var vindow = new MainViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext())),new RecipesListViewModel(new RecipesLogic(new UnitOfWork(new BalanceDietAppContext()))));
             this.DataContext = vindow;
             //using (var context = new BalanceDietAppContext())
             //{

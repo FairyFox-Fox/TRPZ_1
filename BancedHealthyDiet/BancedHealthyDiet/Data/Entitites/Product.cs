@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BancedHealthyDiet.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BancedHealthyDiet.Data.Entitites
 {
-    public class Product
+    public class Product:IEntity
     {
         public Guid Id { get; set; }
         public string ProductName { get; set; }

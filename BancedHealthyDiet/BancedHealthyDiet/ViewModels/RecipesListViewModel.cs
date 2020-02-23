@@ -2,6 +2,7 @@
 using BancedHealthyDiet.Data;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,18 @@ namespace BancedHealthyDiet.ViewModels
 {
    public class RecipesListViewModel : BaseViewModel, IPageViewModel
     {
+        private IRecipeLogic data;
 
-        private readonly IDataComunicator data;
+        //private readonly IDataComunicator data;
         private ObservableCollection<Recipe> recipesCollection;
         public ObservableCollection<Recipe> RcipesCollection
         {
-            get => recipesCollection ?? (recipesCollection = new ObservableCollection<Recipe>());
+            get => recipesCollection=new ObservableCollection<Recipe>(data.GetRecipes()) ?? (recipesCollection = new ObservableCollection<Recipe>());
         }
-        public RecipesListViewModel()
+        public RecipesListViewModel(IRecipeLogic data)
         {
-            data = new DataComunicator();
-            this.recipesCollection = new ObservableCollection<Recipe>(data.GetAllRecipes());
+            this.data = data;
+            // this.recipesCollection = new ObservableCollection<Recipe>(data.GetRecipes());
         }
         private Recipe selectedRecipe;
         private List<Recipe> selectedRecipes;

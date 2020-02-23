@@ -96,15 +96,16 @@ namespace BancedHealthyDiet.Models
             }
         }
 
-        public Recipe(string imagePath, string recipeName, string instruction, List<Ingredient> ingredients)
+        public Recipe(Guid id,string imagePath, string recipeName, string instruction, List<Ingredient> ingredients)
         {
+            Id = id;
             ImagePath = imagePath;
             RecipeName = recipeName;
             Instruction = instruction;
             Ingredients = ingredients;
             TotalWeight = GetTotalWeight(Ingredients);
-            TotalNutrition = new Nutrition().CalculateTotalNutrition(this);
-            //nutrition.CalculateTotalNutrition(this);
+            ///what to do here&&&&&&&
+            TotalNutrition = new NutririonCalculator().CalculateTotalNutrition(this);
             
         }
         private double GetTotalWeight(List<Ingredient> ingredients)

@@ -104,9 +104,14 @@ namespace BancedHealthyDiet.Models
                 Carbonhydrates = firstNutrition.Carbonhydrates + secondNutrition.Carbonhydrates
             };
         }
-
-        public Nutrition(double calories=0, double minerals=0, double vitamins=0, double fats=0, double carbonhydrates=0, double proteins=0)
+        public Nutrition()
         {
+            this.Id = Guid.NewGuid();
+        }
+
+        public Nutrition(Guid id,double calories=0, double minerals=0, double vitamins=0, double fats=0, double carbonhydrates=0, double proteins=0)
+        {
+            Id = id;
             this.calories = calories;
             this.minerals = minerals;
             this.vitamins = vitamins;
@@ -116,46 +121,12 @@ namespace BancedHealthyDiet.Models
 
 
         }
-        public Nutrition CalculateTotalNutrition(Recipe recipe)
-        {
-            var totalNutrition = new Nutrition();
-            foreach (var ingredient in recipe.Ingredients)
-            {
-                totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, ingredient.CheckWeight());
-            }
-            return totalNutrition;
-
-        }
-
-        private Nutrition CalculateNutrition(Nutrition firstNutrition, Nutrition secondNutrition, double weight)
-        {
-
-            return new Nutrition
-            {
-                Calories = firstNutrition.Calories + secondNutrition.Calories / 100 * weight,
-                Minerals = firstNutrition.Minerals + secondNutrition.Minerals / 100 * weight,
-                Proteins = firstNutrition.Proteins + secondNutrition.Proteins / 100 * weight,
-                Fats = firstNutrition.Fats + secondNutrition.Fats / 100 * weight,
-                Vitamins = firstNutrition.Vitamins + secondNutrition.Vitamins / 100 * weight,
-                Carbonhydrates = firstNutrition.Carbonhydrates + secondNutrition.Carbonhydrates / 100 * weight
-            };
-        }
 
 
-        public Nutrition CalсulateTotalNutrition(List<Recipe> recipes)
-        {
-            var totalNutrition = new Nutrition();
-            foreach (var recipe in recipes)
-            {
-                if (recipe.TotalNutrition != null)
-                {
-                    totalNutrition += recipe.TotalNutrition;
+      
 
-                }
-                
-            }
-            return totalNutrition;
-        }
+
+      
 
     }
 }

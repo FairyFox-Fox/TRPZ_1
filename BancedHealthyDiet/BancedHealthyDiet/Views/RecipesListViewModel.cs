@@ -24,8 +24,8 @@ namespace BancedHealthyDiet.Views
         public RecipesListView()
         {
             InitializeComponent();
-            var view = new RecipesListViewModel();
-            this.DataContext = view;
+           //var view = new RecipesListViewModel();
+            //this.DataContext = view;
         }
     }
 }

@@ -45,8 +45,9 @@ namespace BancedHealthyDiet.Models
                 throw new ArgumentNullException("Nutrition");
             }
         }
-        public Product(string name, Nutrition nutrition)
+        public Product(Guid id,string name, Nutrition nutrition)
         {
+            Id = id;
             this.productName = name;
             this.nutrition = nutrition;
         }

@@ -6,6 +6,7 @@
         
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <!--DataContext="{Binding Path=MainViewModel,Source={StaticResource ServiceLocator}}"-->
     <Window.Resources>
        
     </Window.Resources>

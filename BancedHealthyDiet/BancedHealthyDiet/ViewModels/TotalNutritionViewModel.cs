@@ -1,4 +1,5 @@
 ﻿using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
 using LiveCharts;
 using LiveCharts.Defaults;
@@ -14,6 +15,15 @@ namespace BancedHealthyDiet.ViewModels
 {
     public class TotalNutritionViewModel: BaseViewModel, IPageViewModel
     {
+        /// <summary>
+        /// !!!!!!!!!!!!!!!!!!!!
+        /// </summary>
+        INutritionCalculator nutritionCalculator = new NutririonCalculator();
+        public TotalNutritionViewModel(INutritionCalculator nutritionCalculator)
+        {
+            //this
+            this.nutritionCalculator = nutritionCalculator;
+        }
         private Nutrition totalNutrition;
 
         public Nutrition TotalNutrition
@@ -30,7 +40,7 @@ namespace BancedHealthyDiet.ViewModels
         public ObservableCollection<Nutrition> Consumo { get; private set; }
         public TotalNutritionViewModel(List<Recipe> selectedRecipes)
         {
-            TotalNutrition = new Nutrition().CalсulateTotalNutrition(selectedRecipes);
+            TotalNutrition = nutritionCalculator.CalсulateTotalNutrition(selectedRecipes);
             Consumo = new ObservableCollection<Nutrition>();
             SeriesCollection = new SeriesCollection
             {
@@ -59,7 +69,6 @@ namespace BancedHealthyDiet.ViewModels
         public SeriesCollection SeriesCollection { get; private set; }
         public string[] Labels { get; private set; }
         public Func<double, string> Formatter { private get; set; }
-
-      
+        public INutritionCalculator NutritionCalculator { get => nutritionCalculator; set => nutritionCalculator = value; }
     }
 }

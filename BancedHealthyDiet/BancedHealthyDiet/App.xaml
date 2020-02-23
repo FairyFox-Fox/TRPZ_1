@@ -3,14 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
              xmlns:local="clr-namespace:BancedHealthyDiet"
              xmlns:ViewModels="clr-namespace:BancedHealthyDiet.ViewModels" 
-             xmlns:Views="clr-namespace:BancedHealthyDiet.Views" StartupUri="/Views/MainWindow.xaml" 
+             xmlns:Views="clr-namespace:BancedHealthyDiet.Views" 
+             StartupUri="/Views/MainWindow.xaml" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
-  <Application.Resources>
-    <ResourceDictionary>
-      <DataTemplate DataType="{x:Type ViewModels:TotalNutritionViewModel}">
-        <Views:TotalNutritionView />
-      </DataTemplate>
+    <Application.Resources>
+      
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModels:MainViewModel}">
+                <local:MainWindow />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:TotalNutritionViewModel}">
+                <Views:TotalNutritionView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type ViewModels:RecipesListViewModel}">
                 <Views:RecipesListView />
             </DataTemplate>
@@ -21,11 +26,13 @@
         </ResourceDictionary>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml">
         </ResourceDictionary>
-        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml">
-          <!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BancedHealthyDiet.ViewModel" />-->
-          <ViewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BancedHealthyDiet.ViewModels" />
+      
+          <!--<ViewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BancedHealthyDiet.ViewModels" />-->
+          <ResourceDictionary>
+                    <ViewModels:ViewModelLocator x:Key="ServiceLocator"/>
         </ResourceDictionary>
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
+        </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

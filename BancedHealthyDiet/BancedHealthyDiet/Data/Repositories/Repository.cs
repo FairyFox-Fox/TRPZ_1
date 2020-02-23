@@ -2,28 +2,31 @@
 using BancedHealthyDiet.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
 namespace BancedHealthyDiet.Data.Repositories
 {
-    public class Repository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IGenericRepository<TEntity> where TEntity : class,IEntity,new()
     {
         private readonly BalanceDietAppContext appContext;
+        DbSet<TEntity> dbSet;
 
         public Repository(BalanceDietAppContext appContext)
         {
             this.appContext = appContext;
+            dbSet = appContext.Set<TEntity>();
         }
         public TEntity Get(Guid id)
         {
             //return appContext.Set<TEntity>().FirstOrDefault(entity => entity.Id == id);
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(entity => entity.Id == id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return appContext.Set<TEntity>();
         }
     }
 }
