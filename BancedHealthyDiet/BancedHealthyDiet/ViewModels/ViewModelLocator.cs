@@ -20,8 +20,6 @@ using BancedHealthyDiet.Models;
 using BancedHealthyDiet.Models.Interfaces;
 using CommonServiceLocator;
 using DependencyInjectionService;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
 
 namespace BancedHealthyDiet.ViewModels
 {
@@ -43,7 +41,10 @@ namespace BancedHealthyDiet.ViewModels
             container.Register<TotalNutritionViewModel>();
             var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
-            //var main = container.Resolve<MainViewModel>();
+            container.Register<IGenericRepository<Recipe>, Repository<Recipe>>();
+            container.Register<IGenericRepository<Ingredient>, Repository<Ingredient>>();
+            container.Register<IGenericRepository<Nutrition>, Repository<Nutrition>>();
+            container.Register<IGenericRepository<Product>, Repository<Product>>();
         }
         public MainViewModel MainViewModel
         {

@@ -199,10 +199,10 @@
     <Compile Include="Data\Entitites\Nutrition.cs" />
     <Compile Include="Data\Entitites\Product.cs" />
     <Compile Include="Data\Entitites\Recipe.cs" />
-    <Compile Include="Data\Interfaces\IDataComunicator.cs" />
+    <Compile Include="Data\Old\IDataComunicator.cs" />
     <Compile Include="Data\Interfaces\IEntity.cs" />
     <Compile Include="Data\Interfaces\IGenericRepository.cs" />
-    <Compile Include="Data\Interfaces\ISerializator.cs" />
+    <Compile Include="Data\Old\ISerializator.cs" />
     <Compile Include="Data\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Data\Old\JsonSerializator.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
