@@ -1,7 +1,7 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,37 +14,33 @@ namespace BancedHealthyDiet.ViewModels
 {
     public class MainViewModel:BaseViewModel, IPageViewModel
     {
+        private IRecipeLogic data;
 
+
+        public MainViewModel(IRecipeLogic data, RecipesListViewModel recipesListViewModel)
+        {
+            this.data = data;
+            this.CurrentPageViewModel = recipesListViewModel;//new RecipeListB(model)
+        }
         public MainViewModel()
         {
-            this.CurrentPageViewModel = new RecipesListViewModel();
-        }
-        private ICommand goToRecipeView;
-        public ICommand GoToRecipeView
-        {
-            get
-            {
-                if (goToRecipeView == null)
-                    goToRecipeView = new RelayCommand(action => CurrentPageViewModel = new RecipesListViewModel());
-                return goToRecipeView;
-            }
+
         }
         private ICommand goToTotalNutrition;
         public ICommand GoToTotalNutrition
         {
             get
             {
-                Messenger.Default.Register<List<Recipe>>(this, HandleListOfSelectedRecipes);
+                Messenger.Default.Register<List<RecipeDTO>>(this, HandleListOfSelectedRecipes);
                 if (goToTotalNutrition == null )
                     goToTotalNutrition = new RelayCommand(action => CurrentPageViewModel = new TotalNutritionViewModel(SelectedRecipes));
                 return goToTotalNutrition;
             }
         }
 
+        public List<RecipeDTO> SelectedRecipes { get; private set; }
 
-        public List<Recipe> SelectedRecipes { get; private set; }
-
-        private void HandleListOfSelectedRecipes(List<Recipe> obj)
+        private void HandleListOfSelectedRecipes(List<RecipeDTO> obj)
         {
             this.SelectedRecipes = obj;
         }

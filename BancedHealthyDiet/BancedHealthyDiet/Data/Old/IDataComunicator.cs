@@ -9,6 +9,6 @@ namespace BancedHealthyDiet.Data.Interfaces
 {
     public interface IDataComunicator
     {
-        IList<Recipe> GetAllRecipes();
+        IList<RecipeDTO> GetAllRecipes();
     }
 }

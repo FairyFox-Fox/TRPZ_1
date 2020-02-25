@@ -2,6 +2,7 @@
 using BancedHealthyDiet.Data;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -15,24 +16,28 @@ namespace BancedHealthyDiet.ViewModels
 {
    public class RecipesListViewModel : BaseViewModel, IPageViewModel
     {
+        private IRecipeLogic data;
 
-        private readonly IDataComunicator data;
-        private ObservableCollection<Recipe> recipesCollection;
-        public ObservableCollection<Recipe> RcipesCollection
+        //private readonly IDataComunicator data;
+        private ObservableCollection<RecipeDTO> recipesCollection;
+        public ObservableCollection<RecipeDTO> RcipesCollection
         {
-            get => recipesCollection ?? (recipesCollection = new ObservableCollection<Recipe>());
+            get => recipesCollection=new ObservableCollection<RecipeDTO>(data.GetRecipes()) ?? (recipesCollection = new ObservableCollection<RecipeDTO>());
+        }
+        public RecipesListViewModel(IRecipeLogic data)
+        {
+            this.data = data;
+            // this.recipesCollection = new ObservableCollection<Recipe>(data.GetRecipes());
         }
         public RecipesListViewModel()
         {
-            //this
-            data = new DataComunicator();
-            this.recipesCollection = new ObservableCollection<Recipe>(data.GetAllRecipes());
+                
         }
-        private Recipe selectedRecipe;
-        private List<Recipe> selectedRecipes;
-        public List<Recipe> SelectedRecipes
+        private RecipeDTO selectedRecipe;
+        private List<RecipeDTO> selectedRecipes;
+        public List<RecipeDTO> SelectedRecipes
         {
-            get => selectedRecipes ?? (selectedRecipes = new List<Recipe>());
+            get => selectedRecipes ?? (selectedRecipes = new List<RecipeDTO>());
             set
             {
                 selectedRecipes = value;
@@ -40,7 +45,7 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
-        public Recipe SelectedRecipe
+        public RecipeDTO SelectedRecipe
         {
             get => selectedRecipe;
             set
@@ -71,7 +76,7 @@ namespace BancedHealthyDiet.ViewModels
                     SelectedRecipes.Add(selectedRecipe);
                     ButtonTotalNutritionCollapsed = false;
                 }
-                Messenger.Default.Send<List<Recipe>>(SelectedRecipes);
+                Messenger.Default.Send<List<RecipeDTO>>(SelectedRecipes);
             }
         }
 
@@ -101,7 +106,9 @@ namespace BancedHealthyDiet.ViewModels
 
         private void ShowRecipeDeatilView()
         {
+
             IsDetailViewCollapsed = false;
+
         }
 
 

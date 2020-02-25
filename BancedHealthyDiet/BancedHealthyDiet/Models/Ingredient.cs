@@ -6,11 +6,24 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class Ingredient
+    public class IngredientDTO
     {
         private Guid id;
-        private Product product;
-        public Product Product
+        public Guid Id
+        {
+            get
+            {
+                if (id == Guid.Empty)
+                    return id = Guid.NewGuid();
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+        private ProductDTO product;
+        public ProductDTO Product
         {
             get => product;
             set
@@ -36,8 +49,9 @@ namespace BancedHealthyDiet.Models
         private string measurementUnit;
       
 
-        public Ingredient(Product product, double weight, string measurementUnit)
+        public IngredientDTO(Guid id,ProductDTO product, double weight, string measurementUnit)
         {
+            Id = id;
             Product = product;
             this.id = this.Product.Id;
             Weight = weight;

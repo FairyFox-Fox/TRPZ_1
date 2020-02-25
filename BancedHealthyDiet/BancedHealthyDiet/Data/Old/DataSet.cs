@@ -9,8 +9,8 @@ namespace BancedHealthyDiet.Data
 {
    public class DataSet
     {
-        private List<Product> products;
-        public List<Product> Products
+        private List<ProductDTO> products;
+        public List<ProductDTO> Products
         {
             get => products;
             set
@@ -19,8 +19,8 @@ namespace BancedHealthyDiet.Data
                     products= value;
             }
         }
-        private List<Recipe> recipes;
-        public List<Recipe> Recipes
+        private List<RecipeDTO> recipes;
+        public List<RecipeDTO> Recipes
         {
             get => recipes;
             set
@@ -31,8 +31,8 @@ namespace BancedHealthyDiet.Data
         }
         public DataSet()
         {
-            products = new List<Product>();
-            recipes = new List<Recipe>();
+            products = new List<ProductDTO>();
+            recipes = new List<RecipeDTO>();
             DataIntializator dataIntializator = new DataIntializator(new JsonSerializator());
             dataIntializator.SeedWithData(this);
 

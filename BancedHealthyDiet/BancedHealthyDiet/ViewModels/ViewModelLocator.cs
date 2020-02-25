@@ -13,9 +13,13 @@
 */
 
 
+using BancedHealthyDiet.Data.Entitites;
+using BancedHealthyDiet.Data.Interfaces;
+using BancedHealthyDiet.Data.Repositories;
+using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Models.Interfaces;
 using CommonServiceLocator;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
+using DependencyInjectionService;
 
 namespace BancedHealthyDiet.ViewModels
 {
@@ -25,38 +29,62 @@ namespace BancedHealthyDiet.ViewModels
     /// </summary>
     public class ViewModelLocator
     {
+        private readonly IOC container;
+        public ViewModelLocator()
+        {
+            container = new IOC();
+            container.Register<IUnitOfWork, UnitOfWork>();
+            container.Register<BalanceDietAppContext>();
+            container.Register<IRecipeLogic, RecipesLogic>();
+            container.Register<INutritionCalculator, NutririonCalculator>();
+            container.Register<RecipesListViewModel>();
+            container.Register<TotalNutritionViewModel>();
+            var node = container.Resolve<RecipesListViewModel>();
+            container.Register<MainViewModel>();
+            container.Register<IGenericRepository<Recipe>, Repository<Recipe>>();
+            container.Register<IGenericRepository<Ingredient>, Repository<Ingredient>>();
+            container.Register<IGenericRepository<Nutrition>, Repository<Nutrition>>();
+            container.Register<IGenericRepository<Product>, Repository<Product>>();
+        }
+        public MainViewModel MainViewModel
+        {
+            get { return container.Resolve<MainViewModel>(); }
+
+        }
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
-        public ViewModelLocator()
-        {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+        //    public ViewModelLocator()
+        //    {
+        //        ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+        //        ////if (ViewModelBase.IsInDesignModeStatic)
+        //        ////{
+        //        ////    // Create design time view services and models
+        //        ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
+        //        ////}
+        //        ////else
+        //        ////{
+        //        ////    // Create run time view services and models
+        //        ////    SimpleIoc.Default.Register<IDataService, DataService>();
+        //        ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
-        }
+        //        SimpleIoc.Default.Register<MainViewModel>();
+        //    }
 
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-        
-        public static void Cleanup()
-        {
-            // TODO Clear the ViewModels
-        }
+        //    public MainViewModel Main
+        //    {
+        //        get
+        //        {
+        //            return ServiceLocator.Current.GetInstance<MainViewModel>();
+        //        }
+        //    }
+
+        //    public static void Cleanup()
+        //    {
+        //        // TODO Clear the ViewModels
+        //    }
+        //}
+
     }
 }
