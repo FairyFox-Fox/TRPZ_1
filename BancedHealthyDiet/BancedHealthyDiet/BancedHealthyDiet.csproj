@@ -198,11 +198,6 @@
       <DependentUpon>202002222257323_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Interfaces\INutritionCalculator.cs" />
-    <Compile Include="Models\Interfaces\IRecipeLogic.cs" />
-    <Compile Include="Models\IPageViewModel.cs" />
-    <Compile Include="Models\NutririonCalculator.cs" />
-    <Compile Include="Models\RecipesLogic.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
@@ -220,10 +215,6 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Nutrition.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Recipe.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RecipesListViewModel.cs" />

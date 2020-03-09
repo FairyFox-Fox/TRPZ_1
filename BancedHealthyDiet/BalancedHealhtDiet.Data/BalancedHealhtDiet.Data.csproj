@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Data\Entitites\BalanceDietAppContext.cs" />
     <Compile Include="Data\Entitites\Ingredient.cs" />
     <Compile Include="Data\Entitites\Nutrition.cs" />
@@ -63,13 +62,6 @@
     <Compile Include="Data\Interfaces\IEntity.cs" />
     <Compile Include="Data\Interfaces\IGenericRepository.cs" />
     <Compile Include="Data\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Data\Old\Constants.cs" />
-    <Compile Include="Data\Old\DataComunicator.cs" />
-    <Compile Include="Data\Old\DataIntializator.cs" />
-    <Compile Include="Data\Old\DataSet.cs" />
-    <Compile Include="Data\Old\IDataComunicator.cs" />
-    <Compile Include="Data\Old\ISerializator.cs" />
-    <Compile Include="Data\Old\JsonSerializator.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
     <Compile Include="Data\Repositories\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

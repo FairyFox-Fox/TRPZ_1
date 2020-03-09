@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedHealhtDiet.Data", "BalancedHealhtDiet.Data\BalancedHealhtDiet.Data.csproj", "{23791C1C-1822-4FAE-A7BE-771224F76C56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedHealthyDiet.Model", "BalancedHealthyDiet.Model\BalancedHealthyDiet.Model.csproj", "{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
