@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E730374-7DB5-4C0E-AA8C-119398B42334}</ProjectGuid>
+    <ProjectGuid>{11DB5B75-396E-46B8-9779-DC3FC4419053}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BancedHealthyDiet</RootNamespace>
     <AssemblyName>BancedHealthyDiet</AssemblyName>
@@ -212,11 +212,6 @@
       <DependentUpon>202002222257323_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Interfaces\INutritionCalculator.cs" />
-    <Compile Include="Models\Interfaces\IRecipeLogic.cs" />
-    <Compile Include="Models\IPageViewModel.cs" />
-    <Compile Include="Models\NutririonCalculator.cs" />
-    <Compile Include="Models\RecipesLogic.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
@@ -237,10 +232,6 @@
     <Compile Include="Data\Old\Constants.cs" />
     <Compile Include="Data\Old\DataIntializator.cs" />
     <Compile Include="Data\Old\DataSet.cs" />
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Nutrition.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Recipe.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RecipesListViewModel.cs" />
@@ -290,6 +281,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalancedHealtyDiet.Model\BalancedHealtyDiet.Model.csproj">
+      <Project>{5c04c98f-eb44-49fa-bdd2-d860b01aee22}</Project>
+      <Name>BalancedHealtyDiet.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DependencyInjectionService\DependencyInjectionService.csproj">
       <Project>{8de44722-2978-49bc-9dfb-5717d945fb91}</Project>
       <Name>DependencyInjectionService</Name>

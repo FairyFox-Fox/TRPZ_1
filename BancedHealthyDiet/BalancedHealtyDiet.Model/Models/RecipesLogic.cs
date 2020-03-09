@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
-using BancedHealthyDiet.Data.Interfaces;
-using BancedHealthyDiet.Data.Entitites;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BancedHealthyDiet.Models.Interfaces;
+
+using BancedHealthyDiet.Models;
+using BancedHealthyDiet.Data.Interfaces;
+using BancedHealthyDiet.Model.Interfaces;
 
 namespace BancedHealthyDiet.Models
 {
@@ -35,5 +37,7 @@ namespace BancedHealthyDiet.Models
         {
             dataset.Dispose();
         }
+
+       
     }
 }

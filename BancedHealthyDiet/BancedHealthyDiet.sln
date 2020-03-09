@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancedHealthyDiet", "BancedHealthyDiet\BancedHealthyDiet.csproj", "{8E730374-7DB5-4C0E-AA8C-119398B42334}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionService", "DependencyInjectionService\DependencyInjectionService.csproj", "{8DE44722-2978-49BC-9DFB-5717D945FB91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalancedHealthyDiet.Data", "BalancedHealthyDiet.Data\BalancedHealthyDiet.Data.csproj", "{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalancedHealtyDiet.Model", "BalancedHealtyDiet.Model\BalancedHealtyDiet.Model.csproj", "{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancedHealthyDiet.UI", "BancedHealthyDiet\BancedHealthyDiet.UI.csproj", "{11DB5B75-396E-46B8-9779-DC3FC4419053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceHealthyDiet.Model", "BalanceHealthyDiet.Model\BalanceHealthyDiet.Model.csproj", "{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E730374-7DB5-4C0E-AA8C-119398B42334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E730374-7DB5-4C0E-AA8C-119398B42334}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E730374-7DB5-4C0E-AA8C-119398B42334}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E730374-7DB5-4C0E-AA8C-119398B42334}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

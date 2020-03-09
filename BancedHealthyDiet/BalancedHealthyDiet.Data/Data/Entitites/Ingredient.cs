@@ -1,4 +1,5 @@
-﻿using BancedHealthyDiet.Data.Interfaces;
+﻿
+using BancedHealthyDiet.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
