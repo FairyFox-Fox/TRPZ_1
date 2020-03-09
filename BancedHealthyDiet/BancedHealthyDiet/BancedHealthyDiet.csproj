@@ -193,20 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\Old\DataComunicator.cs" />
-    <Compile Include="Data\Entitites\BalanceDietAppContext.cs" />
-    <Compile Include="Data\Entitites\Ingredient.cs" />
-    <Compile Include="Data\Entitites\Nutrition.cs" />
-    <Compile Include="Data\Entitites\Product.cs" />
-    <Compile Include="Data\Entitites\Recipe.cs" />
-    <Compile Include="Data\Old\IDataComunicator.cs" />
-    <Compile Include="Data\Interfaces\IEntity.cs" />
-    <Compile Include="Data\Interfaces\IGenericRepository.cs" />
-    <Compile Include="Data\Old\ISerializator.cs" />
-    <Compile Include="Data\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Data\Old\JsonSerializator.cs" />
-    <Compile Include="Data\Repositories\Repository.cs" />
-    <Compile Include="Data\Repositories\UnitOfWork.cs" />
     <Compile Include="Migrations\202002222257323_initial.cs" />
     <Compile Include="Migrations\202002222257323_initial.designer.cs">
       <DependentUpon>202002222257323_initial.cs</DependentUpon>
@@ -234,9 +220,6 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-    <Compile Include="Data\Old\Constants.cs" />
-    <Compile Include="Data\Old\DataIntializator.cs" />
-    <Compile Include="Data\Old\DataSet.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Nutrition.cs" />
     <Compile Include="Models\Product.cs" />
