@@ -2,7 +2,7 @@
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Models.Interfaces;
+using BancedHealthyDiet.Model.Interfaces;
 using DependencyInjectionService;
 using System;
 using System.Collections.Generic;

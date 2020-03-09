@@ -1,7 +1,7 @@
 ﻿using BancedHealthyDiet.Commands;
-
+using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Models.Interfaces;
+
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;

@@ -193,28 +193,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.UI.csproj
-    <Compile Include="Data\Old\DataComunicator.cs" />
-    <Compile Include="Data\Entitites\BalanceDietAppContext.cs" />
-    <Compile Include="Data\Entitites\Ingredient.cs" />
-    <Compile Include="Data\Entitites\Nutrition.cs" />
-    <Compile Include="Data\Entitites\Product.cs" />
-    <Compile Include="Data\Entitites\Recipe.cs" />
-    <Compile Include="Data\Old\IDataComunicator.cs" />
-    <Compile Include="Data\Interfaces\IEntity.cs" />
-    <Compile Include="Data\Interfaces\IGenericRepository.cs" />
-    <Compile Include="Data\Old\ISerializator.cs" />
-    <Compile Include="Data\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Data\Old\JsonSerializator.cs" />
-    <Compile Include="Data\Repositories\Repository.cs" />
-    <Compile Include="Data\Repositories\UnitOfWork.cs" />
-    <Compile Include="Migrations\202002222257323_initial.cs" />
-    <Compile Include="Migrations\202002222257323_initial.designer.cs">
-      <DependentUpon>202002222257323_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-=======
->>>>>>> dev:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.csproj
+
+    
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
@@ -232,12 +212,7 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-<<<<<<< HEAD:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.UI.csproj
-    <Compile Include="Data\Old\Constants.cs" />
-    <Compile Include="Data\Old\DataIntializator.cs" />
-    <Compile Include="Data\Old\DataSet.cs" />
-=======
->>>>>>> dev:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.csproj
+
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RecipesListViewModel.cs" />
@@ -284,15 +259,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.UI.csproj
-    <ProjectReference Include="..\BalancedHealtyDiet.Model\BalancedHealtyDiet.Model.csproj">
-      <Project>{5c04c98f-eb44-49fa-bdd2-d860b01aee22}</Project>
-      <Name>BalancedHealtyDiet.Model</Name>
-=======
     <ProjectReference Include="..\BalancedHealthyDiet.Model\BalancedHealthyDiet.Model.csproj">
       <Project>{dcbc4d19-adf6-464b-89ff-f3bc777a737f}</Project>
       <Name>BalancedHealthyDiet.Model</Name>
->>>>>>> dev:BancedHealthyDiet/BancedHealthyDiet/BancedHealthyDiet.csproj
     </ProjectReference>
     <ProjectReference Include="..\DependencyInjectionService\DependencyInjectionService.csproj">
       <Project>{8de44722-2978-49bc-9dfb-5717d945fb91}</Project>

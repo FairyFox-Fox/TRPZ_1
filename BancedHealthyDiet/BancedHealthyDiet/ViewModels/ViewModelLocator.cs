@@ -16,7 +16,6 @@
 
 using BalancedHealthyDiet.Model.Integration;
 using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Models.Interfaces;
 using CommonServiceLocator;
 using DependencyInjectionService;
 

@@ -18,7 +18,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <lvc:PieChart  Grid.Column="0" Name="Chart" Grid.Row="0" Series="{Binding SeriesOfCaloriesCollection}" 
+        <lvc:PieChart  Grid.Column="0" Name="Chart" Grid.Row="0" Series="{Binding SeriesCollection}" 
                       LegendLocation="Right" InnerRadius="100" Margin="0 15">
             <lvc:PieChart.ChartLegend>
                 <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>

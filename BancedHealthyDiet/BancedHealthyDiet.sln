@@ -5,19 +5,11 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionService", "DependencyInjectionService\DependencyInjectionService.csproj", "{8DE44722-2978-49BC-9DFB-5717D945FB91}"
 EndProject
-<<<<<<< HEAD
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalancedHealthyDiet.Data", "BalancedHealthyDiet.Data\BalancedHealthyDiet.Data.csproj", "{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalancedHealtyDiet.Model", "BalancedHealtyDiet.Model\BalancedHealtyDiet.Model.csproj", "{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancedHealthyDiet.UI", "BancedHealthyDiet\BancedHealthyDiet.UI.csproj", "{11DB5B75-396E-46B8-9779-DC3FC4419053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceHealthyDiet.Model", "BalanceHealthyDiet.Model\BalanceHealthyDiet.Model.csproj", "{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}"
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedHealhtDiet.Data", "BalancedHealhtDiet.Data\BalancedHealhtDiet.Data.csproj", "{23791C1C-1822-4FAE-A7BE-771224F76C56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedHealthyDiet.Model", "BalancedHealthyDiet.Model\BalancedHealthyDiet.Model.csproj", "{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}"
->>>>>>> dev
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,24 +21,10 @@ Global
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DE44722-2978-49BC-9DFB-5717D945FB91}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{482A2E09-FBD9-4BC9-9BE5-CD87ACDC9647}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C04C98F-EB44-49FA-BDD2-D860B01AEE22}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11DB5B75-396E-46B8-9779-DC3FC4419053}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F25664A7-D765-454F-8EA1-4C64ECD6A9F7}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23791C1C-1822-4FAE-A7BE-771224F76C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,7 +33,6 @@ Global
 		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBC4D19-ADF6-464B-89FF-F3BC777A737F}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> dev
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

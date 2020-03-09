@@ -1,5 +1,4 @@
 ﻿using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Models.Interfaces;
 using BancedHealthyDiet.ViewModels;
 using DependencyInjectionService;
 using System;

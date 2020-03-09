@@ -1,5 +1,6 @@
-﻿using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Models.Interfaces;
+﻿using BancedHealthyDiet.Model.Interfaces;
+using BancedHealthyDiet.Models;
+
 using GalaSoft.MvvmLight.Messaging;
 using LiveCharts;
 using LiveCharts.Defaults;
@@ -41,11 +42,11 @@ namespace BancedHealthyDiet.ViewModels
             }
 
         }
-        public ObservableCollection<NutritionDTO> Consumo { get; private set; }
+        //public ObservableCollection<NutritionDTO> SeriesOfCaloriesCollection { get; private set; }
         public TotalNutritionViewModel(List<RecipeDTO> selectedRecipes)
         {
             TotalNutrition = nutritionCalculator.CalсulateTotalNutrition(selectedRecipes);
-            Consumo = new ObservableCollection<NutritionDTO>();
+            //SeriesOfCaloriesCollection = new ObservableCollection<NutritionDTO>();
             SeriesCollection = new SeriesCollection
             {
                 new PieSeries
