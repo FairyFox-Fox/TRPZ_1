@@ -1,6 +1,4 @@
-﻿using BancedHealthyDiet.Data.Interfaces;
-using BancedHealthyDiet.Data.Repositories;
-using BancedHealthyDiet.Models;
+﻿using BancedHealthyDiet.Models;
 using BancedHealthyDiet.Models.Interfaces;
 using BancedHealthyDiet.ViewModels;
 using DependencyInjectionService;
@@ -21,15 +19,15 @@ namespace BancedHealthyDiet
     {
         private void App_Startup(object sender,StartupEventArgs e)
         {
-            IOC container = new IOC();
-            container.Register<IUnitOfWork, UnitOfWork>();
-            container.Register<IRecipeLogic, RecipesLogic>();
-            container.Register<INutritionCalculator, NutririonCalculator>();
-            container.Register<MainViewModel>();
-            var mainVm=container.Resolve<MainViewModel>();
-            MainWindow = new MainWindow();
-            MainWindow.DataContext =mainVm;
-            MainWindow.Show();
+            //IOC container = new IOC();
+            ////container.Register<IUnitOfWork, UnitOfWork>();
+            ////container.Register<IRecipeLogic, RecipesLogic>();
+            ////container.Register<INutritionCalculator, NutririonCalculator>();
+            //container.Register<MainViewModel>();
+            //var mainVm=container.Resolve<MainViewModel>();
+            //MainWindow = new MainWindow();
+            //MainWindow.DataContext =mainVm;
+            //MainWindow.Show();
 
         }
     }

@@ -193,11 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\202002222257323_initial.cs" />
-    <Compile Include="Migrations\202002222257323_initial.designer.cs">
-      <DependentUpon>202002222257323_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
@@ -246,9 +241,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202002222257323_initial.resx">
-      <DependentUpon>202002222257323_initial.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -264,6 +256,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalancedHealthyDiet.Model\BalancedHealthyDiet.Model.csproj">
+      <Project>{dcbc4d19-adf6-464b-89ff-f3bc777a737f}</Project>
+      <Name>BalancedHealthyDiet.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DependencyInjectionService\DependencyInjectionService.csproj">
       <Project>{8de44722-2978-49bc-9dfb-5717d945fb91}</Project>
       <Name>DependencyInjectionService</Name>

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\IocLocator.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Interfaces\INutritionCalculator.cs" />
     <Compile Include="Models\Interfaces\IRecipeLogic.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\BalancedHealhtDiet.Data\BalancedHealhtDiet.Data.csproj">
       <Project>{23791c1c-1822-4fae-a7be-771224f76c56}</Project>
       <Name>BalancedHealhtDiet.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyInjectionService\DependencyInjectionService.csproj">
+      <Project>{8DE44722-2978-49BC-9DFB-5717D945FB91}</Project>
+      <Name>DependencyInjectionService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

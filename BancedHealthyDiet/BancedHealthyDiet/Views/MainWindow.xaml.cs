@@ -1,7 +1,4 @@
 ﻿
-using BancedHealthyDiet.Data.Entitites;
-using BancedHealthyDiet.Data.Interfaces;
-using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Models;
 using BancedHealthyDiet.Models.Interfaces;
 using BancedHealthyDiet.ViewModels;
