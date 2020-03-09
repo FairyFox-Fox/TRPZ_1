@@ -13,9 +13,8 @@
 */
 
 
-using BancedHealthyDiet.Data.Entitites;
-using BancedHealthyDiet.Data.Interfaces;
-using BancedHealthyDiet.Data.Repositories;
+
+using BalancedHealthyDiet.Model.Integration;
 using BancedHealthyDiet.Models;
 using BancedHealthyDiet.Models.Interfaces;
 using CommonServiceLocator;
@@ -33,18 +32,11 @@ namespace BancedHealthyDiet.ViewModels
         public ViewModelLocator()
         {
             container = new IOC();
-            container.Register<IUnitOfWork, UnitOfWork>();
-            container.Register<BalanceDietAppContext>();
-            container.Register<IRecipeLogic, RecipesLogic>();
-            container.Register<INutritionCalculator, NutririonCalculator>();
+            var resolvingContainer = new IocLocator(container);
             container.Register<RecipesListViewModel>();
             container.Register<TotalNutritionViewModel>();
             var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
-            container.Register<IGenericRepository<Recipe>, Repository<Recipe>>();
-            container.Register<IGenericRepository<Ingredient>, Repository<Ingredient>>();
-            container.Register<IGenericRepository<Nutrition>, Repository<Nutrition>>();
-            container.Register<IGenericRepository<Product>, Repository<Product>>();
         }
         public MainViewModel MainViewModel
         {
