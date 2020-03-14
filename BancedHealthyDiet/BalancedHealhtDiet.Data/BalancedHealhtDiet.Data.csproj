@@ -71,30 +71,26 @@
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\202003142102553_init.cs" />
+    <Compile Include="Migrations\202003142102553_init.designer.cs">
+      <DependentUpon>202003142102553_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003142110521_Seed categories.cs" />
+    <Compile Include="Migrations\202003142110521_Seed categories.designer.cs">
+      <DependentUpon>202003142110521_Seed categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003142122092_seed recipes.cs" />
+    <Compile Include="Migrations\202003142122092_seed recipes.designer.cs">
+      <DependentUpon>202003142122092_seed recipes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
-    <Compile Include="Migrations\202002222257323_initial.cs" />
-    <Compile Include="Migrations\202002222257323_initial.Designer.cs">
-      <DependentUpon>202002222257323_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003140609439_TablesRecipeImagesAdded.cs" />
-    <Compile Include="Migrations\202003140609439_TablesRecipeImagesAdded.designer.cs">
-      <DependentUpon>202003140609439_TablesRecipeImagesAdded.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002222257323_initial.resx">
-      <DependentUpon>202002222257323_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003140609439_TablesRecipeImagesAdded.resx">
-      <DependentUpon>202003140609439_TablesRecipeImagesAdded.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
@@ -107,7 +103,17 @@
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003142102553_init.resx">
+      <DependentUpon>202003142102553_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003142110521_Seed categories.resx">
+      <DependentUpon>202003142110521_Seed categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003142122092_seed recipes.resx">
+      <DependentUpon>202003142122092_seed recipes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\bakingWithoutSugar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

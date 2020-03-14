@@ -31,6 +31,7 @@ namespace BancedHealthyDiet
             InitializeComponent();
             //var viewModel = new ViewModelLocator().MainViewModel;
             //DataContext = viewModel;
+
           
         }
     }

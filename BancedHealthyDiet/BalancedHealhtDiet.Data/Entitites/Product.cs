@@ -11,7 +11,7 @@ namespace BalancedHealhtDiet.Data.Entitites
         
         public Guid Id { get; set; }
         public string ProductName { get; set; }
-        public Guid IngredientId { get; set; }
+        public Guid? IngredientId { get; set; }
         public Ingredient Ingredient { get; set; }
         public virtual Nutrition Nutrition { get; set; }
         public Product()
@@ -19,10 +19,9 @@ namespace BalancedHealhtDiet.Data.Entitites
             this.Id = Guid.NewGuid();
         }
 
-        public Product(string productName, Ingredient ingredient, Nutrition nutrition)
+        public Product(string productName, Nutrition nutrition):this()
         {
             ProductName = productName;
-            Ingredient = ingredient;
             Nutrition = nutrition;
         }
     }

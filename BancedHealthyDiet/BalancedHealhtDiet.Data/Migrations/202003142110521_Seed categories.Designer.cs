@@ -7,13 +7,13 @@ namespace BancedHealthyDiet.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class TablesRecipeImagesAdded : IMigrationMetadata
+    public sealed partial class Seedcategories : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TablesRecipeImagesAdded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Seedcategories));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003140609439_TablesRecipeImagesAdded"; }
+            get { return "202003142110521_Seed categories"; }
         }
         
         string IMigrationMetadata.Source
