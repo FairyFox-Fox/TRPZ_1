@@ -26,10 +26,10 @@ namespace BancedHealthyDiet.Models
            // var mapper = new MapperConfiguration(config => config.CreateMap<Data.Entitites.Recipe, Recipe>()).CreateMapper();
             //return mapper.Map<IEnumerable< Data.Entitites.Recipe>,List<Recipe>>( dataset.Recipes.GetAll());
             //AUTOMAPPER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var recipes = dataset.Recipes.GetAll().Select(recipe=>new RecipeDTO(recipe.Id, recipe.ImagePath,recipe.RecipeName,recipe.Instruction,recipe.Ingredients.
-                Select(ingred=>new IngredientDTO(ingred.Id,new ProductDTO(ingred.Product.Id,ingred.Product.ProductName,
-                new NutritionDTO(ingred.Product.Nutrition.Id,ingred.Product.Nutrition.Calories, ingred.Product.Nutrition.Minerals, ingred.Product.Nutrition.Vitamins, ingred.Product.Nutrition.Fats
-                , ingred.Product.Nutrition.Carbonhydrates, ingred.Product.Nutrition.Proteins))
+            var recipes = dataset.Recipes.GetAll().Select(recipe=>new RecipeDTO(recipe.Id, recipe.Images.FirstOrDefault().ImagePath,recipe.RecipeName,recipe.ShortDescription,recipe.Ingredients.
+                Select(ingred=>new IngredientDTO(ingred.Id,new ProductDTO(ingred.Products.FirstOrDefault().Id, ingred.Products.FirstOrDefault().ProductName,
+                new NutritionDTO(ingred.Products.FirstOrDefault().Nutrition.Id, ingred.Products.FirstOrDefault().Nutrition.Calories, ingred.Products.FirstOrDefault().Nutrition.Minerals, ingred.Products.FirstOrDefault().Nutrition.Vitamins, ingred.Products.FirstOrDefault().Nutrition.Fats
+                , ingred.Products.FirstOrDefault().Nutrition.Carbonhydrates, ingred.Products.FirstOrDefault().Nutrition.Proteins))
                 , ingred.Weight,ingred.MeasurementUnit)).ToList()));
             return recipes;
         }

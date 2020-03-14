@@ -1,4 +1,4 @@
-﻿using BancedHealthyDiet.Data.Entitites;
+﻿using BalancedHealhtDiet.Data.Entitites;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Models;
@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BalancedHealhtDiet.Data.Configuration;
 
 namespace BalancedHealthyDiet.Model.Integration
 {
