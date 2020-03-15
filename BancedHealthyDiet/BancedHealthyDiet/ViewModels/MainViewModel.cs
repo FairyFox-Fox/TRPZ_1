@@ -1,7 +1,6 @@
 ﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
-using BancedHealthyDiet.Model.Interfaces;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -18,10 +17,10 @@ namespace BancedHealthyDiet.ViewModels
         private IRecipeLogic data;
 
 
-        public MainViewModel(IRecipeLogic data, RecipesListViewModel recipesListViewModel)//
+        public MainViewModel(IRecipeLogic data,CategoriesViewModel categoriesViewModel )//RecipesListViewModel recipesListViewModel
         {
             this.data = data;
-            this.CurrentPageViewModel = recipesListViewModel; //recipesListViewModel;//new RecipeListB(model)
+            this.CurrentPageViewModel = categoriesViewModel; //recipesListViewModel;//new RecipeListB(model)
         }
         public MainViewModel()
         {
@@ -32,18 +31,34 @@ namespace BancedHealthyDiet.ViewModels
         {
             get
             {
-                Messenger.Default.Register<List<RecipeDTO>>(this, HandleListOfSelectedRecipes);
+                Messenger.Default.Register<List<RecipeDTO>>(this, HandleSelectedRecipe);
                 if (goToTotalNutrition == null )
                     goToTotalNutrition = new RelayCommand(action => CurrentPageViewModel = new TotalNutritionViewModel(SelectedRecipes));
                 return goToTotalNutrition;
             }
         }
+        private ICommand goToRecipesOfCurrentCategory;
+        public ICommand GoToRecipesOfCurrentCategory
+        {
+            get
+            {
+                Messenger.Default.Register<ObservableCollection<RecipeDTO>>(this, HandleSelectedCategory);
+                if (goToRecipesOfCurrentCategory == null)
+                    goToRecipesOfCurrentCategory = new RelayCommand(action => CurrentPageViewModel = new CurrentCategoryRecipeViewModel(CategoryRecipes));
+                return goToRecipesOfCurrentCategory;
+            }
+        }
+        public ObservableCollection<RecipeDTO>  CategoryRecipes { get; private set; }
 
         public List<RecipeDTO> SelectedRecipes { get; private set; }
 
-        private void HandleListOfSelectedRecipes(List<RecipeDTO> obj)
+        private void HandleSelectedRecipe(List<RecipeDTO> obj)
         {
             this.SelectedRecipes = obj;
+        }
+        private void HandleSelectedCategory(ObservableCollection<RecipeDTO> obj)
+        {
+            this.CategoryRecipes = obj;
         }
 
     }

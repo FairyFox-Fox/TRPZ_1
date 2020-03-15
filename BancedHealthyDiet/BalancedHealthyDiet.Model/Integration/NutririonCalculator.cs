@@ -1,11 +1,12 @@
 ﻿using BancedHealthyDiet.Model.Interfaces;
+using BancedHealthyDiet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BancedHealthyDiet.Models
+namespace BalancedHealthyDiet.Model.Integration
 {
     public class NutririonCalculator: INutritionCalculator
     {

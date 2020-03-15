@@ -19,8 +19,11 @@
             <DataTemplate DataType="{x:Type ViewModels:RecipesListViewModel}">
                 <Views:RecipesListView />
             </DataTemplate>
-            <DataTemplate DataType="{x:Type ViewModels:UserControlVM}">
-                <Views:UserControl1/>
+            <DataTemplate DataType="{x:Type ViewModels:CategoriesViewModel}">
+                <Views:CategoriesMainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:CurrentCategoryRecipeViewModel}">
+                <Views:CurrentCategoryRecipesView/>
             </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml">

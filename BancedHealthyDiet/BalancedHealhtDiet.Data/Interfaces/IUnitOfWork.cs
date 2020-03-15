@@ -14,6 +14,7 @@ namespace BancedHealthyDiet.Data.Interfaces
         IGenericRepository<Ingredient> Ingredients { get; }
         IGenericRepository<Nutrition> Nutritions { get; }
         IGenericRepository<Product> Products { get;}
+        IGenericRepository<Category> Categories { get; }
         void Save();
 
     }

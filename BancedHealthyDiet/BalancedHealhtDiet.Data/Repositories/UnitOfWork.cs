@@ -17,10 +17,10 @@ namespace BancedHealthyDiet.Data.Repositories
         private IGenericRepository<Ingredient> ingredientsRepository;
         private IGenericRepository<Nutrition> nutritionsRepository;
         private IGenericRepository<Product> productsRepository;
+        private IGenericRepository<Category> categoryRepository;
         //IDbContext
         public UnitOfWork(BalanceDietAppContext context)
         {
-            //this()
             this.context = context;
         }
         public IGenericRepository<Recipe> Recipes
@@ -62,7 +62,15 @@ namespace BancedHealthyDiet.Data.Repositories
                 return productsRepository;
             }
         }
-
+        public IGenericRepository<Category> Categories
+        {
+            get
+            {
+                if (categoryRepository == null)
+                    categoryRepository = new Repository<Category>(context);
+                return categoryRepository;
+            }
+        }
 
         private bool disposed = false;
 
