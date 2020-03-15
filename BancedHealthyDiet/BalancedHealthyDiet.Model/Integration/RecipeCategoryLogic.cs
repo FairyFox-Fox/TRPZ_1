@@ -18,14 +18,18 @@ namespace BalancedHealthyDiet.Model.Integration
         public RecipeCategoryLogic(IUnitOfWork dataset)//IMAPPER
         {
             this.dataset = dataset;
-            //change&&&&&&&&&&&&&&
-            this.mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
+            this.mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());// new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
         }
         public void Dispose()
         {
             dataset.Dispose();
         }
 
+        public CategoryDTO GetCategory(Guid id)
+        {
+            var category =dataset.Categories.Get(id);
+            return mapper.Map<CategoryDTO>(category);
+        }
 
         public IEnumerable<CategoryDTO> GetCategories()
         {

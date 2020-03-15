@@ -5,8 +5,57 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BancedHealthyDiet.Views"
              mc:Ignorable="d" 
+             xmlns:converter="clr-namespace:BancedHealthyDiet.Converters"
+             xmlns:view ="clr-namespace:BancedHealthyDiet"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <UserControl.Resources>
+        <converter:RecipeImageConverter x:Key="ImageConverter"/>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <materialDesign:Card Width="215" Height="Auto">
+                    <Grid Background="#FF3A0014"  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="0,5*" />
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding Path=ImagePath, Converter={StaticResource ResourceKey=ImageConverter}}"  Margin="0,0,2,0" />
+                        <TextBlock TextWrapping="Wrap" FontWeight="Bold" Grid.Row="1" HorizontalAlignment="Center" Width="Auto" Height="Auto" FontFamily="Lucida Sans Unicode" FontSize="12" Foreground="White"><Run Text="{Binding Path=RecipeName}"/></TextBlock>
+                        <materialDesign:RatingBar FontWeight="Bold" Grid.Row="2" Width="Auto" Height ="Auto"  HorizontalAlignment="Right" FontFamily="Lucida Sans Unicode" FontSize="12" Foreground="White" Value="{Binding Path=Rating, Mode=OneWay}"/>
+
+                    </Grid>
+                </materialDesign:Card>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+
+    <Grid  Background="White" Width="Auto"  x:Name="MainGrid" Margin="0,18.333,-20,-6.667" Panel.ZIndex="-2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"  Background="#FF6D5864">
+            <Button Content="{materialDesign:PackIcon KeyboardBackspace}" ToolTip="Назад"  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+            <TextBlock Text="{Binding SelectedCategory.Name}" Height="Auto" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="Auto" FontSize="16" />
+            <!--{Binding SelectedCategory.Name}-->
+        </StackPanel>
+
+        <ListView x:Name="calalogList"  Grid.Row="1" ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction 
+                        Command="{Binding DataContext.GoToItem, ElementName= calalogList}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4" HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListView>
+
     </Grid>
 </UserControl>

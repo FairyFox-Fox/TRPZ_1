@@ -20,6 +20,14 @@ namespace DependencyInjectionService
         {
             Register<ObjectType, ObjectImplementation>(false, null);
         }
+        public void RegisterInstance<TType>(TType instance) where TType : class
+        {
+            RegisterInstance<TType, TType>(instance);
+        }
+        public void RegisterInstance<TType, TConcrete>(TConcrete instance) where TConcrete : class, TType
+        {
+            Register<TType, TConcrete>(true, instance);
+        }
         public void RegisterSingleton<ObjectType>() where ObjectType : class
         {
             RegisterSingleton<ObjectType, ObjectType>();

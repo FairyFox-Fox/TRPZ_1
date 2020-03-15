@@ -34,8 +34,9 @@ namespace BancedHealthyDiet.ViewModels
             var resolvingContainer = new IocLocator(container);
             container.Register<RecipesListViewModel>();
             container.Register<TotalNutritionViewModel>();
-            container.Register<CategoriesViewModel>();
             container.Register<CurrentCategoryRecipeViewModel>();
+            container.Register<CategoriesViewModel>();
+            var node = container.Resolve<CurrentCategoryRecipeViewModel>();
             //var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
         }

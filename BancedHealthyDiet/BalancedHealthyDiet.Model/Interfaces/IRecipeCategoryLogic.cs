@@ -10,6 +10,7 @@ namespace BancedHealthyDiet.Model.Interfaces
     public interface IRecipeCategoryLogic
     {
         IEnumerable<CategoryDTO> GetCategories();
+        CategoryDTO GetCategory(Guid id);
         void Dispose();
     }
 }

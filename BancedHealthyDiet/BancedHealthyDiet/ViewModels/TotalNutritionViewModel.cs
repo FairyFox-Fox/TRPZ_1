@@ -17,18 +17,9 @@ namespace BancedHealthyDiet.ViewModels
 {
     public class TotalNutritionViewModel: BaseViewModel, IPageViewModel
     {
-        /// <summary>
-        /// !!!!!!!!!!!!!!!!!!!!
-        /// </summary>
-        INutritionCalculator nutritionCalculator = new NutririonCalculator();
-        public TotalNutritionViewModel(INutritionCalculator nutritionCalculator)
-        {
-            //this
-            this.nutritionCalculator = nutritionCalculator;
-        }
+        INutritionCalculator nutritionCalculator;
         public TotalNutritionViewModel()
         {
-                
         }
         private NutritionDTO totalNutrition;
 
@@ -44,8 +35,9 @@ namespace BancedHealthyDiet.ViewModels
 
         }
         //public ObservableCollection<NutritionDTO> SeriesOfCaloriesCollection { get; private set; }
-        public TotalNutritionViewModel(List<RecipeDTO> selectedRecipes)
+        public TotalNutritionViewModel(INutritionCalculator nutritionCalculator,List<RecipeDTO> selectedRecipes)
         {
+            this.nutritionCalculator = nutritionCalculator;
             TotalNutrition = nutritionCalculator.CalсulateTotalNutrition(selectedRecipes);
             //SeriesOfCaloriesCollection = new ObservableCollection<NutritionDTO>();
             SeriesCollection = new SeriesCollection

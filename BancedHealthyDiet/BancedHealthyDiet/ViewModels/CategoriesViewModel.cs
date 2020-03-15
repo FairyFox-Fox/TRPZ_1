@@ -17,10 +17,19 @@ namespace BancedHealthyDiet.ViewModels
     public class CategoriesViewModel:BaseViewModel,IPageViewModel
     {
         private IRecipeCategoryLogic data;
-      
-        private void HadleSelectedCategory(List<RecipeDTO> obj)
+        private Guid selectedId;
+        public Guid SelectedId
         {
-            throw new NotImplementedException();
+            get
+            {
+                return selectedId;
+            }
+            set
+            {
+                selectedId = value;
+                OnPropertyChanged("SelectedId");
+                Messenger.Default.Send(selectedId);
+            }
         }
 
         public ObservableCollection<CategoryDTO> categories;
@@ -40,11 +49,13 @@ namespace BancedHealthyDiet.ViewModels
             get
             {
                 return selectedCategory;
+               
             }
             set
             {
                 selectedCategory = value;
                 OnPropertyChanged("SelectedCategory");
+
             }
         }
 

@@ -17,18 +17,25 @@ namespace BalancedHealthyDiet.Model.Integration
     {
         IUnitOfWork dataset;
         IMapper mapper;
-        public RecipesLogic(IUnitOfWork dataset)//IMAPPER
+        public RecipesLogic(IUnitOfWork dataset,IMapper mapper)//IMAPPER
         {
             //this
             this.dataset = dataset;
-           //change&&&&&&&&&&&&&&
-            this.mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
+            //change&&&&&&&&&&&&&&
+            this.mapper = mapper;//new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
         }
 
         public IEnumerable<RecipeDTO> GetRecipes()
         {
             var recipesList = dataset.Recipes.GetAll();
             var recipes = recipesList.Select(rec=> mapper.Map<RecipeDTO>(rec)).ToList();
+            return recipes;
+        }
+
+        public IEnumerable<RecipeDTO> GetRecipesByCurrenctCategory(Guid categortId)
+        {
+            var recipesList = dataset.Recipes.GetAll().Where(x=>x.CategoryId.ToString()==categortId.ToString());
+            var recipes = recipesList.Select(rec => mapper.Map<RecipeDTO>(rec)).ToList();
             return recipes;
         }
         public void Dispose()

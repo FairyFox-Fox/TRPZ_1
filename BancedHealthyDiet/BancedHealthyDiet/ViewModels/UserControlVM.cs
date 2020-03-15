@@ -20,10 +20,10 @@ namespace BancedHealthyDiet.ViewModels
         {
             get => recipesCollection = new ObservableCollection<RecipeDTO>(data.GetRecipes()) ?? (recipesCollection = new ObservableCollection<RecipeDTO>());
         }
-        public UserControlVM()
-        {
-            this.data = new RecipesLogic(new UnitOfWork(new BalancedHealhtDiet.Data.Configuration.BalanceDietAppContext()));
-            // this.recipesCollection = new ObservableCollection<Recipe>(data.GetRecipes());
-        }
+        //public UserControlVM()
+        //{
+        //    this.data = new RecipesLogic(new UnitOfWork(new BalancedHealhtDiet.Data.Configuration.BalanceDietAppContext()));
+        //    // this.recipesCollection = new ObservableCollection<Recipe>(data.GetRecipes());
+        //}
     }
 }

@@ -42,11 +42,13 @@
             <RowDefinition  MinHeight ="20 " Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView  Grid.Row="1"  x:Name="calalogList"  ItemsSource="{Binding Categories}" SelectionMode="Single" SelectedItem="{Binding SelectedCategory}" ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
+        <ListView  Grid.Row="1"  x:Name="calalogList"  ItemsSource="{Binding Categories}" SelectionMode="Single"  SelectedValuePath="Id"
+          SelectedValue="{Binding SelectedId}"
+                  ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
+                <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction 
-                       Command="{Binding DataContext.GoToRecipesOfCurrentCategory, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"  />
+                       Command="{Binding DataContext.GoToRecipesOfCurrentCategory, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ItemsControl.ItemsPanel>
