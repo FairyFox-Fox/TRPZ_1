@@ -18,16 +18,13 @@ namespace BancedHealthyDiet.Models
                 if (recipe.TotalNutrition != null)
                 {
                     totalNutrition += recipe.TotalNutrition;
-
                 }
-
             }
             return totalNutrition;
         }
 
         private NutritionDTO CalculateNutrition(NutritionDTO firstNutrition, NutritionDTO secondNutrition, double weight)
         {
-
             return new NutritionDTO
             {
                 Calories = firstNutrition.Calories + secondNutrition.Calories / 100 * weight,
@@ -48,10 +45,8 @@ namespace BancedHealthyDiet.Models
                 {
                     totalNutrition = CalculateNutrition(totalNutrition, product?.Nutrition, ingredient.CheckWeight());
                 }
-               
             }
             return totalNutrition;
-
         }
     }
 }

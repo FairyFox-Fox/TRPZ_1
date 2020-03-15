@@ -21,7 +21,7 @@ namespace BancedHealthyDiet.ViewModels
         public MainViewModel(IRecipeLogic data, RecipesListViewModel recipesListViewModel)//
         {
             this.data = data;
-            this.CurrentPageViewModel = new UserControlVM(); //recipesListViewModel;//new RecipeListB(model)
+            this.CurrentPageViewModel = recipesListViewModel; //recipesListViewModel;//new RecipeListB(model)
         }
         public MainViewModel()
         {

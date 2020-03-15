@@ -86,21 +86,21 @@ namespace BancedHealthyDiet.Models
         {
             switch (MeasurementUnit)
             {
-                case "gr":
+                case "г."://"gr":
                     return Weight;
-                case "kg":
+                case "кг."://"kg":
                     return Weight * 1000;
-                case "l":
+                case "л."://"l":
                     return Weight * 1000;
-                case "glasses (200 ml)":
+                case "стак. (200 мл)"://"glasses (200 ml)":
                     return Weight * 200;
-                case "ml":
+                case "мл":// "ml":
                     return Weight;
-                case "tsp":
+                case "чайн. л.":// "tsp":
                     return Weight * 5;
-                case "tbsp":
+                case "стол. л."://"tbsp":
                     return Weight * 15;
-                case "on taste":
+                case "по вкусу":// "on taste":
                     return Weight * 0;
                 default:
                     return Weight;

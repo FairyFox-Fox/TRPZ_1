@@ -72,7 +72,7 @@ namespace BancedHealthyDiet.Models
         private double? totalWeight;
         public double? TotalWeight
         {
-            get => totalWeight;
+            get => totalWeight?? (totalWeight = GetTotalWeight(ingredients));
             set
             {
                 if (value > 0)
@@ -84,7 +84,7 @@ namespace BancedHealthyDiet.Models
         private NutritionDTO totalNutrition;
         public NutritionDTO TotalNutrition
         {
-            get => totalNutrition;
+            get => totalNutrition??(totalNutrition = new NutririonCalculator().CalculateTotalNutrition(this));
             set
             {
                 if(value==null)
@@ -216,12 +216,13 @@ namespace BancedHealthyDiet.Models
             this.videoPath = videoPath;
             this.notes = notes;
             this.instruction = instruction;
-            IsFavourite = isFavourite;
+            this.IsFavourite = isFavourite;
             this.source = source;
             this.rating = rating;
             this.numberOfServings = numberOfServings;
             this.cookTime = cookTime;
             this.images = images;
+           
         }
 
         private double GetTotalWeight(List<IngredientDTO> ingredients)
