@@ -26,7 +26,7 @@ namespace BancedHealthyDiet.Models
         private string imagePath;
         public string ImagePath
         {
-            get => imagePath;
+            get => imagePath??(imagePath=Images.FirstOrDefault()?.ImagePath);
             set
             {
                 if (String.IsNullOrEmpty(value))
@@ -56,35 +56,21 @@ namespace BancedHealthyDiet.Models
                 shortDescription = value;
             }
         }
-
-       // private string instruction;
-        public string Instruction
-        {
-            get => instruction;
-            set
-            {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("Instruction is not valid");
-                instruction = value;
-            }
-        }
-
         private List<IngredientDTO> ingredients;
         public List<IngredientDTO> Ingredients
         {
             get => ingredients ?? (ingredients= new List<IngredientDTO>());
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException("Ingredients");
-                else if (value.Count() <= 0)
-                    throw new ArgumentOutOfRangeException("Ingredients");
+                //if (value == null)
+                //    throw new ArgumentNullException("Ingredients");
+                //else if (value.Count() <= 0)
+                //    throw new ArgumentOutOfRangeException("Ingredients");
                 ingredients = value;
             }
         }
-
-        private double totalWeight;
-        public double TotalWeight
+        private double? totalWeight;
+        public double? TotalWeight
         {
             get => totalWeight;
             set
@@ -117,7 +103,7 @@ namespace BancedHealthyDiet.Models
                 videoPath = value;
             }
         }
-        private string videoPath;
+        private string notes;
         public string Notes
         {
             get => notes;
@@ -128,20 +114,116 @@ namespace BancedHealthyDiet.Models
                 notes = value;
             }
         }
-        public string Notes { get; set; }
-
-        public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction, List<IngredientDTO> ingredients)
+        private string instruction;
+        public string Instruction
+        {
+            get => instruction;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("Instruction is not valid");
+                instruction = value;
+            }
+        }
+        public bool? IsFavourite { get; set; }
+        private string source;
+        public string Source
+        {
+            get => source;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("Source  is not valid");
+                source = value;
+            }
+        }
+        private int? rating;
+        public int? Rating
+        {
+            get => rating;
+            set
+            {
+                if (value > 0 && value<=5)
+                    rating = value;
+                else
+                    throw new ArgumentOutOfRangeException("Rating");
+            }
+        }
+        private int? numberOfServings;
+        public int? NumberOfServings
+        {
+            get => numberOfServings;
+            set
+            {
+                if (value > 0 )
+                    numberOfServings = value;
+                else
+                    throw new ArgumentOutOfRangeException("NumberOfServings");
+            }
+        }
+        private Int64 cookTime;
+        public Int64 CookTime
+        {
+            get => cookTime;
+            set
+            {
+                if (value > 0)
+                    cookTime = value;
+                else
+                    throw new ArgumentOutOfRangeException("CookTime");
+            }
+        }
+        private List<RecipeImageDTO> images;
+        public List<RecipeImageDTO> Images
+        {
+            get => images ?? (images = new List<RecipeImageDTO>());
+            set
+            { 
+            //    if (value == null)
+            //        throw new ArgumentNullException("Images");
+                images = value;
+            }
+        }
+        public TimeSpan CookTimeValid
+        {
+            get { return TimeSpan.FromTicks(CookTime); }
+            set { CookTime = value.Ticks; }
+        }
+        public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction)//, List<IngredientDTO> ingredients
         {
             Id = id;
             ImagePath = imagePath;
             RecipeName = recipeName;
             Instruction = instruction;
-            Ingredients = ingredients;
-            TotalWeight = GetTotalWeight(Ingredients);
+           // Ingredients = ingredients;
+            //TotalWeight = GetTotalWeight(Ingredients);
             ///what to do here&&&&&&&
-            TotalNutrition = new NutririonCalculator().CalculateTotalNutrition(this);
+           // TotalNutrition = new NutririonCalculator().CalculateTotalNutrition(this);
             
+        
         }
+        public RecipeDTO()
+        {
+                
+        }
+        public RecipeDTO(Guid id, string imagePath, string recipeName, string shortDescription, List<IngredientDTO> ingredients, double? totalWeight,  string videoPath, string notes, string instruction,
+            bool? isFavourite, string source, int? rating, int? numberOfServings, 
+            long cookTime, List<RecipeImageDTO> images) : this(id, imagePath, recipeName, shortDescription)
+        {
+            this.ingredients = ingredients;
+            this.totalWeight = totalWeight;
+            this.shortDescription = shortDescription;
+            this.videoPath = videoPath;
+            this.notes = notes;
+            this.instruction = instruction;
+            IsFavourite = isFavourite;
+            this.source = source;
+            this.rating = rating;
+            this.numberOfServings = numberOfServings;
+            this.cookTime = cookTime;
+            this.images = images;
+        }
+
         private double GetTotalWeight(List<IngredientDTO> ingredients)
         {
             if(ingredients!=null)

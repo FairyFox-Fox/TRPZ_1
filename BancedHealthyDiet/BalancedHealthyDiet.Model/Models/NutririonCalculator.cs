@@ -44,7 +44,11 @@ namespace BancedHealthyDiet.Models
             var totalNutrition = new NutritionDTO();
             foreach (var ingredient in recipe.Ingredients)
             {
-                totalNutrition = CalculateNutrition(totalNutrition, ingredient.Product.Nutrition, ingredient.CheckWeight());
+                foreach(var product in ingredient?.Products)
+                {
+                    totalNutrition = CalculateNutrition(totalNutrition, product?.Nutrition, ingredient.CheckWeight());
+                }
+               
             }
             return totalNutrition;
 

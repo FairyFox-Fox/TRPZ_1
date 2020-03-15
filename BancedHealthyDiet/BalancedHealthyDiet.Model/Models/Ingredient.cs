@@ -34,15 +34,15 @@ namespace BancedHealthyDiet.Models
                     name = value;
             }
         }
-        private ICollection<ProductDTO> products;
-        public ICollection<ProductDTO> Products
+        private IEnumerable<ProductDTO> products;
+        public IEnumerable<ProductDTO> Products
         {
             get => products;
             set
             {
-                if(value==null)
-                    throw new ArgumentNullException("Products");
-                else
+                //if(value==null)
+                //    throw new ArgumentNullException("Products");
+                //else
                     products = value;
             }
         }
@@ -61,10 +61,11 @@ namespace BancedHealthyDiet.Models
         private string measurementUnit;
       
 
-        public IngredientDTO(Guid id, ICollection<ProductDTO>products, double weight, string measurementUnit)
+        public IngredientDTO(Guid id, IEnumerable<ProductDTO>products, string name,double weight, string measurementUnit)
         {
             Id = id;
             Products = products;
+            this.name = name;
             //this.id = this.Product.Id;
             Weight = weight;
             MeasurementUnit = measurementUnit;

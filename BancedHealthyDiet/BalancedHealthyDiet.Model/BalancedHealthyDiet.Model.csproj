@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Integration\AutoMapperConfig.cs" />
+    <Compile Include="Integration\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\CategoryDTO.cs" />
     <Compile Include="Integration\IocLocator.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Interfaces\INutritionCalculator.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Models\Nutrition.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RecipeImageDTO.cs" />
     <Compile Include="Models\RecipesLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

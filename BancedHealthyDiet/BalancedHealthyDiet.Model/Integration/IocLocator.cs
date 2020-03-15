@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BalancedHealhtDiet.Data.Configuration;
+using AutoMapper;
 
 namespace BalancedHealthyDiet.Model.Integration
 {
@@ -19,6 +20,9 @@ namespace BalancedHealthyDiet.Model.Integration
         public IocLocator(IOC container)
         {
             this.container = container;
+           // var mapper = AutoMapperConfiguration.ConfigureAutoMapper().CreateMapper();
+            //var mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
+            container.Register<IMapper>();
             container.Register<IUnitOfWork, UnitOfWork>();
             container.Register<BalanceDietAppContext>();
             container.Register<IRecipeLogic, RecipesLogic>();

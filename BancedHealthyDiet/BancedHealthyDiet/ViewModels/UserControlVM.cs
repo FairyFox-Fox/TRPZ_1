@@ -1,4 +1,6 @@
-﻿using BancedHealthyDiet.Data.Repositories;
+﻿using AutoMapper;
+using BalancedHealthyDiet.Model.Integration;
+using BancedHealthyDiet.Data.Repositories;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
 using System;

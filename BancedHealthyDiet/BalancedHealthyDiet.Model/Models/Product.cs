@@ -40,10 +40,14 @@ namespace BancedHealthyDiet.Models
             get => nutrition;
             set
             {
-                if (value != null)
+                //if (value != null)
                     nutrition = value;
-                throw new ArgumentNullException("Nutrition");
+                //throw new ArgumentNullException("Nutrition");
             }
+        }
+        public ProductDTO()
+        {
+                
         }
         public ProductDTO(Guid id,string name, NutritionDTO nutrition)
         {
