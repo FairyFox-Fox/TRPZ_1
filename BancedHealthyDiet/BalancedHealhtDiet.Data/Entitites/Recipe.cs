@@ -13,12 +13,12 @@ namespace BalancedHealhtDiet.Data.Entitites
         //one to many
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
-        public virtual ICollection<RecipeImage> Images { get; set; }
+        public virtual ICollection<RecipeImage> Images { get; private set; }
         public string RecipeName{ get; set; }
         public string ShortDescription { get; set; }
         public double TotalWeight { get; set; }
         public virtual RecipeDetails RecipeDetails { get; set; }
-        public virtual ICollection<Ingredient> Ingredients{ get; set; }
+        public virtual ICollection<Ingredient> Ingredients{ get; private set; }
 
         public Recipe()
         {

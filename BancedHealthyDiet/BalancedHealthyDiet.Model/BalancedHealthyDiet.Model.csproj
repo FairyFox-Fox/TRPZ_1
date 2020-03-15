@@ -44,11 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\AutoMapperConfig.cs" />
     <Compile Include="Integration\IocLocator.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Interfaces\INutritionCalculator.cs" />
     <Compile Include="Interfaces\IRecipeLogic.cs" />
-    <Compile Include="Models\IPageViewModel.cs" />
     <Compile Include="Models\NutririonCalculator.cs" />
     <Compile Include="Models\Nutrition.cs" />
     <Compile Include="Models\Product.cs" />

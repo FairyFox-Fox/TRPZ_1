@@ -193,14 +193,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
-    
+    <Compile Include="ViewModels\IPageViewModel.cs" />
+    <Compile Include="ViewModels\UserControlVM.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TotalNutritionView.xaml.cs">
       <DependentUpon>TotalNutritionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -212,7 +215,6 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RecipesListViewModel.cs" />
@@ -226,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TotalNutritionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,6 +265,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalancedHealhtDiet.Data\BalancedHealhtDiet.Data.csproj">
+      <Project>{23791C1C-1822-4FAE-A7BE-771224F76C56}</Project>
+      <Name>BalancedHealhtDiet.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BalancedHealthyDiet.Model\BalancedHealthyDiet.Model.csproj">
       <Project>{dcbc4d19-adf6-464b-89ff-f3bc777a737f}</Project>
       <Name>BalancedHealthyDiet.Model</Name>

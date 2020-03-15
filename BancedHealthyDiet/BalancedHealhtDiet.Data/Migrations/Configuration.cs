@@ -74,17 +74,17 @@
                 //context.Ingredients.AddRange(new List<Ingredient> { ingr1, ingr2, ingr3, ingr4, ingr5, ingr6, ing7 });
                 //recipe1.Ingredients = new List<Ingredient> { ingr1, ingr2, ingr3, ingr4, ingr5, ingr6 };
                 //context.SaveChanges();
-                RecipeImage recipeImage1 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_9_max.jpg", recipe1);
-                RecipeImage recipeImage2 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_1_min.jpg", recipe1);
-                RecipeImage recipeImage3 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_2_min.jpg", recipe1);
-                RecipeImage recipeImage4 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_3_min.jpg", recipe1);
-                RecipeImage recipeImage5 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_4_min.jpg", recipe1);
-                RecipeImage recipeImage6 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_5_min.jpg", recipe1);
-                RecipeImage recipeImage7 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_7_min.jpg", recipe1);
-                RecipeImage recipeImage8 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_8_min.jpg", recipe1);
-                context.RecipeImages.AddRange(new List<RecipeImage> { recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6, recipeImage7, recipeImage8 });
-                //recipe1.Images = new List<RecipeImage> { recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6, recipeImage7, recipeImage8 };
-                context.SaveChanges();
+                //RecipeImage recipeImage1 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_9_max.jpg", recipe1);
+                //RecipeImage recipeImage2 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_1_min.jpg", recipe1);
+                //RecipeImage recipeImage3 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_2_min.jpg", recipe1);
+                //RecipeImage recipeImage4 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_3_min.jpg", recipe1);
+                //RecipeImage recipeImage5 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_4_min.jpg", recipe1);
+                //RecipeImage recipeImage6 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_5_min.jpg", recipe1);
+                //RecipeImage recipeImage7 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_7_min.jpg", recipe1);
+                //RecipeImage recipeImage8 = new RecipeImage("https://static.1000.menu/img/content-v2/fd/f6/42423/salat-s-bolgarskim-percem-krabovymi-palochkami-i-pomidorami_1579018704_8_min.jpg", recipe1);
+                //context.RecipeImages.AddRange(new List<RecipeImage> { recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6, recipeImage7, recipeImage8 });
+                ////recipe1.Images = new List<RecipeImage> { recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6, recipeImage7, recipeImage8 };
+                //context.SaveChanges();
             }
 
             catch (Exception ex)

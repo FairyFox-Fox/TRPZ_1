@@ -45,8 +45,19 @@ namespace BancedHealthyDiet.Models
                 recipeName = value;
             }
         }
+        private string shortDescription;
+        public string ShortDescription
+        {
+            get => shortDescription;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("ShortDescription is not valid");
+                shortDescription = value;
+            }
+        }
 
-        private string instruction;
+       // private string instruction;
         public string Instruction
         {
             get => instruction;
@@ -95,6 +106,29 @@ namespace BancedHealthyDiet.Models
                 totalNutrition = value;
             }
         }
+        private string videoPath;
+        public string VideoPath
+        {
+            get => videoPath;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("VideoPath is not valid");
+                videoPath = value;
+            }
+        }
+        private string videoPath;
+        public string Notes
+        {
+            get => notes;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("Notes is not valid");
+                notes = value;
+            }
+        }
+        public string Notes { get; set; }
 
         public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction, List<IngredientDTO> ingredients)
         {
@@ -110,12 +144,17 @@ namespace BancedHealthyDiet.Models
         }
         private double GetTotalWeight(List<IngredientDTO> ingredients)
         {
-            var totalWeight = 0.0;
-            foreach (var ingred in ingredients)
+            if(ingredients!=null)
             {
-                totalWeight += ingred.CheckWeight();
+                var totalWeight = 0.0;
+                foreach (var ingred in ingredients)
+                {
+                    totalWeight += ingred.CheckWeight();
+                }
+                return totalWeight;
             }
-            return totalWeight;
+            return 0.0;
+          
         }
           
             

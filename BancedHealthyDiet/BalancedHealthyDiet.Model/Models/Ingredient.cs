@@ -22,16 +22,28 @@ namespace BancedHealthyDiet.Models
                 id = value;
             }
         }
-        private ProductDTO product;
-        public ProductDTO Product
+        private string name;
+        public string Name
         {
-            get => product;
+            get => name;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("Name");
+                else
+                    name = value;
+            }
+        }
+        private ICollection<ProductDTO> products;
+        public ICollection<ProductDTO> Products
+        {
+            get => products;
             set
             {
                 if(value==null)
-                    throw new ArgumentNullException("Product");
+                    throw new ArgumentNullException("Products");
                 else
-                    product = value;
+                    products = value;
             }
         }
         private double weight;
@@ -49,11 +61,11 @@ namespace BancedHealthyDiet.Models
         private string measurementUnit;
       
 
-        public IngredientDTO(Guid id,ProductDTO product, double weight, string measurementUnit)
+        public IngredientDTO(Guid id, ICollection<ProductDTO>products, double weight, string measurementUnit)
         {
             Id = id;
-            Product = product;
-            this.id = this.Product.Id;
+            Products = products;
+            //this.id = this.Product.Id;
             Weight = weight;
             MeasurementUnit = measurementUnit;
         }
