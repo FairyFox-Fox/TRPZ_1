@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BancedHealthyDiet.Models.RecipeDTO">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQhiAAEAQggAAAIAoAAAEKAAEQA4ABEAGABBgBAJYgA=</HashCode>
+      <FileName>Models\RecipeDTO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="totalNutrition" />
+      <Field Name="currentCategory" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="ingredients" />
+      <Field Name="images" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BancedHealthyDiet.Models.CategoryDTO">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAggAQAIIQAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\CategoryDTO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="recipes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BancedHealthyDiet.Models.IngredientDTO">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAICAAAQAACAEAAAgAAAABAAAAgQ=</HashCode>
+      <FileName>Models\IngredientDTO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BancedHealthyDiet.Models.NutritionDTO">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAEAAAABAAAQAAAABAAEAgQABAIBAAAACQAAgA=</HashCode>
+      <FileName>Models\NutritionDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BancedHealthyDiet.Models.ProductDTO">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAgA=</HashCode>
+      <FileName>Models\ProductDTO.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="nutrition" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BancedHealthyDiet.Models.RecipeImageDTO">
+    <Position X="9" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\RecipeImageDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalancedHealthyDiet.Model.Integration.NutririonCalculator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABQIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integration\NutririonCalculator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealthyDiet.Model.Integration.RecipeCategoryLogic" BaseTypeListCollapsed="true">
+    <Position X="15" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAIAAACAAAAAAAEAQAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integration\RecipeCategoryLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dataset" />
+      <Field Name="mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealthyDiet.Model.Integration.RecipesLogic" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAIAAACAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Integration\RecipesLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dataset" />
+      <Field Name="mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.176" />
+  </Class>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.INutritionCalculator" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\INutritionCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.IRecipeCategoryLogic" Collapsed="true">
+    <Position X="10" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAEAQAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRecipeCategoryLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.IRecipeLogic" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRecipeLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Data.Interfaces.IUnitOfWork" Collapsed="true">
+    <Position X="12" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="AutoMapper.IMapper" Collapsed="true">
+    <Position X="14.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

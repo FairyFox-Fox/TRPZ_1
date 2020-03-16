@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BancedHealthyDiet.Models
 {
@@ -51,6 +52,17 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("CountOfRecipes");
                 countOfRecipes = value;
+            }
+        }
+        private List<RecipeDTO> recipes;
+        public List<RecipeDTO> Recipes
+        {
+            get => recipes ?? (recipes = new List<RecipeDTO>());
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("Recipes");
+                recipes = value;
             }
         }
 

@@ -92,6 +92,17 @@ namespace BancedHealthyDiet.Models
                 totalNutrition = value;
             }
         }
+        private CategoryDTO currentCategory;
+        public CategoryDTO CurrentCategory
+        {
+            get => currentCategory;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("CurrentCategory");
+                currentCategory = value;
+            }
+        }
         private string videoPath;
         public string VideoPath
         {
@@ -189,18 +200,12 @@ namespace BancedHealthyDiet.Models
             get { return TimeSpan.FromTicks(CookTime); }
             set { CookTime = value.Ticks; }
         }
-        public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction)//, List<IngredientDTO> ingredients
+        public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction)
         {
             Id = id;
             ImagePath = imagePath;
             RecipeName = recipeName;
             Instruction = instruction;
-           // Ingredients = ingredients;
-            //TotalWeight = GetTotalWeight(Ingredients);
-            ///what to do here&&&&&&&
-           // TotalNutrition = new NutririonCalculator().CalculateTotalNutrition(this);
-            
-        
         }
         public RecipeDTO()
         {

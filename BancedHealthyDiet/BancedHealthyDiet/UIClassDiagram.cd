@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BancedHealthyDiet.ViewModels.BaseViewModel" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAEAAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.CategoriesViewModel">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAQAAAAEAAAAAgwAAAIAAA=</HashCode>
+      <FileName>ViewModels\CategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="data" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.CurrentCategoryRecipeViewModel">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAhAAAAIAAAAAAAQAAAAAgwAAAIAAA=</HashCode>
+      <FileName>ViewModels\CurrentCategoryRecipeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="recipeCategoryData" />
+      <Field Name="data" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.ItemViewModel">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="BancedHealthyDiet.ViewModels.ItemViewModel.ImageView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\ItemViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAAAIEAAAEAAAABAAAAAIAIAAAAAAAAAIAQEACABAA=</HashCode>
+      <FileName>ViewModels\ItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="recipeCategoryLogic" />
+      <Field Name="data" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAAAFAQAAAAEACAgAAAAAAQAQAQFEQAQAIIAA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.RecipesListViewModel">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAEAAAEBAAABAAAEAAAAQAAAAEgQCEAMIAA=</HashCode>
+      <FileName>ViewModels\RecipesListViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="data" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.TotalNutritionViewModel">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAEEABAAIAAAACAAAAAAEAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>ViewModels\TotalNutritionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="nutritionCalculator" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.ViewModels.ViewModelLocator">
+    <Position X="12.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ViewModels\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="container" />
+      <Field Name="logicLocator" />
+      <Property Name="MainViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DependencyInjectionService.IOC" Collapsed="true">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BalancedHealthyDiet.Model.Integration.IocLocator" Collapsed="true">
+    <Position X="15.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="BancedHealthyDiet.ViewModels.IPageViewModel" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\IPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.INutritionCalculator" Collapsed="true">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.IRecipeCategoryLogic" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Model.Interfaces.IRecipeLogic" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

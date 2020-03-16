@@ -21,7 +21,6 @@ namespace BalancedHealthyDiet.Model.Integration
                  confg.CreateMap<NutritionDTO, Nutrition>();
                  confg.CreateMap<Product, ProductDTO>();
                  confg.CreateMap<ProductDTO, Product>();
-                // .ForMember(x => x.Nutrition, s => s.MapFrom(x => Mapper.Map<NutritionDTO, Nutrition>(x.Nutrition));
                  confg.CreateMap<Ingredient, IngredientDTO>();
                  confg.CreateMap<IngredientDTO, Ingredient>();
                  confg.CreateMap<Category, CategoryDTO>();
@@ -31,14 +30,10 @@ namespace BalancedHealthyDiet.Model.Integration
                  confg.CreateMap<RecipeDTO, Recipe>()
                      .ForMember(x => x.Id, s => s.MapFrom(x => x.Id))
                      .ForMember(x => x.RecipeName, s => s.MapFrom(x => x.RecipeName))
-                     //.ForPath(x => x.Images.FirstOrDefault().ImagePath, s => s.MapFrom(x => x.ImagePath))
-                     //.ForMember(x => x.Images, s => s.MapFrom(x => x.Images))
                      .ForMember(x => x.ShortDescription, s => s.MapFrom(x => x.ShortDescription))
                      .ForMember(x => x.TotalWeight, s => s.MapFrom(x => x.TotalWeight))
-                     //.ForMember(x => x.Ingredients, s => s.MapFrom(x => x.Ingredients))
                      .ForPath(x => x.RecipeDetails.VideoPath, s => s.MapFrom(x => x.VideoPath))
                      .ForPath(x => x.RecipeDetails.Notes, s => s.MapFrom(x => x.Notes))
-                     //.ForPath(x => x.RecipeDetails.Instruction, s => s.MapFrom(x => x.Instruction))
                      .ForPath(x => x.RecipeDetails.Source, s => s.MapFrom(x => x.Source))
                      .ForPath(x => x.RecipeDetails.Rating, s => s.MapFrom(x => x.Rating))
                      .ForPath(x => x.RecipeDetails.NumberOfServings, s => s.MapFrom(x => x.NumberOfServings))
@@ -46,11 +41,8 @@ namespace BalancedHealthyDiet.Model.Integration
                  confg.CreateMap<Recipe, RecipeDTO>()
                         .ForMember(x => x.Id, s => s.MapFrom(x => x.Id))
                         .ForMember(x => x.RecipeName, s => s.MapFrom(x => x.RecipeName))
-                        //.ForMember(x => x.ImagePath, s => s.MapFrom(x => x.Images.FirstOrDefault().ImagePath))
-                        //.ForMember(x => x.Images, s => s.MapFrom(x => x.Images))
                         .ForMember(x => x.ShortDescription, s => s.MapFrom(x => x.ShortDescription))
                         .ForMember(x => x.TotalWeight, s => s.MapFrom(x => x.TotalWeight))
-                        //.ForMember(x => x.Ingredients, s => s.MapFrom(x => x.Ingredients))
                         .ForMember(x => x.VideoPath, s => s.MapFrom(x => x.RecipeDetails.VideoPath))
                         .ForMember(x => x.Notes, s => s.MapFrom(x => x.RecipeDetails.Notes))
                         .ForMember(x => x.Instruction, s => s.MapFrom(x => x.RecipeDetails.Instruction))

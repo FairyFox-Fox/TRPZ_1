@@ -44,24 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Integration\AutoMapperConfig.cs" />
     <Compile Include="Integration\AutoMapperConfiguration.cs" />
     <Compile Include="Integration\RecipeCategoryLogic.cs" />
     <Compile Include="Interfaces\IRecipeCategoryLogic.cs" />
     <Compile Include="Models\CategoryDTO.cs" />
     <Compile Include="Integration\IocLocator.cs" />
-    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\IngredientDTO.cs" />
     <Compile Include="Interfaces\INutritionCalculator.cs" />
     <Compile Include="Interfaces\IRecipeLogic.cs" />
     <Compile Include="Integration\NutririonCalculator.cs" />
-    <Compile Include="Models\Nutrition.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\NutritionDTO.cs" />
+    <Compile Include="Models\ProductDTO.cs" />
+    <Compile Include="Models\RecipeDTO.cs" />
     <Compile Include="Models\RecipeImageDTO.cs" />
     <Compile Include="Integration\RecipesLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ModelClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

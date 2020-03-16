@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BalancedHealhtDiet.Data.Entitites.Category">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAIIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entitites\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Recipes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.Ingredient">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAACAAAQAACAAAAAAAAAACAAAAAQ=</HashCode>
+      <FileName>Entitites\Ingredient.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.Nutrition">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAEAAAAAAAAAAAAABAAAAAAABAIAAAAAAQAAAA=</HashCode>
+      <FileName>Entitites\Nutrition.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.Product">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACBAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Entitites\Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Nutrition" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.Recipe">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAAAAQAgAAgAAAAAAACAAAAAAABAAEAAAAAAACAA=</HashCode>
+      <FileName>Entitites\Recipe.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RecipeDetails" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Ingredients" />
+      <Property Name="Images" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.RecipeDetails">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAgAAAAAAAAAAAIAAAAAYAAEAAAAAgAAAQAA=</HashCode>
+      <FileName>Entitites\RecipeDetails.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Entitites.RecipeImage">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Entitites\RecipeImage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BalancedHealhtDiet.Data.Configuration.BalanceDietAppContext">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Categories" Type="BalancedHealhtDiet.Data.Entitites.Category">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.582" Y="0.473" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="RecipeImages" Type="BalancedHealhtDiet.Data.Entitites.RecipeImage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.376" Y="0.412" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Products" Type="BalancedHealhtDiet.Data.Entitites.Product">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.473" Y="0.339" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAICAAEAAAEAAAAAAAAAABAAQ=</HashCode>
+      <FileName>Configuration\BalanceDietAppContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Categories" />
+      <Property Name="Ingredients" />
+      <Property Name="RecipeImages" />
+      <Property Name="Recipes" />
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BancedHealthyDiet.Data.Repositories.Repository&lt;TEntity&gt;">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABABAAAAAAAAAAAAAAACgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Repository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="appContext" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BancedHealthyDiet.Data.Interfaces.IEntity" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Data.Interfaces.IGenericRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IGenericRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BancedHealthyDiet.Data.Interfaces.IUnitOfWork" Collapsed="true">
+    <Position X="12.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAICAAAAAAEAAAAAAAAACAAAQ=</HashCode>
+      <FileName>Interfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

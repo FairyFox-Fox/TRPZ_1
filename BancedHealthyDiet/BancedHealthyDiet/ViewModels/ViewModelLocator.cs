@@ -28,10 +28,11 @@ namespace BancedHealthyDiet.ViewModels
     public class ViewModelLocator
     {
         private readonly IOC container;
+        private readonly IocLocator logicLocator;
         public ViewModelLocator()
         {
             container = new IOC();
-            var resolvingContainer = new IocLocator(container);
+            logicLocator = new IocLocator(container);
             container.Register<RecipesListViewModel>();
             container.Register<TotalNutritionViewModel>();
             container.Register<CurrentCategoryRecipeViewModel>();
@@ -45,6 +46,9 @@ namespace BancedHealthyDiet.ViewModels
             get { return container.Resolve<MainViewModel>(); }
 
         }
+
+
+
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
