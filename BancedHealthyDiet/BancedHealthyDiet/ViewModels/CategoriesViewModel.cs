@@ -1,6 +1,4 @@
-﻿using BalancedHealhtDiet.Data.Entitites;
-using BancedHealthyDiet.Commands;
-using BancedHealthyDiet.Data.Interfaces;
+﻿using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
 using GalaSoft.MvvmLight.Messaging;
@@ -43,8 +41,8 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
-        private Category selectedCategory;
-        public Category SelectedCategory
+        private CategoryDTO selectedCategory;
+        public CategoryDTO SelectedCategory
         {
             get
             {
