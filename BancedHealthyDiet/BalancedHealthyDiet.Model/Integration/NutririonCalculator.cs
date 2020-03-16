@@ -37,6 +37,13 @@ namespace BalancedHealthyDiet.Model.Integration
             };
         }
 
+        public NutritionDTO CalculateNutritionPer100Gram(RecipeDTO recipe)
+        {
+            var nutrition = new NutritionDTO(recipe.TotalNutrition.Id, Math.Round(recipe.TotalNutrition.Calories / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight, 2),
+               Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Fats / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Carbonhydrates / recipe.TotalWeight,2),
+                Math.Round(recipe.TotalNutrition.Proteins / recipe.TotalWeight,2));
+            return nutrition;
+        }
         public NutritionDTO CalculateTotalNutrition(RecipeDTO recipe)
         {
             var totalNutrition = new NutritionDTO();

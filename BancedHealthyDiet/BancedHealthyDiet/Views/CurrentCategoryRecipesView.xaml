@@ -47,7 +47,7 @@
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction 
-                        Command="{Binding DataContext.GoToItem, ElementName= calalogList}"/>
+                           Command="{Binding DataContext.GoToItem, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" CommandParameter="{Binding SelectedRecipe}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ItemsControl.ItemsPanel>

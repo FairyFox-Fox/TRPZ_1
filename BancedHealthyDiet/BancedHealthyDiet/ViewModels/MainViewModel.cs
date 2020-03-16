@@ -24,7 +24,7 @@ namespace BancedHealthyDiet.ViewModels
             this.data = data;
             this.categoryLogic = categoryLogic;
             this.nutritionCalculator = nutritionCalculator;
-            this.CurrentPageViewModel = categoriesViewModel; //recipesListViewModel;//new RecipeListB(model)
+            this.CurrentPageViewModel = categoriesViewModel; 
         }
         public MainViewModel()
         {
@@ -41,6 +41,23 @@ namespace BancedHealthyDiet.ViewModels
                 return goToTotalNutrition;
             }
         }
+        private ICommand goToRecipeCalculator;
+        public ICommand GoToRecipeCalculator
+        {
+            get
+            {
+                Messenger.Default.Register<List<RecipeDTO>>(this, HandleRecipeCalulatorClick);
+                if (goToRecipeCalculator == null)
+                    goToRecipeCalculator = new RelayCommand(action => CurrentPageViewModel = new RecipesListViewModel(data));
+                return goToRecipeCalculator;
+            }
+        }
+
+        private void HandleRecipeCalulatorClick(List<RecipeDTO> obj)
+        {
+            
+        }
+
         private ICommand goToRecipesOfCurrentCategory;
         public ICommand GoToRecipesOfCurrentCategory
         {
@@ -52,24 +69,26 @@ namespace BancedHealthyDiet.ViewModels
                 return goToRecipesOfCurrentCategory;
             }
         }
-        //private ICommand goToItem;
+        private ICommand goToItem;
 
-        //public ICommand GoToItem
-        //{
-        //    get
-        //    {
-        //        return
-        //     goToItem ?? (goToItem = new RelayCommand(x =>
-        //     {
-
-        //         Mediator.Notify("GoToItemView", SelectedRecipe);
-        //     }));
-        //    }
-        //}
+        public ICommand GoToItem
+        {
+            get
+            {
+                Messenger.Default.Register<RecipeDTO>(this, HandleSelectedItem);
+                if (goToItem == null)
+                    goToItem = new RelayCommand(action => CurrentPageViewModel = new ItemViewModel(categoryLogic,nutritionCalculator,SelectedItem));
+                return goToItem;
+            }
+        }
         public Guid SelectedId { get; private set; }
+        public RecipeDTO SelectedItem { get; private set; }
 
         public List<RecipeDTO> SelectedRecipes { get; private set; }
-
+        private void HandleSelectedItem(RecipeDTO obj)
+        {
+            this.SelectedItem = obj;
+        }
         private void HandleSelectedRecipe(List<RecipeDTO> obj)
         {
             this.SelectedRecipes = obj;

@@ -25,6 +25,9 @@
             <DataTemplate DataType="{x:Type ViewModels:CurrentCategoryRecipeViewModel}">
                 <Views:CurrentCategoryRecipesView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ItemViewModel}">
+                <Views:ItemView/>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml">
         </ResourceDictionary>

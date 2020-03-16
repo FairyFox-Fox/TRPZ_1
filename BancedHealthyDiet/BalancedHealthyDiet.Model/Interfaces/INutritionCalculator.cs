@@ -11,5 +11,7 @@ namespace BancedHealthyDiet.Model.Interfaces
     {
         NutritionDTO CalсulateTotalNutrition(List<RecipeDTO> recipes);
         NutritionDTO CalculateTotalNutrition(RecipeDTO recipe);
+        NutritionDTO CalculateNutritionPer100Gram(RecipeDTO recipe);
+
     }
 }

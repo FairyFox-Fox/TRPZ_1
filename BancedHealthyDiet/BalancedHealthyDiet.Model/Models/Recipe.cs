@@ -23,7 +23,6 @@ namespace BancedHealthyDiet.Models
                 id = value;
             }
         }
-
         private string imagePath;
         public string ImagePath
         {
@@ -70,10 +69,10 @@ namespace BancedHealthyDiet.Models
                 ingredients = value;
             }
         }
-        private double? totalWeight;
-        public double? TotalWeight
+        private double totalWeight;
+        public double TotalWeight
         {
-            get => totalWeight?? (totalWeight = GetTotalWeight(ingredients));
+            get => (totalWeight = GetTotalWeight(ingredients));
             set
             {
                 if (value > 0)
@@ -207,7 +206,7 @@ namespace BancedHealthyDiet.Models
         {
                 
         }
-        public RecipeDTO(Guid id, string imagePath, string recipeName, string shortDescription, List<IngredientDTO> ingredients, double? totalWeight,  string videoPath, string notes, string instruction,
+        public RecipeDTO(Guid id, string imagePath, string recipeName, string shortDescription, List<IngredientDTO> ingredients, double totalWeight,  string videoPath, string notes, string instruction,
             bool? isFavourite, string source, int? rating, int? numberOfServings, 
             long cookTime, List<RecipeImageDTO> images) : this(id, imagePath, recipeName, shortDescription)
         {

@@ -49,6 +49,7 @@ namespace BancedHealthyDiet.ViewModels
             {
                 selectedRecipe = value;
                 OnPropertyChanged("SelectedRecipe");
+                Messenger.Default.Send(selectedRecipe);
             }
         }
 

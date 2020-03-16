@@ -18,9 +18,9 @@ namespace BancedHealthyDiet.Views
     /// <summary>
     /// Логика взаимодействия для ItemViewModel.xaml
     /// </summary>
-    public partial class ItemViewModel : UserControl
+    public partial class ItemView : UserControl
     {
-        public ItemViewModel()
+        public ItemView()
         {
             InitializeComponent();
         }

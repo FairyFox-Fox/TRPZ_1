@@ -36,7 +36,7 @@ namespace BancedHealthyDiet.ViewModels
             container.Register<TotalNutritionViewModel>();
             container.Register<CurrentCategoryRecipeViewModel>();
             container.Register<CategoriesViewModel>();
-            var node = container.Resolve<CurrentCategoryRecipeViewModel>();
+            container.Register<ItemViewModel>();
             //var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
         }

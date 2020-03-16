@@ -15,10 +15,10 @@ namespace BalancedHealthyDiet.Model.Integration
     {
         IUnitOfWork dataset;
         IMapper mapper;
-        public RecipeCategoryLogic(IUnitOfWork dataset)//IMAPPER
+        public RecipeCategoryLogic(IMapper mapper,IUnitOfWork dataset)
         {
             this.dataset = dataset;
-            this.mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());// new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
+            this.mapper = mapper;
         }
         public void Dispose()
         {
@@ -28,6 +28,11 @@ namespace BalancedHealthyDiet.Model.Integration
         public CategoryDTO GetCategory(Guid id)
         {
             var category =dataset.Categories.Get(id);
+            return mapper.Map<CategoryDTO>(category);
+        }
+        public CategoryDTO GetCategoryByRecipeId(Guid recipeId)
+        {
+            var category = dataset.Recipes.Get(recipeId).Category; ;
             return mapper.Map<CategoryDTO>(category);
         }
 

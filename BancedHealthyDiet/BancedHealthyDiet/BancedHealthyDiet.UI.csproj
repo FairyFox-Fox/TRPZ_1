@@ -197,6 +197,7 @@
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\CurrentCategoryRecipeViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\UserControlVM.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\CategoriesMainView.xaml.cs">
@@ -204,6 +205,9 @@
     </Compile>
     <Compile Include="Views\CurrentCategoryRecipesView.xaml.cs">
       <DependentUpon>CurrentCategoryRecipesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RecipesListViewModel.cs">
       <DependentUpon>RecipesListView.xaml</DependentUpon>
@@ -219,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CurrentCategoryRecipesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
