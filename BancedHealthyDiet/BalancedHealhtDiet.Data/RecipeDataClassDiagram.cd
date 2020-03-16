@@ -51,8 +51,8 @@
       <Property Name="RecipeDetails" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Ingredients" />
       <Property Name="Images" />
+      <Property Name="Ingredients" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -95,9 +95,9 @@
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Categories" />
-      <Property Name="Ingredients" />
       <Property Name="RecipeImages" />
       <Property Name="Recipes" />
+      <Property Name="Ingredients" />
       <Property Name="Products" />
     </ShowAsCollectionAssociation>
   </Class>
@@ -109,6 +109,17 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="appContext" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BancedHealthyDiet.Data.Repositories.UnitOfWork" Collapsed="true">
+    <Position X="12" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICIIAAACAAAAAAQAAAICQAAAAAEAAAQAAAAgCAAAQ=</HashCode>
+      <FileName>Repositories\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="context" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -127,7 +138,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="BancedHealthyDiet.Data.Interfaces.IUnitOfWork" Collapsed="true">
-    <Position X="12.25" Y="1.25" Width="1.5" />
+    <Position X="13" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAICAAAAAAEAAAAAAAAACAAAQ=</HashCode>
       <FileName>Interfaces\IUnitOfWork.cs</FileName>
