@@ -10,6 +10,8 @@ using BancedHealthyDiet.Models;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Model.Interfaces;
 using BalancedHealthyDiet.Model.Integration;
+using BalancedHealhtDiet.Data.Entitites;
+using Serilog;
 
 namespace BalancedHealthyDiet.Model.Integration
 {
@@ -40,6 +42,26 @@ namespace BalancedHealthyDiet.Model.Integration
         public void Dispose()
         {
             dataset.Dispose();
+        }
+        public void AddNewRecipe(RecipeDTO recipeDTO)
+        {
+            try
+            {
+                dataset.CreateTransaction();
+                ///if(ModelState) add state aentry checking for current object
+                var recipe = mapper.Map<Recipe>(recipeDTO);
+                var recipeDetails = mapper.Map<RecipeDetails>(recipe);
+                recipe.RecipeDetails = recipeDetails;
+                dataset.Recipes.Insert(recipe);
+                dataset.Commit();
+            }
+            catch(Exception ex)
+            {
+                Log.Error(ex, "Error when adding new recipe");
+                Log.CloseAndFlush();
+                dataset.Rollback();
+            }
+            
         }
 
        

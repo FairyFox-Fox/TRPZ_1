@@ -1,6 +1,7 @@
 ﻿using BancedHealthyDiet.Models;
 using BancedHealthyDiet.ViewModels;
 using DependencyInjectionService;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,16 +19,11 @@ namespace BancedHealthyDiet
     {
         private void App_Startup(object sender,StartupEventArgs e)
         {
-            //IOC container = new IOC();
-            ////container.Register<IUnitOfWork, UnitOfWork>();
-            ////container.Register<IRecipeLogic, RecipesLogic>();
-            ////container.Register<INutritionCalculator, NutririonCalculator>();
-            //container.Register<MainViewModel>();
-            //var mainVm=container.Resolve<MainViewModel>();
-            //MainWindow = new MainWindow();
-            //MainWindow.DataContext =mainVm;
-            //MainWindow.Show();
-
+            Log.Logger = new LoggerConfiguration()
+           .MinimumLevel.Debug()
+           .WriteTo.Console()
+           .WriteTo.File("logs\\healthyDietLog.log", rollingInterval: RollingInterval.Day)
+           .CreateLogger();
         }
     }
 }
