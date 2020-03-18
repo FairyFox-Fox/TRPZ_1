@@ -8,5 +8,6 @@ namespace BancedHealthyDiet.Data.Interfaces
     {
         IEnumerable<TEntity> GetAll();
         TEntity Get(Guid id);
+        void Insert(TEntity entity);
     }
 }

@@ -16,6 +16,9 @@ namespace BancedHealthyDiet.Data.Interfaces
         IGenericRepository<Product> Products { get;}
         IGenericRepository<Category> Categories { get; }
         void Save();
+        void Rollback();
+        void CreateTransaction();
+        void Commit();
 
     }
 }

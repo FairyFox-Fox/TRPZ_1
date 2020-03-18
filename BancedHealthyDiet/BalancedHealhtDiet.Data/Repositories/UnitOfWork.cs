@@ -4,6 +4,7 @@ using BancedHealthyDiet.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace BancedHealthyDiet.Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private string errorMessage = string.Empty;
+        private DbContextTransaction transaction;
         private BalanceDietAppContext context;
         private IGenericRepository<Recipe> recipesRepository;
         private IGenericRepository<Ingredient> ingredientsRepository;
@@ -93,7 +96,34 @@ namespace BancedHealthyDiet.Data.Repositories
 
         public void Save()
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbExeption)
+            {
+                foreach (var vallidationExeption in dbExeption.EntityValidationErrors)
+                    foreach (var validationError in vallidationExeption.ValidationErrors)
+                        errorMessage += string.Format("Property: {0}, Error: {1}", validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
+                throw new Exception(errorMessage, dbExeption);
+
+            }
+
+        }
+        public void Commit()
+        {
+            transaction.Commit();
+        }
+
+        public void Rollback()
+        {
+            transaction.Rollback();
+            transaction.Dispose();
+        }
+
+        public void CreateTransaction()
+        {
+            transaction = context.Database.BeginTransaction();
         }
     }
 }
