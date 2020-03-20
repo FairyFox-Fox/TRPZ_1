@@ -18,6 +18,7 @@ using BalancedHealthyDiet.Model.Integration;
 using BancedHealthyDiet.Models;
 using CommonServiceLocator;
 using DependencyInjectionService;
+using Serilog;
 
 namespace BancedHealthyDiet.ViewModels
 {
@@ -40,12 +41,19 @@ namespace BancedHealthyDiet.ViewModels
             container.Register<ItemViewModel>();
             //var node = container.Resolve<RecipesListViewModel>();
             container.Register<MainViewModel>();
+            Log.Logger = new LoggerConfiguration()
+          .MinimumLevel.Debug()
+          .WriteTo.Console()
+          .WriteTo.File("logs\\healthyDietLog.log", rollingInterval: RollingInterval.Day)
+          .CreateLogger();
+            
         }
         public MainViewModel MainViewModel
         {
             get { return container.Resolve<MainViewModel>(); }
 
         }
+       
 
 
 

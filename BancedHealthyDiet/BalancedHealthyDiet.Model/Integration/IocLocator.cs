@@ -16,29 +16,12 @@ namespace BalancedHealthyDiet.Model.Integration
 {
     public  class IocLocator
     {
-        //private static void RegisterAutomapperDefault(IOC container, IEnumerable<Assembly> assemblies)
-        //{
-        //    AutoMapper.Mapper.Initialize(cfg =>
-        //    {
-        //        cfg.ConstructServicesUsing(container.Resolve);
-
-        //        cfg.AddProfiles(assemblies);
-        //    });
-        //}
         private readonly IOC container;
         public IocLocator(IOC container)
         {
 
             this.container = container;
-            //var mapper = AutoMapperConfiguration.ConfigureAutoMapper().CreateMapper();
-            ////var mapper = new Mapper(AutoMapperConfiguration.ConfigureAutoMapper());
-            //container.RegisterSingleton<MapperConfiguration>();
-            //container.Register<IMapper, Mapper>();
             container.RegisterInstance<IMapper>(new Mapper(AutoMapperConfiguration.ConfigureAutoMapper()));
-
-            //container.Register(AutoMapperConfiguration.ConfigureAutoMapper().CreateMapper()>
-            //container.RegisterSingleton<MapperConfiguration>(config);
-            //container.Register<IMapper>(AutoMapperConfiguration.ConfigureAutoMapper().CreateMapper().);
             container.Register<IUnitOfWork, UnitOfWork>();
             container.Register<BalanceDietAppContext>();
             container.Register<IRecipeLogic, RecipesLogic>();
@@ -48,6 +31,9 @@ namespace BalancedHealthyDiet.Model.Integration
             container.Register<IGenericRepository<Ingredient>, Repository<Ingredient>>();
             container.Register<IGenericRepository<Nutrition>, Repository<Nutrition>>();
             container.Register<IGenericRepository<Product>, Repository<Product>>();
+            container.Register<WebProductParser>();
+            WebProductParser webProductParser = container.Resolve<WebProductParser>();
+            webProductParser.ParseTablesOfProduct();
         }
     }
 }

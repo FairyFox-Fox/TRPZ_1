@@ -1,4 +1,5 @@
-﻿using BancedHealthyDiet.Commands;
+﻿using BalancedHealthyDiet.Model.Integration;
+using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
 using GalaSoft.MvvmLight.Messaging;
@@ -24,7 +25,7 @@ namespace BancedHealthyDiet.ViewModels
             this.data = data;
             this.categoryLogic = categoryLogic;
             this.nutritionCalculator = nutritionCalculator;
-            this.CurrentPageViewModel = categoriesViewModel; 
+            this.CurrentPageViewModel = categoriesViewModel;
         }
         public MainViewModel()
         {

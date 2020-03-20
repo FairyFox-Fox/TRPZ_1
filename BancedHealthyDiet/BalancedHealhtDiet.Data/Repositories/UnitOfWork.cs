@@ -21,6 +21,7 @@ namespace BancedHealthyDiet.Data.Repositories
         private IGenericRepository<Nutrition> nutritionsRepository;
         private IGenericRepository<Product> productsRepository;
         private IGenericRepository<Category> categoryRepository;
+        private IGenericRepository<RecipeImage> recipeImagesRepository;
         //IDbContext
         public UnitOfWork(BalanceDietAppContext context)
         {
@@ -75,6 +76,16 @@ namespace BancedHealthyDiet.Data.Repositories
             }
         }
 
+        public IGenericRepository<RecipeImage> RecipeImages
+        {
+            get
+            {
+                if (recipeImagesRepository == null)
+                    recipeImagesRepository = new Repository<RecipeImage>(context);
+                return recipeImagesRepository;
+            }
+        }
+
         private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
@@ -121,9 +132,10 @@ namespace BancedHealthyDiet.Data.Repositories
             transaction.Dispose();
         }
 
-        public void CreateTransaction()
+        public DbContextTransaction CreateTransaction()
         {
             transaction = context.Database.BeginTransaction();
+            return transaction;
         }
     }
 }

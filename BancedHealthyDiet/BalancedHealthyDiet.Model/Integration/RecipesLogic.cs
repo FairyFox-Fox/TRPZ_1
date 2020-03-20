@@ -32,7 +32,6 @@ namespace BalancedHealthyDiet.Model.Integration
             return recipes;
         }
 
-
         public IEnumerable<RecipeDTO> GetRecipesByCurrenctCategory(Guid categortId)
         {
             var recipesList = dataset.Recipes.GetAll().Where(x=>x.CategoryId.ToString()==categortId.ToString());
@@ -43,21 +42,36 @@ namespace BalancedHealthyDiet.Model.Integration
         {
             dataset.Dispose();
         }
-        public void AddNewRecipe(RecipeDTO recipeDTO)
+        public void AddNewRecipe(RecipeDTO recipeDTO,List<IngredientDTO> ingredients,List<RecipeImageDTO> recipeImages, Guid currrentCategoryId)
         {
             try
             {
-                dataset.CreateTransaction();
-                ///if(ModelState) add state aentry checking for current object
-                var recipe = mapper.Map<Recipe>(recipeDTO);
-                var recipeDetails = mapper.Map<RecipeDetails>(recipe);
-                recipe.RecipeDetails = recipeDetails;
-                dataset.Recipes.Insert(recipe);
-                dataset.Commit();
+                using (dataset.CreateTransaction())
+                {
+                    var recipe = mapper.Map<Recipe>(recipeDTO);
+                    foreach (var ingredient in recipe?.Ingredients)
+                    {
+                        dataset.Ingredients.Insert(ingredient);
+                    }
+                    dataset.Save();
+                    foreach (var recipeImage in recipe?.Images)
+                    {
+                        dataset.RecipeImages.Insert(recipeImage);
+                    }
+                    dataset.Save();
+                    dataset.Recipes.Insert(recipe);
+                    dataset.Save();
+                    dataset.Commit();
+                    Log.Information("Successfully added ner recipe to databse");
+                    dataset.Recipes.Insert(recipe);
+                    dataset.Commit();
+
+                }
+                    
             }
             catch(Exception ex)
             {
-                Log.Error(ex, "Error when adding new recipe");
+                Log.Error(ex, "An error ocurred  when adding new recipe");
                 Log.CloseAndFlush();
                 dataset.Rollback();
             }

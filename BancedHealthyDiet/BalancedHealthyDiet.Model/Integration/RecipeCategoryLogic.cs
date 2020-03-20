@@ -3,6 +3,7 @@ using BalancedHealhtDiet.Data.Entitites;
 using BancedHealthyDiet.Data.Interfaces;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,5 +43,7 @@ namespace BalancedHealthyDiet.Model.Integration
             var categories = categoriesList.Select(cat => mapper.Map<CategoryDTO>(cat)).ToList();
             return categories;
         }
+
+       
     }
 }

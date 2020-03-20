@@ -1,4 +1,5 @@
 ﻿
+using BalancedHealthyDiet.Model.Integration;
 using BancedHealthyDiet.Models;
 using BancedHealthyDiet.ViewModels;
 using DependencyInjectionService;
@@ -32,7 +33,7 @@ namespace BancedHealthyDiet
             //var viewModel = new ViewModelLocator().MainViewModel;
             //DataContext = viewModel;
 
-          
+
         }
     }
 }

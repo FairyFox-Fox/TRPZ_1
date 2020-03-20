@@ -1,4 +1,5 @@
-﻿using BancedHealthyDiet.Models;
+﻿using BalancedHealthyDiet.Model.Integration;
+using BancedHealthyDiet.Models;
 using BancedHealthyDiet.ViewModels;
 using DependencyInjectionService;
 using Serilog;
@@ -19,11 +20,8 @@ namespace BancedHealthyDiet
     {
         private void App_Startup(object sender,StartupEventArgs e)
         {
-            Log.Logger = new LoggerConfiguration()
-           .MinimumLevel.Debug()
-           .WriteTo.Console()
-           .WriteTo.File("logs\\healthyDietLog.log", rollingInterval: RollingInterval.Day)
-           .CreateLogger();
+
+
         }
     }
 }
