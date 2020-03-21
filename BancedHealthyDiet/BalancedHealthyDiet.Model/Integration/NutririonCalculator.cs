@@ -39,9 +39,18 @@ namespace BalancedHealthyDiet.Model.Integration
 
         public NutritionDTO CalculateNutritionPer100Gram(RecipeDTO recipe)
         {
-            var nutrition = new NutritionDTO(recipe.TotalNutrition.Id, Math.Round(recipe.TotalNutrition.Calories / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight, 2),
-               Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Fats / recipe.TotalWeight,2), Math.Round(recipe.TotalNutrition.Carbonhydrates / recipe.TotalWeight,2),
-                Math.Round(recipe.TotalNutrition.Proteins / recipe.TotalWeight,2));
+            var nutrition = new NutritionDTO();
+            recipe.TotalNutrition = CalculateTotalNutrition(recipe);
+            if(recipe.TotalWeight!=0)
+            {
+                nutrition = new NutritionDTO(recipe.TotalNutrition.Id, Math.Round(recipe.TotalNutrition.Calories / recipe.TotalWeight, 2), Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight, 2),
+                 Math.Round(recipe.TotalNutrition.Minerals / recipe.TotalWeight, 2), Math.Round(recipe.TotalNutrition.Fats / recipe.TotalWeight, 2), Math.Round(recipe.TotalNutrition.Carbonhydrates / recipe.TotalWeight, 2),
+             Math.Round(recipe.TotalNutrition.Proteins / recipe.TotalWeight, 2));
+            }
+            else
+            {
+                throw new DivideByZeroException();
+            }
             return nutrition;
         }
         public NutritionDTO CalculateTotalNutrition(RecipeDTO recipe)

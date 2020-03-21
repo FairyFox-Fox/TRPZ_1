@@ -42,7 +42,7 @@ namespace BalancedHealthyDiet.Model.Integration
         {
             dataset.Dispose();
         }
-        public void AddNewRecipe(RecipeDTO recipeDTO,List<IngredientDTO> ingredients,List<RecipeImageDTO> recipeImages, Guid currrentCategoryId)
+        public void AddNewRecipe(RecipeDTO recipeDTO)
         {
             try
             {

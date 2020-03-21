@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BalancedHealhtDiet.Data.Configuration;
 using AutoMapper;
+using BalancedHealthyDiet.Model.Interfaces;
 
 namespace BalancedHealthyDiet.Model.Integration
 {
@@ -33,7 +34,8 @@ namespace BalancedHealthyDiet.Model.Integration
             container.Register<IGenericRepository<Product>, Repository<Product>>();
             container.Register<WebProductParser>();
             WebProductParser webProductParser = container.Resolve<WebProductParser>();
-            webProductParser.ParseTablesOfProduct();
+            //webProductParser.ParseTablesOfProduct();
+            container.Register<IProductWithNutritionLIogic, ProductWithNutritionLogic>();
         }
     }
 }

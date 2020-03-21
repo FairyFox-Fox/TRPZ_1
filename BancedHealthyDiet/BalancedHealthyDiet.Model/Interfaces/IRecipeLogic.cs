@@ -11,6 +11,7 @@ namespace BancedHealthyDiet.Model.Interfaces
     {
         IEnumerable<RecipeDTO> GetRecipes();
         IEnumerable<RecipeDTO> GetRecipesByCurrenctCategory(Guid categortId);
+        void AddNewRecipe(RecipeDTO recipeDTO);
         void Dispose();
     }
 }

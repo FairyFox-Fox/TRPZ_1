@@ -39,7 +39,7 @@ namespace BancedHealthyDiet.ViewModels
             container.Register<CurrentCategoryRecipeViewModel>();
             container.Register<CategoriesViewModel>();
             container.Register<ItemViewModel>();
-            //var node = container.Resolve<RecipesListViewModel>();
+            container.Register<AddRecipeViewModel>();
             container.Register<MainViewModel>();
             Log.Logger = new LoggerConfiguration()
           .MinimumLevel.Debug()

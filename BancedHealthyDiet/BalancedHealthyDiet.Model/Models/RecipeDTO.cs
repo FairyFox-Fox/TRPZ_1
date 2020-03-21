@@ -241,7 +241,7 @@ namespace BancedHealthyDiet.Models
                 }
                 return totalWeight;
             }
-            return 0.0;
+            return 0.1;
           
         }
           

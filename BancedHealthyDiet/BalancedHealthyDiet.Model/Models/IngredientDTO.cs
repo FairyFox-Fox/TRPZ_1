@@ -59,8 +59,11 @@ namespace BancedHealthyDiet.Models
         }
 
         private string measurementUnit;
-      
 
+        public IngredientDTO()
+        {
+                
+        }
         public IngredientDTO(Guid id, IEnumerable<ProductDTO>products, string name,double weight, string measurementUnit)
         {
             Id = id;

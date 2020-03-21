@@ -22,14 +22,26 @@ namespace BalancedHealthyDiet.Model.Integration
             this.mapper = mapper;
             this.dataset = dataset;
         }
+        public ProductDTO GetProductById(Guid id)
+        {
+          var product =  dataset.Products.Get(id);
+            var productDto = mapper.Map<ProductDTO>(product);
+            return productDto;
+        }
+        public ProductDTO GetProductByName(string name)
+        {
+            var product = dataset.Products.GetAll().Where(x => x.ProductName == name).FirstOrDefault();
+            var productDTO = mapper.Map<ProductDTO>(product);
+            return productDTO;
+        }
         public List<ProductDTO> GetProductsByQuery(string query)
         {
             var productsDtoList = new List<ProductDTO>();
             try
             {
-                if (query != null)
+                if (!String.IsNullOrEmpty(query) )
                 {
-                    var products = dataset.Products.GetAll().Where(x => x.ProductName.Contains(query));
+                    var products = dataset.Products.GetAll().Where(x => x.ProductName.ToUpperInvariant().Contains(query));
                     productsDtoList = products.Select(product => mapper.Map<ProductDTO>(product)).ToList();
                 }
                 else

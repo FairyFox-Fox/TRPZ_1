@@ -1,4 +1,5 @@
 ﻿using BalancedHealthyDiet.Model.Integration;
+using BalancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Commands;
 using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
@@ -17,13 +18,16 @@ namespace BancedHealthyDiet.ViewModels
     {
         private IRecipeLogic data;
         private IRecipeCategoryLogic categoryLogic;
+        private readonly IProductWithNutritionLIogic productLogic;
         private INutritionCalculator nutritionCalculator;
 
 
-        public MainViewModel(IRecipeLogic data, INutritionCalculator nutritionCalculator, IRecipeCategoryLogic categoryLogic,CategoriesViewModel categoriesViewModel )//RecipesListViewModel recipesListViewModel
+        public MainViewModel(IRecipeLogic data, INutritionCalculator nutritionCalculator, IRecipeCategoryLogic categoryLogic,
+            CategoriesViewModel categoriesViewModel , IProductWithNutritionLIogic productLogic)//RecipesListViewModel recipesListViewModel
         {
             this.data = data;
             this.categoryLogic = categoryLogic;
+            this.productLogic = productLogic;
             this.nutritionCalculator = nutritionCalculator;
             this.CurrentPageViewModel = categoriesViewModel;
         }
@@ -80,6 +84,17 @@ namespace BancedHealthyDiet.ViewModels
                 if (goToItem == null)
                     goToItem = new RelayCommand(action => CurrentPageViewModel = new ItemViewModel(categoryLogic,nutritionCalculator,SelectedItem));
                 return goToItem;
+            }
+        }
+
+        private ICommand goToAddRecipe;
+        public ICommand GoToAddRecipe
+        {
+            get
+            {
+                if (goToAddRecipe == null)
+                    goToAddRecipe = new RelayCommand(action => CurrentPageViewModel = new AddRecipeViewModel(data, categoryLogic, productLogic, nutritionCalculator));
+                return goToAddRecipe;
             }
         }
         public Guid SelectedId { get; private set; }

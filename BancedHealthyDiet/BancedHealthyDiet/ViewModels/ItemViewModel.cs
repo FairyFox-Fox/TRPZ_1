@@ -1,4 +1,5 @@
-﻿using BancedHealthyDiet.Model.Interfaces;
+﻿using BancedHealthyDiet.Commands;
+using BancedHealthyDiet.Model.Interfaces;
 using BancedHealthyDiet.Models;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BancedHealthyDiet.ViewModels
 {
@@ -27,6 +29,7 @@ namespace BancedHealthyDiet.ViewModels
 
             }
         }
+        
         private RecipeImageDTO selectedImageOfRecipe;
         public RecipeImageDTO SelectedImageOfRecipe
         {
