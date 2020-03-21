@@ -8,6 +8,8 @@ namespace BancedHealthyDiet.Data.Interfaces
     {
         IEnumerable<TEntity> GetAll();
         TEntity Get(Guid id);
+        void Delete(TEntity entity);
+        void Update(TEntity entity);
         void Insert(TEntity entity);
     }
 }

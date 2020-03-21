@@ -16,19 +16,21 @@ namespace BalancedHealthyDiet.Model.Integration
           
             MapperConfiguration configuration = new MapperConfiguration(confg =>
              {
-               
+
+                 confg.CreateMap<Category, CategoryDTO>();
+                 confg.CreateMap<CategoryDTO, Category>(); 
                  confg.CreateMap<Nutrition, NutritionDTO>();
                  confg.CreateMap<NutritionDTO, Nutrition>();
                  confg.CreateMap<Product, ProductDTO>();
                  confg.CreateMap<ProductDTO, Product>();
                  confg.CreateMap<Ingredient, IngredientDTO>();
                  confg.CreateMap<IngredientDTO, Ingredient>();
-                 confg.CreateMap<Category, CategoryDTO>();
-                 confg.CreateMap<CategoryDTO, Category>();
                  confg.CreateMap<RecipeImage, RecipeImageDTO>();
                  confg.CreateMap<RecipeImageDTO, RecipeImage>();
                  confg.CreateMap<RecipeDTO, Recipe>()
                      .ForMember(x => x.Id, s => s.MapFrom(x => x.Id))
+                     .ForMember(x=>x.CategoryId, s=>s.MapFrom(x=>x.CategoryId))
+                     //.ForMember(x=>x.Category, s=>s.MapFrom(e=>Mapper.Map<CategoryDTO,Category>(e)))
                      .ForMember(x => x.RecipeName, s => s.MapFrom(x => x.RecipeName))
                      .ForMember(x => x.ShortDescription, s => s.MapFrom(x => x.ShortDescription))
                      .ForMember(x => x.TotalWeight, s => s.MapFrom(x => x.TotalWeight))
@@ -40,6 +42,7 @@ namespace BalancedHealthyDiet.Model.Integration
                      .ForPath(x => x.RecipeDetails.CookTime, s => s.MapFrom(x => x.CookTime));
                  confg.CreateMap<Recipe, RecipeDTO>()
                         .ForMember(x => x.Id, s => s.MapFrom(x => x.Id))
+                        .ForMember(x => x.CategoryId, s => s.MapFrom(x => x.CategoryId))
                         .ForMember(x => x.RecipeName, s => s.MapFrom(x => x.RecipeName))
                         .ForMember(x => x.ShortDescription, s => s.MapFrom(x => x.ShortDescription))
                         .ForMember(x => x.TotalWeight, s => s.MapFrom(x => x.TotalWeight))

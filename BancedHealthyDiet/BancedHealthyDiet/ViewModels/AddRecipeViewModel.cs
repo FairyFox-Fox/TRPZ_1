@@ -56,7 +56,9 @@ namespace BancedHealthyDiet.ViewModels
         {
             if (NewIngredient != null)
             {
-                NewIngredient.Products = new List<ProductDTO> { productLogic.GetProductByName(NewIngredient.Name) };
+                var product = productLogic.GetProductByName(NewIngredient.Name);
+               // product.Ingredient = NewIngredient;
+                NewIngredient.Products = new List<ProductDTO> {  product};
                 IngredientsList.CollectionChanged += IngredientsList_CollectionChanged;
                 IngredientsList.Add(NewIngredient);
                 
@@ -188,6 +190,28 @@ namespace BancedHealthyDiet.ViewModels
             {
                 ingredientsList = value;
             }
+        }
+        private List<int> countOfServingsList;
+        public List<int> CountOfServingsList
+        {
+            get
+            {
+                if (countOfServingsList == null)
+                {
+                    countOfServingsList = new List<int>();
+                    for (int i = 0; i < 21; i++)
+                        countOfServingsList.Add(i);
+                    return countOfServingsList;
+                }
+                return countOfServingsList;
+            }
+            set
+            {
+                countOfServingsList = value;
+                OnPropertyChanged(nameof(CountOfServingsList));
+            }
+
+
         }
     }
 }

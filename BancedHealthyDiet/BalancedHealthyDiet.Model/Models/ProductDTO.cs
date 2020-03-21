@@ -33,6 +33,7 @@ namespace BancedHealthyDiet.Models
                 productName = value;
             }
         }
+        public  IngredientDTO Ingredient { get; set; }
 
         private NutritionDTO nutrition; 
         public NutritionDTO Nutrition

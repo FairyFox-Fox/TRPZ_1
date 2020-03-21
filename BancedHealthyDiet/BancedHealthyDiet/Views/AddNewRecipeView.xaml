@@ -35,14 +35,14 @@
             <StackPanel Orientation="Vertical" Grid.Column="0" >
                 <TextBlock Text="Название" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
-                <TextBox Text="{Binding NewRecipe.Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" x:Name="NameTextBox" Width="180"   Margin="12,4,0,0" materialDesign:HintAssist.Hint="Салат с креветками">
+                <TextBox Text="{Binding NewRecipe.RecipeName, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" x:Name="NameTextBox" Width="180"   Margin="12,4,0,0" materialDesign:HintAssist.Hint="Салат с креветками">
                 </TextBox>
                 <TextBlock Text="Категория" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold"
                            HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
-                <ComboBox ItemsSource="{Binding AllCategories}"  SelectedItem="{Binding NewRecipe.Category,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
-                    NotifyOnValidationError=true}" DisplayMemberPath="Name" SelectedValuePath="{Binding NewRecipe.Category.Name}"
-                           Margin="12,4,0,0" Width="180" Background="White" HorizontalAlignment="Left"/>
+                <ComboBox ItemsSource="{Binding AllCategories}"  SelectedValue="{Binding NewRecipe.CategoryId,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
+                    NotifyOnValidationError=true}" DisplayMemberPath="Name"  SelectedValuePath="Id"
+                           IsSynchronizedWithCurrentItem="True" Margin="12,4,0,0" Width="180" Background="White" HorizontalAlignment="Left"/>
                 <TextBlock  Width="180" Text="Ресурс(сайт/журнал и др.)" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
                 <TextBox Width="180" x:Name="SourceTextBox" Margin="12,4,0,0"  Text="{Binding NewRecipe.Source, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
@@ -64,7 +64,7 @@
 
                 <TextBlock Text="Количество порций" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
-                <ComboBox SelectedValue="{Binding NewRecipe.NumberOfServings,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" materialDesign:HintAssist.Hint="(editable)" MinWidth="72" Margin="12 4 0 0" 
+                <ComboBox SelectedValue="{Binding NewRecipe.NumberOfServings,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" materialDesign:HintAssist.Hint="1" MinWidth="72" Margin="12 4 0 0" 
                           VerticalAlignment="Bottom" IsEditable="True" ItemsSource="{Binding CountOfServingsList}" HorizontalAlignment="Left" Width="180">
                     <ComboBox.Text>
                         <Binding Path="CountOfServingsList" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
@@ -79,9 +79,10 @@
                         </ItemsPanelTemplate>
                     </ComboBox.ItemsPanel>
                 </ComboBox>
-                <TextBlock Text="Впечатления" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
+                <TextBlock Text="Впечатления" Foreground="#FF69033A" FontSize="12"  
+                           FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
-                <materialDesign:RatingBar  Value="{Binding NewRecipe.Rating, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" 
+                <materialDesign:RatingBar  Value="{Binding NewRecipe.Rating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" 
                                            HorizontalAlignment="Left" Margin="12,4,0,0" Foreground="#FF69033A" x:Name="BasicRatingBar">
                 </materialDesign:RatingBar>
                 <Separator/>
@@ -113,7 +114,8 @@
                     <TextBox  MinWidth="50" VerticalAlignment="Center"  Text="{Binding Path=NewIngredient.Weight, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, 
                         NotifyOnValidationError=true}"   Margin="4,0,0,0">
                     </TextBox>
-                    <ComboBox   MinWidth="50" Margin="4,0,0,0"  VerticalAlignment="Center"  SelectedValue="{Binding NewIngredient.MeasurementUnit,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
+                    <ComboBox   MinWidth="50" Margin="4,0,0,0"  VerticalAlignment="Center" 
+                                SelectedValue="{Binding NewIngredient.MeasurementUnit,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
                         NotifyOnValidationError=true}" 
                                 materialDesign:HintAssist.Hint="(editable)" IsEditable="True" ItemsSource="{Binding Measurements}" HorizontalAlignment="Left" >
                     </ComboBox>
@@ -153,20 +155,20 @@
                     <TextBlock  VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1"  Background="#ffdeff"  FontWeight="Bold">на 100 гр.</TextBlock>
                     <Separator Grid.Row="1" Grid.ColumnSpan="3"  />
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Калорийность(Ккал)</TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Calories, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, 
-                        NotifyOnValidationError=true }"  HorizontalAlignment="Right"></TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Calories,ValidatesOnDataErrors=true, 
+                        NotifyOnValidationError=true,Mode=TwoWay }"  HorizontalAlignment="Right"></TextBox>
                     <Separator Grid.Row="3" Grid.ColumnSpan="2"  />
                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"   FontWeight="Bold" HorizontalAlignment="Left">Белков(гр)</TextBlock>
-                    <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Proteins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, 
-                        NotifyOnValidationError=true }"   HorizontalAlignment="Right"></TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Proteins, ValidatesOnDataErrors=true, 
+                        NotifyOnValidationError=true, Mode=TwoWay }"   HorizontalAlignment="Right"></TextBox>
                     <Separator Grid.Row="5" Grid.ColumnSpan="2"  />
                     <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Жиров(гр)</TextBlock>
-                    <TextBox BorderBrush="Transparent" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  Text="{Binding Path=NewRecipe.TotalNutrition.Fats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, 
-                        NotifyOnValidationError=true }"  HorizontalAlignment="Right"></TextBox>
+                    <TextBox BorderBrush="Transparent" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  Text="{Binding Path=NewRecipe.TotalNutrition.Fats, ValidatesOnDataErrors=true, 
+                        NotifyOnValidationError=true , Mode=TwoWay}"  HorizontalAlignment="Right"></TextBox>
                     <Separator Grid.Row="7" Grid.ColumnSpan="2"  />
                     <TextBlock Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Углеводов(гр)</TextBlock>
-                    <TextBox BorderBrush="Transparent" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=NewRecipe.TotalNutrition.Carbonhydrates, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, 
-                        NotifyOnValidationError=true }" HorizontalAlignment="Right"></TextBox>
+                    <TextBox BorderBrush="Transparent" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=NewRecipe.TotalNutrition.Carbonhydrates,ValidatesOnDataErrors=true, 
+                        NotifyOnValidationError=true, Mode=TwoWay }" HorizontalAlignment="Right"></TextBox>
                 </Grid>
                 <TextBlock Text="Шаги приготовления:"  Width="Auto" Height="Auto" FontSize="22" Foreground="#FF69033A"  FontWeight="Bold" Margin="16" 
                                materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>

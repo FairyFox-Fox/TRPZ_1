@@ -3,12 +3,11 @@
   <Class Name="BancedHealthyDiet.Models.RecipeDTO">
     <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQhiAAEAQggAAAIAoAAAEKAAEQA4ABEAGABBgBAJYgA=</HashCode>
+      <HashCode>AAhiAAAAQggAAgIAoAAAEKAAEQA4ABEAGABBgBAJYgA=</HashCode>
       <FileName>Models\RecipeDTO.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="totalNutrition" />
-      <Field Name="currentCategory" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="ingredients" />
@@ -45,7 +44,7 @@
   <Class Name="BancedHealthyDiet.Models.ProductDTO">
     <Position X="5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAgA=</HashCode>
+      <HashCode>BAACBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAgA=</HashCode>
       <FileName>Models\ProductDTO.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -82,7 +81,7 @@
   <Class Name="BalancedHealthyDiet.Model.Integration.RecipesLogic" BaseTypeListCollapsed="true">
     <Position X="13.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACCAIAAACAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACCAIAAACAAAAAAAAAAQAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Integration\RecipesLogic.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -108,7 +107,7 @@
   <Interface Name="BancedHealthyDiet.Model.Interfaces.IRecipeLogic" Collapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACCAAAAAAAAAAAAAAAAQAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IRecipeLogic.cs</FileName>
     </TypeIdentifier>
   </Interface>

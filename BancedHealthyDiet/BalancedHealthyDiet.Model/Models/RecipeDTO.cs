@@ -92,17 +92,18 @@ namespace BancedHealthyDiet.Models
                 totalNutrition = value;
             }
         }
-        private CategoryDTO currentCategory;
-        public CategoryDTO CurrentCategory
-        {
-            get => currentCategory;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentNullException("CurrentCategory");
-                currentCategory = value;
-            }
-        }
+        public Guid CategoryId { get; set; }
+        //private CategoryDTO currentCategory;
+        //public CategoryDTO Category
+        //{
+        //    get => currentCategory;
+        //    set
+        //    {
+        //        if (value == null)
+        //            throw new ArgumentNullException("Category");
+        //        currentCategory = value;
+        //    }
+        //}
         private string videoPath;
         public string VideoPath
         {
@@ -184,6 +185,11 @@ namespace BancedHealthyDiet.Models
                     throw new ArgumentOutOfRangeException("CookTime");
             }
         }
+        public TimeSpan CookTimeValid
+        {
+            get { return TimeSpan.FromTicks(CookTime); }
+            set { CookTime = value.Ticks; }
+        }
         private List<RecipeImageDTO> images;
         public List<RecipeImageDTO> Images
         {
@@ -195,11 +201,7 @@ namespace BancedHealthyDiet.Models
                 images = value;
             }
         }
-        public TimeSpan CookTimeValid
-        {
-            get { return TimeSpan.FromTicks(CookTime); }
-            set { CookTime = value.Ticks; }
-        }
+
         public RecipeDTO(Guid id,string imagePath, string recipeName, string instruction)
         {
             Id = id;

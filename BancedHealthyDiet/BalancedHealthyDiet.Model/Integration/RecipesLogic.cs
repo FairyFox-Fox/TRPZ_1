@@ -46,12 +46,17 @@ namespace BalancedHealthyDiet.Model.Integration
         {
             try
             {
-                using (dataset.CreateTransaction())
-                {
+                     dataset.CreateTransaction();
                     var recipe = mapper.Map<Recipe>(recipeDTO);
                     foreach (var ingredient in recipe?.Ingredients)
                     {
-                        dataset.Ingredients.Insert(ingredient);
+                    //dataset.Products.Insert(ingredient.Products);
+                    foreach (var product in ingredient?.Products)
+                    {
+                        dataset.Products.Delete(product);
+                        dataset.Save();
+                    }
+                    dataset.Ingredients.Insert(ingredient);
                     }
                     dataset.Save();
                     foreach (var recipeImage in recipe?.Images)
@@ -63,11 +68,7 @@ namespace BalancedHealthyDiet.Model.Integration
                     dataset.Save();
                     dataset.Commit();
                     Log.Information("Successfully added ner recipe to databse");
-                    dataset.Recipes.Insert(recipe);
-                    dataset.Commit();
 
-                }
-                    
             }
             catch(Exception ex)
             {

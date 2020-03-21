@@ -70,7 +70,7 @@ namespace BancedHealthyDiet.ViewModels
             set
             {
                 currentCategory = value;
-                OnPropertyChanged("CurrentCategory");
+                OnPropertyChanged("Category");
 
             }
         }

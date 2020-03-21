@@ -10,7 +10,20 @@ namespace BalancedHealhtDiet.Data.Entitites
 {
     public class Category:IEntity
     {
-        public Guid Id { get; set; }
+        private Guid id;
+        public Guid Id
+        {
+            get
+            {
+                if (id == Guid.Empty)
+                    return id = Guid.NewGuid();
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
         public string Name { get; set; }
         public int CountOfRecipes { get; set; }
         public string ImagePath { get; set; }
@@ -18,7 +31,7 @@ namespace BalancedHealhtDiet.Data.Entitites
         public virtual ICollection<Recipe> Recipes { get; set; }
         public Category()
         {
-            this.Id = Guid.NewGuid();
+            //this.Id = Guid.NewGuid();
         }
 
         public Category(string name, int countOfRecipes, string imagePath) : this()

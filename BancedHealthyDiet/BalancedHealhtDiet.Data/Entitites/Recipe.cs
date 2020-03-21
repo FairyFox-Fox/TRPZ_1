@@ -25,6 +25,7 @@ namespace BalancedHealhtDiet.Data.Entitites
             this.Id = Guid.NewGuid();
         }
 
+
         public Recipe( Category category, ICollection<RecipeImage> images,
             string recipeName, string shortDescription, double totalWeight,
             RecipeDetails recipeDetails):this()
