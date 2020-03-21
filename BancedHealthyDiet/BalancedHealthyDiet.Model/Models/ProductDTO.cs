@@ -22,6 +22,18 @@ namespace BancedHealthyDiet.Models
                 id = value;
             }
         }
+        private IEnumerable<IngredientDTO> ingredients;
+        public IEnumerable<IngredientDTO> Ingredients
+        {
+            get => ingredients;
+            set
+            {
+                //if(value==null)
+                //    throw new ArgumentNullException("Products");
+                //else
+                ingredients = value;
+            }
+        }
         private string productName;
         public string ProductName
         {
@@ -33,7 +45,6 @@ namespace BancedHealthyDiet.Models
                 productName = value;
             }
         }
-        public  IngredientDTO Ingredient { get; set; }
 
         private NutritionDTO nutrition; 
         public NutritionDTO Nutrition

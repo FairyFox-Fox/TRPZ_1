@@ -12,7 +12,9 @@ namespace BalancedHealhtDiet.Data.Entitites
     {
         
         public Guid Id { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+
+        public virtual Guid? ProductId { get; set; }
+        public virtual Product Product { get; set; }
         public string Name { get; set; }
         public double Weight { get; set; }
         public string MeasurementUnit { get; set; }
@@ -24,13 +26,13 @@ namespace BalancedHealhtDiet.Data.Entitites
         }
 
         public Ingredient(string name, double weight, 
-            string measurementUnit, Recipe recipe, ICollection<Product> products) :this()
+            string measurementUnit, Recipe recipe ) :this()
         {
             Name = name;
             Weight = weight;
             MeasurementUnit = measurementUnit;
             Recipe = recipe;
-            Products = products;
+
         }
     }
 }

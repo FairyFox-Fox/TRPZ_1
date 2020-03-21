@@ -58,7 +58,7 @@ namespace BancedHealthyDiet.ViewModels
             {
                 var product = productLogic.GetProductByName(NewIngredient.Name);
                // product.Ingredient = NewIngredient;
-                NewIngredient.Products = new List<ProductDTO> {  product};
+                NewIngredient.Product =   product;
                 IngredientsList.CollectionChanged += IngredientsList_CollectionChanged;
                 IngredientsList.Add(NewIngredient);
                 
@@ -157,6 +157,27 @@ namespace BancedHealthyDiet.ViewModels
                 OnPropertyChanged(nameof(searchText));
             }
         }
+        private string selectedImageSource;
+        public string SelectedImageSource
+        {
+            get => selectedImageSource;
+            set
+            {
+                selectedImageSource = value;
+                OnPropertyChanged(nameof(selectedImageSource));
+            }
+        }
+
+        private string selecteVideoSource;
+        public string SelecteVideoSource
+        {
+            get => selecteVideoSource;
+            set
+            {
+                selecteVideoSource = value;
+                OnPropertyChanged(nameof(selecteVideoSource));
+            }
+        }
         public ObservableCollection<CategoryDTO> AllCategories { get; private set; }
         private ObservableCollection<ProductDTO> allProducts;
         public ObservableCollection<ProductDTO> AllProducts 
@@ -210,8 +231,6 @@ namespace BancedHealthyDiet.ViewModels
                 countOfServingsList = value;
                 OnPropertyChanged(nameof(CountOfServingsList));
             }
-
-
         }
     }
 }

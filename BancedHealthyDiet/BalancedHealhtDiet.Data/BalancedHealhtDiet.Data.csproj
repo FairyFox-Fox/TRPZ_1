@@ -89,6 +89,10 @@
     <Compile Include="Migrations\202003142122092_seed recipes.designer.cs">
       <DependentUpon>202003142122092_seed recipes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003211549038_CahngeIngredProdRelationship.cs" />
+    <Compile Include="Migrations\202003211549038_CahngeIngredProdRelationship.designer.cs">
+      <DependentUpon>202003211549038_CahngeIngredProdRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003142122092_seed recipes.resx">
       <DependentUpon>202003142122092_seed recipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003211549038_CahngeIngredProdRelationship.resx">
+      <DependentUpon>202003211549038_CahngeIngredProdRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

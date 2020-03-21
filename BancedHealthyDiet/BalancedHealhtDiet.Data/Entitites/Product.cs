@@ -11,18 +11,18 @@ namespace BalancedHealhtDiet.Data.Entitites
         
         public Guid Id { get; set; }
         public string ProductName { get; set; }
-        public virtual Guid? IngredientId { get; set; }
-        public virtual Ingredient Ingredient { get; set; }
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
         public virtual Nutrition Nutrition { get; set; }
         public Product()
         {
             this.Id = Guid.NewGuid();
         }
 
-        public Product(string productName, Nutrition nutrition):this()
+        public Product(string productName, Nutrition nutrition, ICollection<Ingredient> ingredients) : this()
         {
             ProductName = productName;
             Nutrition = nutrition;
+            Ingredients = ingredients;
         }
     }
 }

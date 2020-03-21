@@ -51,11 +51,11 @@ namespace BalancedHealthyDiet.Model.Integration
                     foreach (var ingredient in recipe?.Ingredients)
                     {
                     //dataset.Products.Insert(ingredient.Products);
-                    foreach (var product in ingredient?.Products)
-                    {
-                        dataset.Products.Delete(product);
+                    //foreach (var product in ingredient?.Products)
+                    //{
+                       dataset.Products.Delete(ingredient.Product);
                         dataset.Save();
-                    }
+                    //}
                     dataset.Ingredients.Insert(ingredient);
                     }
                     dataset.Save();
