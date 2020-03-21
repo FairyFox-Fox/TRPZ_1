@@ -3,7 +3,7 @@
   <Class Name="BancedHealthyDiet.Models.RecipeDTO">
     <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAhiAAAAQggAAgIAoAAAEKAAEQA4ABEAGABBgBAJYgA=</HashCode>
+      <HashCode>AAhiAAAAQggAAgIAoAAAEKAAkQA4ABEAGABBgBAJYgA=</HashCode>
       <FileName>Models\RecipeDTO.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -13,6 +13,7 @@
       <Field Name="ingredients" />
       <Field Name="images" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="BancedHealthyDiet.Models.CategoryDTO">
     <Position X="11" Y="3.75" Width="1.5" />
@@ -27,12 +28,9 @@
   <Class Name="BancedHealthyDiet.Models.IngredientDTO">
     <Position X="2.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAIAAAICAAAQAACAEAAAgAAAABAAAAgQ=</HashCode>
+      <HashCode>EAACAAAAAAAAAIAAAICAAAQAACAEAAAgAAAAAAAAAgA=</HashCode>
       <FileName>Models\IngredientDTO.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="products" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BancedHealthyDiet.Models.NutritionDTO">
     <Position X="2.5" Y="7.5" Width="1.5" />
@@ -44,7 +42,7 @@
   <Class Name="BancedHealthyDiet.Models.ProductDTO">
     <Position X="5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAACBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAgA=</HashCode>
+      <HashCode>BAACAAQAAAAAAAAAIAAAACAAAAAAAAAAAAgAAAAIAgA=</HashCode>
       <FileName>Models\ProductDTO.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -54,7 +52,7 @@
   <Class Name="BancedHealthyDiet.Models.RecipeImageDTO">
     <Position X="9" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAABAAAhA=</HashCode>
       <FileName>Models\RecipeImageDTO.cs</FileName>
     </TypeIdentifier>
   </Class>

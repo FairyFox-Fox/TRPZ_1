@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace BancedHealthyDiet.ViewModels
 {
-    public class AddRecipeViewModel :BaseViewModel, IPageViewModel
+    public class AddRecipeViewModel : BaseViewModel, IPageViewModel
     {
         private readonly IRecipeLogic recipeLogic;
         private readonly IRecipeCategoryLogic categoryLogic;
@@ -38,14 +38,149 @@ namespace BancedHealthyDiet.ViewModels
 
         private void AddNewRecipe()
         {
+            newRecipe.Images = RecipeAddedImages.ToList();
             recipeLogic.AddNewRecipe(NewRecipe);
+            NewRecipe = new RecipeDTO();
+            IngredientsList = new ObservableCollection<IngredientDTO>();
+            NewIngredient = new IngredientDTO();
+            //CurrentPageViewModel = new CategoriesViewModel(categoryLogic);
         }
 
-        private ICommand addImageCommand;
-        public ICommand AddImageCommand
+        private bool isAdded = false;
+        public bool IsAdded
         {
-            get => addImageCommand ?? (addImageCommand = new RelayCommand(action=>AddImage()));
+            get => isAdded;
+            set
+            {
+                isAdded = value;
+                OnPropertyChanged(nameof(IsAdded));
+            }
+
         }
+        private ICommand addImageFromInternet;
+        public ICommand AddImageFromInternet
+        {
+            get => addImageFromInternet ?? (addImageFromInternet = new RelayCommand(action => AddImageFromInternetExecute()));
+        }
+
+        private void AddImageFromInternetExecute()
+        {
+            IsUrlImageNotTextBoxShowed = false;
+
+        }
+        private bool isUrlImageNotTextBoxShowed = true;
+        public bool IsUrlImageNotTextBoxShowed
+        {
+            get => isUrlImageNotTextBoxShowed;
+            set
+            {
+                isUrlImageNotTextBoxShowed = value;
+                OnPropertyChanged(nameof(IsUrlImageNotTextBoxShowed));
+            }
+
+        }
+        private ICommand addImageFromComputer;
+        public ICommand AddImageFromComputer
+        {
+            get => addImageFromComputer ?? (addImageFromComputer = new RelayCommand(action => AddImageFromComputerExecute()));
+        }
+
+
+        private void AddImageFromComputerExecute()
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.FileName = "Image";
+            openFileDialog.DefaultExt = ".png";
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            var result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = openFileDialog.FileName, ImageDescription = "Шаг " + NewRecipe.Images.Count.ToString() });
+            }
+        }
+        private ICommand addVideoFromInternet;
+        public ICommand AddVideoFromInternet
+        {
+            get => addVideoFromInternet ?? (addVideoFromInternet = new RelayCommand(action => AddVideoFromInternetExecute()));
+        }
+
+        private void AddVideoFromInternetExecute()
+        {
+            IsUrlVideoNotTextBoxShowed = false;
+        }
+
+        private ICommand addVideoFromComputer;
+        public ICommand AddVideoFromComputer
+        {
+            get => addVideoFromComputer ?? (addVideoFromComputer = new RelayCommand(action => AddVideoFromComputerExecute()));
+        }
+
+        private void AddVideoFromComputerExecute()
+        {
+            Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
+
+            openDlg.InitialDirectory = @"c:\";
+            openDlg.ShowDialog();
+            NewRecipe.VideoPath = openDlg.FileName;
+        }
+
+        private bool isUrlVideoNotTextBoxShowed = true;
+        public bool IsUrlVideoNotTextBoxShowed
+        {
+            get => isUrlVideoNotTextBoxShowed;
+            set
+            {
+                isUrlVideoNotTextBoxShowed = value;
+                OnPropertyChanged(nameof(IsUrlVideoNotTextBoxShowed));
+            }
+
+        }
+        private string webVideoPath;
+        public string WebVideoPath
+        {
+            get => webVideoPath;
+            set
+            {
+                webVideoPath = value;
+                if (!String.IsNullOrEmpty(webVideoPath))
+                {
+                    NewRecipe.VideoPath = webVideoPath;
+                    WebVideoPath = string.Empty;
+                    IsUrlVideoNotTextBoxShowed = true;
+                    OnPropertyChanged(nameof(WebVideoPath));
+                }
+
+            }
+        }
+        private string webImagePath;
+        public string WebImagePath
+        {
+            get => webImagePath;
+            set
+            {
+                webImagePath = value;
+                if (!String.IsNullOrEmpty(webImagePath))
+                {
+                    RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = webImagePath, ImageDescription = "Шаг " + NewRecipe.Images.Count.ToString() });
+                    WebImagePath = string.Empty;
+                    OnPropertyChanged(nameof(webImagePath));
+                }
+
+            }
+        }
+
+        private ObservableCollection<RecipeImageDTO> recipeAddedImages;
+        public ObservableCollection<RecipeImageDTO> RecipeAddedImages
+       {
+            get => recipeAddedImages??(recipeAddedImages=new ObservableCollection<RecipeImageDTO>());
+            set
+            {
+                recipeAddedImages = value;
+                OnPropertyChanged(nameof(RecipeAddedImages));
+            }
+        }
+
+
         private ICommand addIngredientCommand;
         public ICommand AddIngredientCommand
         {
@@ -111,25 +246,7 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
-        private void AddImage()
-        {
-            //check boc
-            //if local than save to image folder
-            //if from web
-            //save only url
-            //it is for stackpanel image view https://stackoverflow.com/questions/34557400/how-do-i-add-multiple-images-in-stackpanel-wpf-from-folder
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
-            openFileDialog.FileName = "Image";
-            openFileDialog.DefaultExt = ".png";
-            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            var result = openFileDialog.ShowDialog();
-            if (result == true)
-            {
-                NewRecipe.Images.Add(new RecipeImageDTO { ImagePath = openFileDialog.FileName});
-                NewRecipe.ImagePath = NewRecipe.Images.FirstOrDefault().ImagePath;
-            }
 
-        }
         private IngredientDTO newIngredient;
         public IngredientDTO NewIngredient
         {
@@ -155,27 +272,6 @@ namespace BancedHealthyDiet.ViewModels
                 AllProducts = new ObservableCollection<ProductDTO>(productLogic.GetProductsByQuery(searchText));
                 searchText = NewIngredient.Name??String.Empty;
                 OnPropertyChanged(nameof(searchText));
-            }
-        }
-        private string selectedImageSource;
-        public string SelectedImageSource
-        {
-            get => selectedImageSource;
-            set
-            {
-                selectedImageSource = value;
-                OnPropertyChanged(nameof(selectedImageSource));
-            }
-        }
-
-        private string selecteVideoSource;
-        public string SelecteVideoSource
-        {
-            get => selecteVideoSource;
-            set
-            {
-                selecteVideoSource = value;
-                OnPropertyChanged(nameof(selecteVideoSource));
             }
         }
         public ObservableCollection<CategoryDTO> AllCategories { get; private set; }
@@ -210,6 +306,7 @@ namespace BancedHealthyDiet.ViewModels
             set
             {
                 ingredientsList = value;
+                OnPropertyChanged(nameof(IngredientsList));
             }
         }
         private List<int> countOfServingsList;

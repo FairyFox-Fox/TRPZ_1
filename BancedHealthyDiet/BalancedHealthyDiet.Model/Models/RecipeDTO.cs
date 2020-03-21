@@ -1,14 +1,16 @@
 ﻿using BalancedHealthyDiet.Model.Integration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class RecipeDTO
+    public class RecipeDTO : INotifyPropertyChanged
     {
+       
         private Guid id;
         public Guid Id
         {
@@ -21,6 +23,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 id = value;
+                OnPropertyChanged(nameof(Id));
             }
         }
         private string imagePath;
@@ -32,6 +35,7 @@ namespace BancedHealthyDiet.Models
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("ImagePath is not valid");
                 imagePath = value;
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
         private string recipeName;
@@ -40,9 +44,10 @@ namespace BancedHealthyDiet.Models
             get => recipeName;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("RecipeName is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("RecipeName is not valid");
                 recipeName = value;
+                OnPropertyChanged(nameof(RecipeName));
             }
         }
         private string shortDescription;
@@ -51,9 +56,10 @@ namespace BancedHealthyDiet.Models
             get => shortDescription;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("ShortDescription is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("ShortDescription is not valid");
                 shortDescription = value;
+                OnPropertyChanged(nameof(ShortDescription));
             }
         }
         private List<IngredientDTO> ingredients;
@@ -67,6 +73,7 @@ namespace BancedHealthyDiet.Models
                 //else if (value.Count() <= 0)
                 //    throw new ArgumentOutOfRangeException("Ingredients");
                 ingredients = value;
+                OnPropertyChanged(nameof(ingredients));
             }
         }
         private double totalWeight;
@@ -75,21 +82,23 @@ namespace BancedHealthyDiet.Models
             get => (totalWeight = GetTotalWeight(ingredients));
             set
             {
-                if (value > 0)
+                //if (value > 0)
                     totalWeight = value;
-                else
-                    throw new ArgumentOutOfRangeException("TotalWeight");
+                OnPropertyChanged(nameof(TotalWeight));
+                //else
+                //    throw new ArgumentOutOfRangeException("TotalWeight");
             }
         }
         private NutritionDTO totalNutrition;
         public NutritionDTO TotalNutrition
         {
-            get => totalNutrition??(totalNutrition = new NutririonCalculator().CalculateTotalNutrition(this));
+            get => totalNutrition;//??(totalNutrition = new NutririonCalculator().CalculateTotalNutrition(this))
             set
             {
-                if(value==null)
-                    throw new ArgumentNullException("TotalNutritionr");
+                //if(value==null)
+                //    throw new ArgumentNullException("TotalNutritionr");
                 totalNutrition = value;
+                OnPropertyChanged(nameof(TotalNutrition));
             }
         }
         public Guid CategoryId { get; set; }
@@ -110,9 +119,10 @@ namespace BancedHealthyDiet.Models
             get => videoPath;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("VideoPath is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("VideoPath is not valid");
                 videoPath = value;
+                OnPropertyChanged(nameof(VideoPath));
             }
         }
         private string notes;
@@ -121,9 +131,10 @@ namespace BancedHealthyDiet.Models
             get => notes;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("Notes is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("Notes is not valid");
                 notes = value;
+                OnPropertyChanged(nameof(Notes));
             }
         }
         private string instruction;
@@ -132,9 +143,10 @@ namespace BancedHealthyDiet.Models
             get => instruction;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("Instruction is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("Instruction is not valid");
                 instruction = value;
+                OnPropertyChanged(nameof(Instruction));
             }
         }
         public bool? IsFavourite { get; set; }
@@ -144,9 +156,10 @@ namespace BancedHealthyDiet.Models
             get => source;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("Source  is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("Source  is not valid");
                 source = value;
+                OnPropertyChanged(nameof(Source));
             }
         }
         private int? rating;
@@ -155,10 +168,10 @@ namespace BancedHealthyDiet.Models
             get => rating;
             set
             {
-                if (value > 0 && value<=5)
+                //if (value > 0 && value<=5)
                     rating = value;
-                else
-                    throw new ArgumentOutOfRangeException("Rating");
+                //else
+                //    throw new ArgumentOutOfRangeException("Rating");
             }
         }
         private int? numberOfServings;
@@ -167,10 +180,10 @@ namespace BancedHealthyDiet.Models
             get => numberOfServings;
             set
             {
-                if (value > 0 )
+                //if (value > 0 )
                     numberOfServings = value;
-                else
-                    throw new ArgumentOutOfRangeException("NumberOfServings");
+                //else
+                //    throw new ArgumentOutOfRangeException("NumberOfServings");
             }
         }
         private Int64 cookTime;
@@ -179,10 +192,11 @@ namespace BancedHealthyDiet.Models
             get => cookTime;
             set
             {
-                if (value > 0)
+                //if (value > 0)
                     cookTime = value;
-                else
-                    throw new ArgumentOutOfRangeException("CookTime");
+                OnPropertyChanged(nameof(CookTime));
+                //else
+                //    throw new ArgumentOutOfRangeException("CookTime");
             }
         }
         public TimeSpan CookTimeValid
@@ -199,6 +213,7 @@ namespace BancedHealthyDiet.Models
             //    if (value == null)
             //        throw new ArgumentNullException("Images");
                 images = value;
+                OnPropertyChanged(nameof(Images));
             }
         }
 
@@ -211,7 +226,15 @@ namespace BancedHealthyDiet.Models
         }
         public RecipeDTO()
         {
-                
+            id = Guid.NewGuid();
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
         public RecipeDTO(Guid id, string imagePath, string recipeName, string shortDescription, List<IngredientDTO> ingredients, double totalWeight,  string videoPath, string notes, string instruction,
             bool? isFavourite, string source, int? rating, int? numberOfServings, 

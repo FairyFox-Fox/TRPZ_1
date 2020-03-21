@@ -74,8 +74,9 @@ namespace BancedHealthyDiet.Data.Repositories
                     throw new ArgumentNullException("entity");
                 if (appContext == null || isDisposed)
                     appContext = new BalanceDietAppContext();
-                Entities.AsNoTracking();
-                appContext.Entry(entity).State = EntityState.Deleted;
+                // Entities.AsNoTracking();
+                Entities.Remove(entity);
+                //appContext.Entry(entity).State = EntityState.Deleted;
                 //Context.SaveChanges(); commented out call to SaveChanges as Context save changes will be called with Unit of work
             }
             catch (DbEntityValidationException dbExeption)

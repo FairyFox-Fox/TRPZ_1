@@ -37,6 +37,17 @@
 
         </lvc:CartesianChart>
         <Button  Grid.Row="1"  Grid.Column="0" Content="Return" 
-                Command="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}" />
+                Command="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}" >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Command" Value="{Binding command2}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=someCheckBox}" Value="True">
+                            <Setter Property="Command" Value="{Binding command1}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

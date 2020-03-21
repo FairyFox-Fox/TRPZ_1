@@ -46,11 +46,11 @@ namespace BancedHealthyDiet.Models
         private double countOfRecipes;
         public double CountOfRecipes
         {
-            get => countOfRecipes;
+            get => countOfRecipes = Recipes.Count;
             set
             {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException("CountOfRecipes");
+                //if (value < 0)
+                //    throw new ArgumentOutOfRangeException("CountOfRecipes");
                 countOfRecipes = value;
             }
         }

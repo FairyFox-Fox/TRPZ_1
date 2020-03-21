@@ -120,10 +120,12 @@
                         <Button Grid.Column="0" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Background="#e999c9" Width="40" Height="40" ToolTip="MaterialDesignFloatingActionAccentButton">
                             <materialDesign:PackIcon Kind="PlayBox" Height="24" Width="24" />
                         </Button>
-                        <Button Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Background="#e999c9" Width="40" Height="40" ToolTip="MaterialDesignFloatingActionAccentButton">
+                        <Button Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Background="#e999c9"
+                                Width="40" Height="40" ToolTip="MaterialDesignFloatingActionAccentButton">
                             <materialDesign:PackIcon Kind="RoomServiceOutline" Height="24" Width="24" />
                         </Button>
-                        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Background="#e999c9" Width="40" Height="40" ToolTip="MaterialDesignFloatingActionAccentButton">
+                        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Background="#e999c9" Width="40" 
+                                Height="40" ToolTip="MaterialDesignFloatingActionAccentButton">
                             <materialDesign:PackIcon Kind="AvTimer" Height="24" Width="24" />
                         </Button>
                         <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"> Видео</TextBlock>

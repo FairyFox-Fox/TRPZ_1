@@ -25,15 +25,26 @@ namespace BancedHealthyDiet.Models
             get => imagePath;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("ImagePath is not valid");
+                //if (String.IsNullOrEmpty(value))
+                    //throw new ArgumentException("ImagePath is not valid");
                 imagePath = value;
+            }
+        }
+        private string imageDescription;
+        public string ImageDescription
+        {
+            get => imageDescription;
+            set
+            {
+                //if (String.IsNullOrEmpty(value))
+                //throw new ArgumentException("ImagePath is not valid");
+                imageDescription = value;
             }
         }
 
         public RecipeImageDTO()
         {
-           
+            id = Guid.NewGuid();
         }
         public RecipeImageDTO(Guid id, string imagePath)
         {

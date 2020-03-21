@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BancedHealthyDiet.Views"
              xmlns:customControls="clr-namespace:BancedHealthyDiet.CustomControls"
+             xmlns:converter="clr-namespace:BancedHealthyDiet.Converters"
+             xmlns:view ="clr-namespace:BancedHealthyDiet"
              xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
@@ -13,6 +15,23 @@
     <UserControl.Resources>
 
         <ResourceDictionary>
+            <DataTemplate x:Key="listOfRecipeImagesTemplate">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                    <materialDesign:Card Width="120" Height="Auto" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImagePath}" Height="Auto" Grid.Row="0" Width="Auto" Stretch="UniformToFill" Margin="0,0,2,0" >
+                            </Image>
+                            <TextBlock FontWeight="Bold" Grid.Row="1"  Width="Auto" Foreground="#FF69033A"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Center"
+                                       FontSize="12" ><Run Text="{Binding ImageDescription}"/></TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+            </DataTemplate>
+            <converter:BoolToVisibility x:Key="BoolToVisibilty"/>
             <ControlTemplate x:Key="validationTemplate">
                 <StackPanel>
                     <!-- Placeholder for the TextBox itself -->
@@ -86,15 +105,37 @@
                                            HorizontalAlignment="Left" Margin="12,4,0,0" Foreground="#FF69033A" x:Name="BasicRatingBar">
                 </materialDesign:RatingBar>
                 <Separator/>
-                <Button BorderBrush="LightGray" Style="{StaticResource MaterialDesignOutlinedButton}"  Command="{Binding AddCommand}" CommandParameter="{Binding NewRecipe}" ToolTip="Нажмите что бы сохранить рецепт" >
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ContentSaveOutline" Height="24" Foreground="#FF69033A"  Width="24" />
-                            <TextBlock Text="Сохранить" Foreground="#FF69033A"  />
-                        </StackPanel>
+                <Button BorderBrush="LightGray"   Command="{Binding AddCommand}" CommandParameter="{Binding NewRecipe}" 
+                        ToolTip="Нажмите что бы сохранить рецепт" >
+                    <!--<Button.Content>
+                        <Style TargetType="Button">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ContentSaveOutline" Height="24" Foreground="#FF69033A"  Width="24" />
+                                <TextBlock Text="Сохранить" Foreground="#FF69033A"  />
+                            </StackPanel>//Style="{StaticResource MaterialDesignOutlinedButton}"
+                    </Button.Content>-->
+                    <!--Command="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}" >-->
 
-                    </Button.Content>
-
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="ContentSaveOutline" Height="24" Foreground="#FF69033A"  Width="24" />
+                                            <TextBlock Text="Сохранить" Foreground="#FF69033A"  />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Command" Value="{Binding AddCommand }"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsAdded}" Value="True">
+                                    <Setter Property="Command" Value="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
             </StackPanel>
         </Border>
@@ -117,14 +158,14 @@
                     <ComboBox   MinWidth="50" Margin="4,0,0,0"  VerticalAlignment="Center" 
                                 SelectedValue="{Binding NewIngredient.MeasurementUnit,Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
                         NotifyOnValidationError=true}" 
-                                materialDesign:HintAssist.Hint="(editable)" IsEditable="True" ItemsSource="{Binding Measurements}" HorizontalAlignment="Left" >
+                                materialDesign:HintAssist.Hint="г." IsEditable="True" ItemsSource="{Binding Measurements}" HorizontalAlignment="Left" >
                     </ComboBox>
                     <Button VerticalAlignment="Center" Command="{Binding AddIngredientCommand}" CommandParameter="{Binding NewIngredient}" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
                             ToolTip="Нажмите что-бы добавить ингредиент" Width="30" Height="30" Background="#e999c9">
                         <materialDesign:PackIcon Kind="Add"  Height="24" Width="24" />
                     </Button>
                 </StackPanel>
-                <DataGrid MinWidth="220" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=IngredientsList, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
+                <DataGrid MinWidth="220" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=IngredientsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true,
                     NotifyOnValidationError=true, 
                                 IsAsync=True}">
                     <DataGrid.Columns>
@@ -155,11 +196,11 @@
                     <TextBlock  VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1"  Background="#ffdeff"  FontWeight="Bold">на 100 гр.</TextBlock>
                     <Separator Grid.Row="1" Grid.ColumnSpan="3"  />
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Калорийность(Ккал)</TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Calories,ValidatesOnDataErrors=true, 
-                        NotifyOnValidationError=true,Mode=TwoWay }"  HorizontalAlignment="Right"></TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"   BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Calories,ValidatesOnDataErrors=true, UpdateSourceTrigger=PropertyChanged,
+                        NotifyOnValidationError=true,Mode=OneWay }"  HorizontalAlignment="Right"></TextBox>
                     <Separator Grid.Row="3" Grid.ColumnSpan="2"  />
                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"   FontWeight="Bold" HorizontalAlignment="Left">Белков(гр)</TextBlock>
-                    <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Proteins, ValidatesOnDataErrors=true, 
+                    <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" IsReadOnly="False" BorderBrush="Transparent" Text="{Binding Path=NewRecipe.TotalNutrition.Proteins, ValidatesOnDataErrors=true, 
                         NotifyOnValidationError=true, Mode=TwoWay }"   HorizontalAlignment="Right"></TextBox>
                     <Separator Grid.Row="5" Grid.ColumnSpan="2"  />
                     <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  FontWeight="Bold" HorizontalAlignment="Left">Жиров(гр)</TextBlock>
@@ -186,22 +227,47 @@
                 <xctk:SplitButton Content="Добавить фото" FontSize="14" Grid.Column="1"  HorizontalAlignment="Left" Background="Transparent" Width="180" Margin="16,0,0,0" VerticalAlignment="Top">
                     <xctk:SplitButton.DropDownContent>
                         <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                            <MenuItem Header="Добавить с компьютера" />
-                            <MenuItem Header="Добавить с интернета" />
+                            <MenuItem Header="Добавить с компьютера" Command="{Binding AddImageFromComputer}" />
+                            <MenuItem Header="Добавить с интернета" Command="{Binding AddImageFromInternet}" />
                         </StackPanel>
                     </xctk:SplitButton.DropDownContent>
                 </xctk:SplitButton>
-                <TextBlock Text="Видеорецепт:"  Width="Auto" Height="Auto" FontSize="22" Foreground="#FF69033A"  FontWeight="Bold" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
+                <TextBox   MinWidth="180"
+                         materialDesign:HintAssist.Hint="Вставте ссылку на изображение" 
+                         Visibility="{Binding IsUrlImageNotTextBoxShowed, 
+                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="14" Text="{Binding WebImagePath, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=true,
+                    NotifyOnValidationError=true}">
+                </TextBox>
+                    <ListView  Margin="10,0,0,0" Grid.Row="1"  x:Name="calalogList" 
+                           ItemsSource="{Binding RecipeAddedImages, Mode=TwoWay}"
+                           ItemTemplate="{StaticResource listOfRecipeImagesTemplate}"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+                <Separator/>
+                <TextBlock Text="Видеорецепт:"  Width="Auto" Height="Auto" FontSize="22" Foreground="#FF69033A"  FontWeight="Bold" Margin="16" 
+                           materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <xctk:SplitButton Content="Добавить видео" Grid.Column="1" HorizontalAlignment="Left" Background="Transparent" Width="180" Margin="16,0,0,0" VerticalAlignment="Top">
                     <xctk:SplitButton.DropDownContent>
                         <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                            <MenuItem Header="Добавить с компьютера" />
-                            <MenuItem Header="Добавить с интернета" />
+                            <MenuItem Header="Добавить с компьютера" Command="{Binding AddVideoFromComputer}"  />
+                            <MenuItem Header="Добавить с интернета" Command="{Binding AddVideoFromInternet }" />
                         </StackPanel>
                     </xctk:SplitButton.DropDownContent>
                 </xctk:SplitButton>
-
+                <TextBox   MinWidth="180"
+                         materialDesign:HintAssist.Hint="Вставте ссылку на видео" 
+                         Visibility="{Binding IsUrlVideoNotTextBoxShowed, 
+                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="14" Text="{Binding WebVideoPath, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true,
+                    NotifyOnValidationError=true}"/>
             </StackPanel>
+          
 
         </ScrollViewer>
 

@@ -51,7 +51,7 @@ namespace BancedHealthyDiet.Models
 
         public IngredientDTO()
         {
-                
+            Id = Guid.NewGuid();
         }
         public IngredientDTO(Guid id,  string name,double weight, string measurementUnit)
         {

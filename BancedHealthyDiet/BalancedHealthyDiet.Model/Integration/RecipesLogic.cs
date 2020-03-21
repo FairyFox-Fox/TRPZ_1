@@ -50,20 +50,22 @@ namespace BalancedHealthyDiet.Model.Integration
                     var recipe = mapper.Map<Recipe>(recipeDTO);
                     foreach (var ingredient in recipe?.Ingredients)
                     {
+                    ingredient.ProductId = ingredient.Product?.Id;
+                    ingredient.Product = null;
                     //dataset.Products.Insert(ingredient.Products);
                     //foreach (var product in ingredient?.Products)
                     //{
-                       dataset.Products.Delete(ingredient.Product);
-                        dataset.Save();
+                       //dataset.Products.Delete(ingredient.Product);
+                       // dataset.Save();
                     //}
                     dataset.Ingredients.Insert(ingredient);
                     }
                     dataset.Save();
-                    foreach (var recipeImage in recipe?.Images)
-                    {
-                        dataset.RecipeImages.Insert(recipeImage);
-                    }
-                    dataset.Save();
+                    //foreach (var recipeImage in recipe?.Images)
+                    //{
+                    //    dataset.RecipeImages.Insert(recipeImage);
+                    //}
+                    //dataset.Save();
                     dataset.Recipes.Insert(recipe);
                     dataset.Save();
                     dataset.Commit();
