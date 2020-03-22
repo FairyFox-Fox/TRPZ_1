@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202003211549038_CahngeIngredProdRelationship.designer.cs">
       <DependentUpon>202003211549038_CahngeIngredProdRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003221708266_AddProductTable.cs" />
+    <Compile Include="Migrations\202003221708266_AddProductTable.designer.cs">
+      <DependentUpon>202003221708266_AddProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003211549038_CahngeIngredProdRelationship.resx">
       <DependentUpon>202003211549038_CahngeIngredProdRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003221708266_AddProductTable.resx">
+      <DependentUpon>202003221708266_AddProductTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -38,7 +38,7 @@
                 </Grid>
             </DataTemplate>
             <converters:RecipeImageConverter x:Key="RecipeImageConvert"/>
-            <!--<converters:ServingsConverter x:Key="ServingsConverter"/>-->
+            <converters:BoolToVisibility x:Key="BoolToVisibilty"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
@@ -196,7 +196,18 @@
                 <Separator />
                 <TextBlock Text="Видео:"  Width="Auto" Height="Auto" FontSize="22" Foreground="#FF69033A"  FontWeight="Bold" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"></TextBlock>
                 <!--<MediaElement Source="{Binding  SelectedRecipe.VideoPath}" Name="mePlayer" Stretch="None"  />-->
-                <Separator />
+
+                <MediaElement Name="VideoControl" Width="200" Height ="400"
+                    Visibility="{Binding IsVideoFromCompElemNotVisisble, 
+                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" LoadedBehavior="Play"
+                  Source="{Binding SelectedRecipe.VideoPath}" >
+                    </MediaElement>
+                <WebBrowser Width="200" Height ="400" Visibility="{Binding IsVideoFromInternetElemNotVisisble, 
+                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" 
+                                Source="{Binding SelectedRecipe.VideoPath }">
+                    
+                </WebBrowser>
+                    <Separator />
             </StackPanel>
         </ScrollViewer>
 

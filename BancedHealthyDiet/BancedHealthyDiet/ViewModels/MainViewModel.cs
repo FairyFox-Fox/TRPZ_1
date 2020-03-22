@@ -35,6 +35,18 @@ namespace BancedHealthyDiet.ViewModels
         {
 
         }
+        private ICommand goToCategories;
+        public ICommand GoToCategories
+        {
+            get
+            {
+                Messenger.Default.Register<List<RecipeDTO>>(this, HandleSelectedRecipe);
+                if (goToCategories == null)
+                    goToCategories = new RelayCommand(action => CurrentPageViewModel = new CurrentCategoryRecipeViewModel(data,categoryLogic));
+                return goToCategories;
+            }
+        }
+        
         private ICommand goToTotalNutrition;
         public ICommand GoToTotalNutrition
         {

@@ -21,7 +21,8 @@ namespace BalancedHealthyDiet.Model.Integration
 {
     public class WebProductParser
     {
-        const string URL = "http://www.calorizator.ru/product";
+        const string DOMEN = "https://1000.menu";
+        const string URL = "https://1000.menu/food-table";
         private readonly List<string> listUrl;
         private readonly IUnitOfWork dataset;
         private readonly IMapper mapper;
@@ -39,7 +40,7 @@ namespace BalancedHealthyDiet.Model.Integration
             {
                 var htmlWeb = new HtmlWeb();
                 var htmlDoc = htmlWeb.Load(URL);
-                var divNode = htmlDoc.DocumentNode.SelectNodes("//div[@class='node-content']/ul[@class='product']/li/a");
+                var divNode = htmlDoc.DocumentNode.SelectNodes("//div[@class='ib catalog_tree hidden']/div[@class='podcatalog']/div[@class='name']/a");
                 foreach (var node in divNode)
                 {
                     var valueUrl = node.Attributes["href"].Value;
@@ -48,21 +49,21 @@ namespace BalancedHealthyDiet.Model.Integration
                 var tableLists = new List<List<string>>();
                 foreach (var url in listUrl)
                 {
-                    var htmlUrlDocument = htmlWeb.Load("http://www.calorizator.ru/" + url);
+                    var htmlUrlDocument = htmlWeb.Load(DOMEN + url);
                     var tableOfProducts = htmlUrlDocument.DocumentNode
-                        .SelectSingleNode("//table[@class='views-table sticky-enabled cols-6']")?.Descendants("tr")
+                        .SelectSingleNode("//table[@id='food-table']")?.Descendants("tr")
                             .Skip(1)
                             .Where(tr => tr.Elements("td").Count() > 1)
                             .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList());
                     if(tableOfProducts!=null)
                         tableLists.AddRange(tableOfProducts);
-                    ; 
+               
                 }
                 tableLists.ForEach(line =>
                 {
                     line.RemoveAll(x => String.IsNullOrEmpty(x));
                     var lineArray = line.ToArray();
-                    if(lineArray.Length==5)
+                    if(lineArray.Length==6)
                     {
                         var product = TryGetProduct(lineArray[0], lineArray[2], lineArray[3], lineArray[1], lineArray[4]);
                         if(product!=null)
@@ -74,7 +75,7 @@ namespace BalancedHealthyDiet.Model.Integration
                 });
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex, "Error when parsing list of products for current criteria");
                 Log.CloseAndFlush();

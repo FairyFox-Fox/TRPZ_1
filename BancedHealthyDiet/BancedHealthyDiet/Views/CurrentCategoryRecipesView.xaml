@@ -40,7 +40,6 @@
         <StackPanel Orientation="Horizontal"  Background="#FF6D5864">
             <Button Content="{materialDesign:PackIcon KeyboardBackspace}" ToolTip="Назад"  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
             <TextBlock Text="{Binding SelectedCategory.Name}" Height="Auto" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="Auto" FontSize="16" />
-            <!--{Binding SelectedCategory.Name}-->
         </StackPanel>
 
         <ListView x:Name="calalogList"  Grid.Row="1" ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" ItemTemplate="{StaticResource listTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0.001,0">

@@ -45,7 +45,20 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal"  Background="#FF6D5864">
+            <Button Content="{materialDesign:PackIcon KeyboardBackspace}" ToolTip="Назад"  Height="40" Width="40" 
+                    Command="{Binding DataContext.GoToCategories, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+            <TextBlock Text="Форма добавления рецепта" Height="Auto" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="Auto" FontSize="16" />
+        </StackPanel>
+
+    
+    <Grid Grid.Row="1" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -54,7 +67,8 @@
             <StackPanel Orientation="Vertical" Grid.Column="0" >
                 <TextBlock Text="Название" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold" HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
                 <Separator/>
-                <TextBox Text="{Binding NewRecipe.RecipeName, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, NotifyOnValidationError=true}" x:Name="NameTextBox" Width="180"   Margin="12,4,0,0" materialDesign:HintAssist.Hint="Салат с креветками">
+                <TextBox Text="{Binding NewRecipe.RecipeName, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, 
+                    NotifyOnValidationError=true}" x:Name="NameTextBox" Width="180"   Margin="12,4,0,0" materialDesign:HintAssist.Hint="Салат с креветками">
                 </TextBox>
                 <TextBlock Text="Категория" Foreground="#FF69033A" FontSize="12"  FontWeight="Bold"
                            HorizontalAlignment="Left" Margin="12,4,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"/>
@@ -107,15 +121,6 @@
                 <Separator/>
                 <Button BorderBrush="LightGray"   Command="{Binding AddCommand}" CommandParameter="{Binding NewRecipe}" 
                         ToolTip="Нажмите что бы сохранить рецепт" >
-                    <!--<Button.Content>
-                        <Style TargetType="Button">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ContentSaveOutline" Height="24" Foreground="#FF69033A"  Width="24" />
-                                <TextBlock Text="Сохранить" Foreground="#FF69033A"  />
-                            </StackPanel>//Style="{StaticResource MaterialDesignOutlinedButton}"
-                    </Button.Content>-->
-                    <!--Command="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}" >-->
-
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="ContentTemplate">
@@ -128,12 +133,11 @@
                                     </DataTemplate>
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="Command" Value="{Binding AddCommand }"/>
-                            <Style.Triggers>
+                            <!--<Style.Triggers>
                                 <DataTrigger Binding="{Binding IsAdded}" Value="True">
                                     <Setter Property="Command" Value="{Binding DataContext.GoToRecipeCalculator, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"/>
                                 </DataTrigger>
-                            </Style.Triggers>
+                            </Style.Triggers>-->
                         </Style>
                     </Button.Style>
                 </Button>
@@ -149,7 +153,7 @@
                                IsTextSearchCaseSensitive="False"
                                StaysOpenOnEdit="True"
                                SelectedValue="{Binding NewIngredient.Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=true, NotifyOnValidationError=true}"
-                               ItemsSource="{Binding AllProducts, UpdateSourceTrigger=LostFocus}"  DisplayMemberPath="ProductName" Text="{Binding SearchText ,Mode=TwoWay}"  >
+                               ItemsSource="{Binding AllProducts, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  DisplayMemberPath="ProductName" Text="{Binding SearchText ,Mode=TwoWay}"  >
                     </ComboBox>
 
                     <TextBox  MinWidth="50" VerticalAlignment="Center"  Text="{Binding Path=NewIngredient.Weight, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=true, 
@@ -271,5 +275,6 @@
 
         </ScrollViewer>
 
+    </Grid>
     </Grid>
 </UserControl>

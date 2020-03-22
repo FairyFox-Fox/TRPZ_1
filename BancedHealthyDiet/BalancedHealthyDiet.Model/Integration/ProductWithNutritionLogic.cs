@@ -41,7 +41,7 @@ namespace BalancedHealthyDiet.Model.Integration
             {
                 if (!String.IsNullOrEmpty(query) )
                 {
-                    var products = dataset.Products.GetAll().Where(x => x.ProductName.ToUpperInvariant().Contains(query));
+                    var products = dataset.Products.GetAll().Where(x => x.ProductName.ToLower().Contains(query.ToLower()));
                     productsDtoList = products.Select(product => mapper.Map<ProductDTO>(product)).ToList();
                 }
                 else

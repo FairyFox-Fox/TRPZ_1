@@ -43,7 +43,8 @@ namespace BancedHealthyDiet.ViewModels
             NewRecipe = new RecipeDTO();
             IngredientsList = new ObservableCollection<IngredientDTO>();
             NewIngredient = new IngredientDTO();
-            //CurrentPageViewModel = new CategoriesViewModel(categoryLogic);
+            RecipeAddedImages = new ObservableCollection<RecipeImageDTO>();
+            AllProducts = new ObservableCollection<ProductDTO>();
         }
 
         private bool isAdded = false;
@@ -95,7 +96,7 @@ namespace BancedHealthyDiet.ViewModels
             var result = openFileDialog.ShowDialog();
             if (result == true)
             {
-                RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = openFileDialog.FileName, ImageDescription = "Шаг " + NewRecipe.Images.Count.ToString() });
+                RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = openFileDialog.FileName, ImageDescription = "Шаг " + RecipeAddedImages.Count.ToString() });
             }
         }
         private ICommand addVideoFromInternet;
@@ -161,7 +162,7 @@ namespace BancedHealthyDiet.ViewModels
                 webImagePath = value;
                 if (!String.IsNullOrEmpty(webImagePath))
                 {
-                    RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = webImagePath, ImageDescription = "Шаг " + NewRecipe.Images.Count.ToString() });
+                    RecipeAddedImages.Add(new RecipeImageDTO { ImagePath = webImagePath, ImageDescription = "Шаг " + RecipeAddedImages.Count.ToString() });
                     WebImagePath = string.Empty;
                     OnPropertyChanged(nameof(webImagePath));
                 }

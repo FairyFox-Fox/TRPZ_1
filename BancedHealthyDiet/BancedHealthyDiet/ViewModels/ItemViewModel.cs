@@ -25,6 +25,7 @@ namespace BancedHealthyDiet.ViewModels
             set
             {
                 selectedRecipe = value;
+                
                 OnPropertyChanged("SelectedRecipe");
 
             }
@@ -75,6 +76,42 @@ namespace BancedHealthyDiet.ViewModels
             }
         }
 
+       
+
+        private bool isVideoFromCompElemNotVisisble = true;
+        public bool IsVideoFromCompElemNotVisisble
+        {
+            get => isVideoFromCompElemNotVisisble;
+            set
+            {
+                isVideoFromCompElemNotVisisble = value;
+                OnPropertyChanged(nameof(IsVideoFromCompElemNotVisisble));
+            }
+
+        }
+        private bool isVideoFromInternetElemNotVisisble = true;
+        public bool IsVideoFromInternetElemNotVisisble
+        {
+            get => IsVideoFromInternetElemNotVisisble;
+            set
+            {
+                isVideoFromInternetElemNotVisisble = value;
+                OnPropertyChanged(nameof(IsVideoFromInternetElemNotVisisble));
+            }
+
+        }
+        private void CheckVideoSource(string videoPath)
+        {
+            if (videoPath.StartsWith("http"))
+            {
+                IsVideoFromInternetElemNotVisisble = false;
+            }
+            else
+            {
+                IsVideoFromCompElemNotVisisble = false;
+
+            }
+        }
         public struct ImageView
         {
             public string ImagePath { get; set; }
@@ -88,17 +125,14 @@ namespace BancedHealthyDiet.ViewModels
             {
                 this.data = data;
                 SelectedRecipe = recipe;
+                CheckVideoSource(SelectedRecipe.VideoPath);
                 NutritionPer100Gramm = data.CalculateNutritionPer100Gram(SelectedRecipe);
                 this.CurrentCategory = recipeCategoryLogic.GetCategoryByRecipeId(SelectedRecipe.Id);
                 var images = SelectedRecipe.Images;
                 this.ImagesViewsCollection = new ObservableCollection<RecipeImageDTO>(images);
-                var instructions = SelectedRecipe.Instruction.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                var instructions = SelectedRecipe.Instruction?.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 this.CurrentRecipeInstructions = new ObservableCollection<string>(instructions);
             }
-
-
-
-
         }
     }
 }
