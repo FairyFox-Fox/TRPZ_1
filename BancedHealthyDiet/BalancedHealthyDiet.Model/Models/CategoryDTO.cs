@@ -3,23 +3,8 @@ using System.Collections.Generic;
 
 namespace BancedHealthyDiet.Models
 {
-    public class CategoryDTO
+    public class CategoryDTO :BaseModel
     {
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                if (id == Guid.Empty)
-                    return id = Guid.NewGuid();
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
-
         private string imagePath;
         public string ImagePath
         {
@@ -27,6 +12,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 imagePath = value;
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
         private string name;
@@ -39,6 +25,7 @@ namespace BancedHealthyDiet.Models
                     throw new ArgumentNullException("Введите имя категории");
                 else
                     name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
         private double countOfRecipes;
@@ -47,7 +34,10 @@ namespace BancedHealthyDiet.Models
             get => countOfRecipes = Recipes.Count;
             set
             {
+                if (countOfRecipes < 0)
+                    throw new ArgumentOutOfRangeException("Количество рецептов");
                 countOfRecipes = value;
+                OnPropertyChanged(nameof(CountOfRecipes));
             }
         }
         private List<RecipeDTO> recipes;
@@ -56,9 +46,8 @@ namespace BancedHealthyDiet.Models
             get => recipes ?? (recipes = new List<RecipeDTO>());
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException("Recipes");
                 recipes = value;
+                OnPropertyChanged(nameof(Recipes));
             }
         }
 

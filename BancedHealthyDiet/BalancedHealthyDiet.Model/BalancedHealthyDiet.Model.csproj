@@ -108,8 +108,10 @@
     <Compile Include="Integration\ProductWithNutritionLogic.cs" />
     <Compile Include="Integration\WebProductParser.cs" />
     <Compile Include="Integration\RecipeCategoryLogic.cs" />
+    <Compile Include="Interfaces\IBaseModel.cs" />
     <Compile Include="Interfaces\IProductWithNutritionLIogic.cs" />
     <Compile Include="Interfaces\IRecipeCategoryLogic.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CategoryDTO.cs" />
     <Compile Include="Integration\IocLocator.cs" />
     <Compile Include="Models\IngredientDTO.cs" />

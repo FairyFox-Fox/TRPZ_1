@@ -155,7 +155,7 @@
                                SelectedValuePath="ProductName"
                                IsTextSearchCaseSensitive="False"
                                StaysOpenOnEdit="True"
-                               SelectedValue="{Binding NewIngredient.Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged ValidatesOnExceptions=True, NotifyOnValidationError=true}"
+                               SelectedValue="{Binding NewIngredient.Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true}"
                                ItemsSource="{Binding AllProducts, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, Mode=TwoWay}"  DisplayMemberPath="ProductName" Text="{Binding SearchText ,Mode=TwoWay}"  >
                     </ComboBox>
 

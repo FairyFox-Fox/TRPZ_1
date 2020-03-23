@@ -6,22 +6,9 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class IngredientDTO
+    public class IngredientDTO:BaseModel
     {
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                if (id == Guid.Empty)
-                    return id = Guid.NewGuid();
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
+
         private string name;
         public string Name
         {
@@ -32,6 +19,7 @@ namespace BancedHealthyDiet.Models
                     throw new ArgumentNullException("Добавьте название для ингредиента.");
                 else
                     name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
 
@@ -44,6 +32,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Вес ингредиента должен быть больше нуля");
                 weight = value;
+                OnPropertyChanged(nameof(Weight));
             }
         }
 
@@ -70,6 +59,7 @@ namespace BancedHealthyDiet.Models
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Единица измерения ингредиента не указана");
                 measurementUnit = value;
+                OnPropertyChanged(nameof(MeasurementUnit));
             }
         }
 

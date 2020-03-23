@@ -28,7 +28,7 @@ namespace BancedHealthyDiet.ViewModels
     /// </summary>
     public class ViewModelLocator
     {
-        private readonly IOC container;
+        private readonly IContainer container;
         private readonly IocLocator logicLocator;
         public ViewModelLocator()
         {
@@ -48,7 +48,7 @@ namespace BancedHealthyDiet.ViewModels
           .CreateLogger();
             
         }
-        public MainViewModel MainViewModel
+        public IPageViewModel MainViewModel
         {
             get { return container.Resolve<MainViewModel>(); }
 

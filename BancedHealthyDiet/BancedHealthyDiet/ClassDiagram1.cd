@@ -3,7 +3,7 @@
   <Class Name="BancedHealthyDiet.App" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,71 +31,6 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="BancedHealthyDiet.Data.DataComunicator" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>Data\DataComunicator.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="BancedHealthyDiet.Data.DataIntializator" Collapsed="true">
-    <Position X="14.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\DataIntializator.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Data.DataSet" Collapsed="true">
-    <Position X="7.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
-      <FileName>Data\DataSet.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Data.JsonSerializator" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAIAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\JsonSerializator.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="BancedHealthyDiet.Models.Constants" Collapsed="true">
-    <Position X="11" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQAE=</HashCode>
-      <FileName>Models\Constants.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Models.Ingredient" Collapsed="true">
-    <Position X="9.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAgAAAIAAAICAAAAAACAAAAAgAAAAAAAAAgA=</HashCode>
-      <FileName>Models\Ingredient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Models.Nutrition" Collapsed="true">
-    <Position X="14.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAACAAAEQIAABAAEQAAAABAAEAgQABAIBAAAACQAAgA=</HashCode>
-      <FileName>Models\Nutrition.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Models.Product" Collapsed="true">
-    <Position X="7.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAgA=</HashCode>
-      <FileName>Models\Product.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BancedHealthyDiet.Models.Recipe" Collapsed="true">
-    <Position X="9.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgCAAAAQAAAAAAAoAAAAKAAAAAIAAAAGABBABAIAgA=</HashCode>
-      <FileName>Models\Recipe.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BancedHealthyDiet.Properties.Resources" Collapsed="true">
     <Position X="14.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
@@ -119,7 +54,7 @@
   <Class Name="BancedHealthyDiet.ViewModels.MainViewModel" Collapsed="true">
     <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAA=</HashCode>
+      <HashCode>AAAAAWAQAAFAUAAAAEACggAAAIAAQAQAQFEQAQAIIAA=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -133,9 +68,9 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="BancedHealthyDiet.ViewModels.TotalNutritionViewModel" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAMEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>AAgAAAAAEEABAAIAAAACAAAAAAEAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>ViewModels\TotalNutritionViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -143,7 +78,7 @@
   <Class Name="BancedHealthyDiet.ViewModels.ViewModelLocator" Collapsed="true">
     <Position X="11" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAA=</HashCode>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>ViewModels\ViewModelLocator.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -163,26 +98,9 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Interface Name="BancedHealthyDiet.Data.Interfaces.IDataComunicator">
-    <Position X="7.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\Interfaces\IDataComunicator.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="BancedHealthyDiet.Data.Interfaces.ISerializator" Collapsed="true">
-    <Position X="11" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\Interfaces\ISerializator.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="BancedHealthyDiet.Models.IPageViewModel" Collapsed="true">
-    <Position X="9.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\IPageViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
+  <Class Name="DependencyInjectionService.IOC" Collapsed="true">
+    <Position X="15.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

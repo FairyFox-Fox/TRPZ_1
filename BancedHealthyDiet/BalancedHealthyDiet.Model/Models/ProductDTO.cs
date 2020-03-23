@@ -6,22 +6,9 @@ using System.Threading.Tasks;
 
 namespace BancedHealthyDiet.Models
 {
-    public class ProductDTO
+    public class ProductDTO:BaseModel
     {
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                if (id == Guid.Empty)
-                   return id = Guid.NewGuid();
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
+  
         private IEnumerable<IngredientDTO> ingredients;
         public IEnumerable<IngredientDTO> Ingredients
         {

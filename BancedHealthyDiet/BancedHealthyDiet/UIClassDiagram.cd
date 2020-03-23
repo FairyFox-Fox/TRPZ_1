@@ -26,34 +26,27 @@
       <FileName>ViewModels\CurrentCategoryRecipeViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="recipeCategoryData" />
       <Field Name="data" />
+      <Field Name="recipeCategoryData" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="BancedHealthyDiet.ViewModels.ItemViewModel">
     <Position X="5.25" Y="1.75" Width="1.5" />
-    <NestedTypes>
-      <Struct Name="BancedHealthyDiet.ViewModels.ItemViewModel.ImageView" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>ViewModels\ItemViewModel.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AQAAAIEAAAEAAAABAAAAAIAIAAAAAAAAAIAQEACABAA=</HashCode>
+      <HashCode>AQAAAIEAAgEBAAIBAAAAQIAIAAAEAAAAAIAQEAWABAA=</HashCode>
       <FileName>ViewModels\ItemViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="recipeCategoryLogic" />
       <Field Name="data" />
+      <Field Name="recipeCategoryLogic" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="BancedHealthyDiet.ViewModels.MainViewModel" Collapsed="true">
     <Position X="12" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAUAAAAFAQAAAAEACAgAAAAAAQAQAQFEQAQAIIAA=</HashCode>
+      <HashCode>AAAAAWAQAAFAUAAAAEACggAAAIAAQAQAQFEQAQAIIAA=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -87,7 +80,6 @@
       <FileName>ViewModels\ViewModelLocator.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="container" />
       <Field Name="logicLocator" />
       <Property Name="MainViewModel" />
     </ShowAsAssociation>
@@ -100,7 +92,7 @@
     <Position X="15.25" Y="4.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Interface Name="BancedHealthyDiet.ViewModels.IPageViewModel" Collapsed="true">
+  <Interface Name="BancedHealthyDiet.ViewModels.IPageViewModel">
     <Position X="12" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

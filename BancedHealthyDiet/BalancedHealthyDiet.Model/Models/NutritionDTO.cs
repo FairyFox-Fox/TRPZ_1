@@ -3,22 +3,8 @@ using System.Collections.Generic;
 
 namespace BancedHealthyDiet.Models
 {
-    public class NutritionDTO
+    public class NutritionDTO:BaseModel
     {
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                if (id == Guid.Empty)
-                    return id = Guid.NewGuid();
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
 
         private double proteins;
         public double Proteins
@@ -26,7 +12,10 @@ namespace BancedHealthyDiet.Models
             get => proteins;
             set
             {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Белки");
                 proteins = value;
+                OnPropertyChanged(nameof(Proteins));
             }
         }
 
@@ -39,6 +28,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Количество углеводов");
                 carbonhydrates = value;
+                OnPropertyChanged(nameof(Carbonhydrates));
             }
         }
 
@@ -51,6 +41,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Количество жиров");
                 fats = value;
+                OnPropertyChanged(nameof(Fats));
             }
         }
 
@@ -63,6 +54,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Количество витаминов");
                 vitamins = value;
+                OnPropertyChanged(nameof(Vitamins));
             }
         }
 
@@ -75,6 +67,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Количество минералов");
                 minerals = value;
+                OnPropertyChanged(nameof(Minerals));
             }
         }
 
@@ -87,6 +80,7 @@ namespace BancedHealthyDiet.Models
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Количество калорий");
                 calories = value;
+                OnPropertyChanged(nameof(Calories));
             }
         }
 

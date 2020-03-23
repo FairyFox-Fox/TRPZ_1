@@ -2,22 +2,8 @@
 
 namespace BancedHealthyDiet.Models
 {
-    public class RecipeImageDTO
+    public class RecipeImageDTO:BaseModel
     {
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                if (id == Guid.Empty)
-                    return id = Guid.NewGuid();
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
 
         private string imagePath;
         public string ImagePath
@@ -26,6 +12,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 imagePath = value;
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
         private string imageDescription;
@@ -35,16 +22,17 @@ namespace BancedHealthyDiet.Models
             set
             {
                 imageDescription = value;
+                OnPropertyChanged(nameof(ImageDescription));
             }
         }
 
         public RecipeImageDTO()
         {
-            id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         public RecipeImageDTO(Guid id, string imagePath)
         {
-            this.id = id;
+            this.Id = id;
             this.imagePath = imagePath;
         }
     }

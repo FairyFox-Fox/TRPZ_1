@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DependencyInjectionService
 {
-    public class IOC
+    public class IOC:IContainer
     {
         private readonly IDictionary<Type, DependencyObject> dependencyObjects;
         public IOC()
@@ -77,24 +77,7 @@ namespace DependencyInjectionService
             var constructorInfo = registeredObject.ConcreteType.GetConstructors().First();
             return constructorInfo.GetParameters().Select(parameter => ResolveObject(parameter.ParameterType));
         }
-        private class DependencyObject
-        {
-            private readonly bool isSinglton;
-            public DependencyObject(Type concreteType, bool isSingleton, object instance)
-            {
-                this.isSinglton = isSingleton;
-                this.ConcreteType = concreteType;
-                this.SingletonInstance = instance;
-            }
-            public Type ConcreteType { get; private set; }
-            public object SingletonInstance { get; private set; }
-            public object CreateInstance(params object[] args)
-            {
-                object instance = Activator.CreateInstance(ConcreteType, args);
-                if (isSinglton)
-                    SingletonInstance = instance; return instance;
-            }
-        }
+        
     }
 }
 

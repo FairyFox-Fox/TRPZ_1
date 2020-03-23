@@ -17,8 +17,8 @@ namespace BalancedHealthyDiet.Model.Integration
 {
     public  class IocLocator
     {
-        private readonly IOC container;
-        public IocLocator(IOC container)
+        private readonly IContainer container;
+        public IocLocator(IContainer container)
         {
 
             this.container = container;
