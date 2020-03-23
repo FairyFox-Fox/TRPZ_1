@@ -15,11 +15,11 @@ using Serilog;
 
 namespace BalancedHealthyDiet.Model.Integration
 {
-    public  class RecipesLogic:IRecipeLogic
+    public class RecipesLogic : IRecipeLogic
     {
         IUnitOfWork dataset;
         IMapper mapper;
-        public RecipesLogic(IUnitOfWork dataset,IMapper mapper)
+        public RecipesLogic(IUnitOfWork dataset, IMapper mapper)
         {
             this.dataset = dataset;
             this.mapper = mapper;
@@ -28,13 +28,13 @@ namespace BalancedHealthyDiet.Model.Integration
         public IEnumerable<RecipeDTO> GetRecipes()
         {
             var recipesList = dataset.Recipes.GetAll();
-            var recipes = recipesList.Select(rec=> mapper.Map<RecipeDTO>(rec)).ToList();
+            var recipes = recipesList.Select(rec => mapper.Map<RecipeDTO>(rec)).ToList();
             return recipes;
         }
 
         public IEnumerable<RecipeDTO> GetRecipesByCurrenctCategory(Guid categortId)
         {
-            var recipesList = dataset.Recipes.GetAll().Where(x=>x.CategoryId.ToString()==categortId.ToString());
+            var recipesList = dataset.Recipes.GetAll().Where(x => x.CategoryId.ToString() == categortId.ToString());
             var recipes = recipesList.Select(rec => mapper.Map<RecipeDTO>(rec)).ToList();
             return recipes;
         }
@@ -44,44 +44,32 @@ namespace BalancedHealthyDiet.Model.Integration
         }
         public void AddNewRecipe(RecipeDTO recipeDTO)
         {
-            try
+            var recipe = mapper.Map<Recipe>(recipeDTO);
+            using (var transaction = dataset.CreateTransaction())
             {
-                     dataset.CreateTransaction();
-                    var recipe = mapper.Map<Recipe>(recipeDTO);
+                try
+                {
+                   
                     foreach (var ingredient in recipe?.Ingredients)
                     {
-                    ingredient.ProductId = ingredient.Product?.Id;
-                    ingredient.Product = null;
-                    //dataset.Products.Insert(ingredient.Products);
-                    //foreach (var product in ingredient?.Products)
-                    //{
-                       //dataset.Products.Delete(ingredient.Product);
-                       // dataset.Save();
-                    //}
-                    dataset.Ingredients.Insert(ingredient);
+                        ingredient.ProductId = ingredient.Product?.Id;
+                        ingredient.Product = null;
+                        dataset.Ingredients.Insert(ingredient);
                     }
                     dataset.Save();
-                    //foreach (var recipeImage in recipe?.Images)
-                    //{
-                    //    dataset.RecipeImages.Insert(recipeImage);
-                    //}
-                    //dataset.Save();
                     dataset.Recipes.Insert(recipe);
                     dataset.Save();
                     dataset.Commit();
                     Log.Information("Successfully added ner recipe to databse");
-
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "An error ocurred  when adding new recipe");
+                    Log.CloseAndFlush();
+                    dataset.Rollback();
+                }
             }
-            catch(Exception ex)
-            {
-                Log.Error(ex, "An error ocurred  when adding new recipe");
-                Log.CloseAndFlush();
-                dataset.Rollback();
-            }
-            
         }
-
-       
     }
 }
 
@@ -99,15 +87,15 @@ namespace BalancedHealthyDiet.Model.Integration
 //    ,recipe.RecipeDetails?.Source,recipe.RecipeDetails?.Rating,recipe.RecipeDetails?.NumberOfServings,recipe.RecipeDetails.CookTime, recipeImages);
 //
 
-            //var nutrition = recip.Ingredients.
-            ////var recDto = new RecipeDTO(recip.Id, recip.Images.FirstOrDefault().ImagePath, recip.RecipeName, recip.ShortDescription, recip.Ingredients.Select(ingred => new IngredientDTO(ingred.Id, new ProductDTO(ingred.Products.FirstOrDefault().Id, ingred.Products.FirstOrDefault().ProductName,
-            //    new NutritionDTO(ingred.Products.FirstOrDefault().Nutrition.Id, ingred.Products.FirstOrDefault().Nutrition.Calories, ingred.Products.FirstOrDefault().Nutrition.Minerals, ingred.Products.FirstOrDefault().Nutrition.Vitamins, ingred.Products.FirstOrDefault().Nutrition.Fats
-            //    , ingred.Products.FirstOrDefault().Nutrition.Carbonhydrates, ingred.Products.FirstOrDefault().Nutrition.Proteins))
-            //    , ingred.Weight, ingred.MeasurementUnit)).ToList());
-            //var recipes2 = dataset.Recipes.GetAll().ToList().Select(rec=>new RecipeDTO(rec.Id,rec.Images.FirstOrDefault().ImagePath,rec.RecipeName,rec.ShortDescription,null)).ToList();
-            //var recipes = dataset.Recipes.GetAll().Select(recipe=>new RecipeDTO(recipe.Id, recipe.Images.FirstOrDefault().ImagePath,recipe.RecipeName,recipe.ShortDescription,recipe.Ingredients.
-            //    Select(ingred=>new IngredientDTO(ingred.Id,new ProductDTO(ingred.Products.FirstOrDefault().Id, ingred.Products.FirstOrDefault().ProductName,
-            //    new NutritionDTO(ingred.Products.FirstOrDefault().Nutrition.Id, ingred.Products.FirstOrDefault().Nutrition.Calories, ingred.Products.FirstOrDefault().Nutrition.Minerals, ingred.Products.FirstOrDefault().Nutrition.Vitamins, ingred.Products.FirstOrDefault().Nutrition.Fats
-            //    , ingred.Products.FirstOrDefault().Nutrition.Carbonhydrates, ingred.Products.FirstOrDefault().Nutrition.Proteins))
-            //    , ingred.Weight,ingred.MeasurementUnit)).ToList()));
-            //return recipes;
+//var nutrition = recip.Ingredients.
+////var recDto = new RecipeDTO(recip.Id, recip.Images.FirstOrDefault().ImagePath, recip.RecipeName, recip.ShortDescription, recip.Ingredients.Select(ingred => new IngredientDTO(ingred.Id, new ProductDTO(ingred.Products.FirstOrDefault().Id, ingred.Products.FirstOrDefault().ProductName,
+//    new NutritionDTO(ingred.Products.FirstOrDefault().Nutrition.Id, ingred.Products.FirstOrDefault().Nutrition.Calories, ingred.Products.FirstOrDefault().Nutrition.Minerals, ingred.Products.FirstOrDefault().Nutrition.Vitamins, ingred.Products.FirstOrDefault().Nutrition.Fats
+//    , ingred.Products.FirstOrDefault().Nutrition.Carbonhydrates, ingred.Products.FirstOrDefault().Nutrition.Proteins))
+//    , ingred.Weight, ingred.MeasurementUnit)).ToList());
+//var recipes2 = dataset.Recipes.GetAll().ToList().Select(rec=>new RecipeDTO(rec.Id,rec.Images.FirstOrDefault().ImagePath,rec.RecipeName,rec.ShortDescription,null)).ToList();
+//var recipes = dataset.Recipes.GetAll().Select(recipe=>new RecipeDTO(recipe.Id, recipe.Images.FirstOrDefault().ImagePath,recipe.RecipeName,recipe.ShortDescription,recipe.Ingredients.
+//    Select(ingred=>new IngredientDTO(ingred.Id,new ProductDTO(ingred.Products.FirstOrDefault().Id, ingred.Products.FirstOrDefault().ProductName,
+//    new NutritionDTO(ingred.Products.FirstOrDefault().Nutrition.Id, ingred.Products.FirstOrDefault().Nutrition.Calories, ingred.Products.FirstOrDefault().Nutrition.Minerals, ingred.Products.FirstOrDefault().Nutrition.Vitamins, ingred.Products.FirstOrDefault().Nutrition.Fats
+//    , ingred.Products.FirstOrDefault().Nutrition.Carbonhydrates, ingred.Products.FirstOrDefault().Nutrition.Proteins))
+//    , ingred.Weight,ingred.MeasurementUnit)).ToList()));
+//return recipes;

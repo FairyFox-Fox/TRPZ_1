@@ -26,14 +26,15 @@ namespace BancedHealthyDiet.Models
                 OnPropertyChanged(nameof(Id));
             }
         }
+
         private string imagePath;
         public string ImagePath
         {
             get => imagePath??(imagePath=Images.FirstOrDefault()?.ImagePath);
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("ImagePath is not valid");
+                //if (String.IsNullOrEmpty(value))
+                //    throw new ArgumentException("ImagePath is not valid");
                 imagePath = value;
                 OnPropertyChanged(nameof(ImagePath));
             }
@@ -44,8 +45,8 @@ namespace BancedHealthyDiet.Models
             get => recipeName;
             set
             {
-                //if (String.IsNullOrEmpty(value))
-                //    throw new ArgumentException("RecipeName is not valid");
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("Введите название рецепта");
                 recipeName = value;
                 OnPropertyChanged(nameof(RecipeName));
             }
@@ -70,8 +71,8 @@ namespace BancedHealthyDiet.Models
             {
                 //if (value == null)
                 //    throw new ArgumentNullException("Ingredients");
-                //else if (value.Count() <= 0)
-                //    throw new ArgumentOutOfRangeException("Ingredients");
+                if (value.Count() <= 0)
+                    throw new ArgumentOutOfRangeException("Рецепт должен содержать хотя бы один ингредиент");
                 ingredients = value;
                 OnPropertyChanged(nameof(ingredients));
             }
@@ -102,17 +103,6 @@ namespace BancedHealthyDiet.Models
             }
         }
         public Guid CategoryId { get; set; }
-        //private CategoryDTO currentCategory;
-        //public CategoryDTO Category
-        //{
-        //    get => currentCategory;
-        //    set
-        //    {
-        //        if (value == null)
-        //            throw new ArgumentNullException("Category");
-        //        currentCategory = value;
-        //    }
-        //}
         private string videoPath;
         public string VideoPath
         {
@@ -180,10 +170,11 @@ namespace BancedHealthyDiet.Models
             get => numberOfServings;
             set
             {
-                //if (value > 0 )
+                if (value > 0)
                     numberOfServings = value;
-                //else
-                //    throw new ArgumentOutOfRangeException("NumberOfServings");
+                else
+                    throw new ArgumentOutOfRangeException("Количество порций должно быть больше нуля");
+                OnPropertyChanged(nameof(NumberOfServings));
             }
         }
         private Int64 cookTime;
@@ -192,11 +183,11 @@ namespace BancedHealthyDiet.Models
             get => cookTime;
             set
             {
-                //if (value > 0)
+                if (value > 0)
                     cookTime = value;
+                else
+                    throw new ArgumentOutOfRangeException("Время проготовления не указано");
                 OnPropertyChanged(nameof(CookTime));
-                //else
-                //    throw new ArgumentOutOfRangeException("CookTime");
             }
         }
         public TimeSpan CookTimeValid

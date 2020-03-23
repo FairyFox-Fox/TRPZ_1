@@ -92,7 +92,7 @@ namespace BancedHealthyDiet.ViewModels
         private bool isVideoFromInternetElemNotVisisble = true;
         public bool IsVideoFromInternetElemNotVisisble
         {
-            get => IsVideoFromInternetElemNotVisisble;
+            get => isVideoFromInternetElemNotVisisble;
             set
             {
                 isVideoFromInternetElemNotVisisble = value;
@@ -102,30 +102,54 @@ namespace BancedHealthyDiet.ViewModels
         }
         private void CheckVideoSource(string videoPath)
         {
-            if (videoPath.StartsWith("http"))
+            if(!String.IsNullOrEmpty(videoPath))
             {
-                IsVideoFromInternetElemNotVisisble = false;
-            }
-            else
-            {
-                IsVideoFromCompElemNotVisisble = false;
+                if (videoPath.StartsWith("http"))
+                {
+                    IsVideoFromInternetElemNotVisisble = false;
+                  //  CinverUrlForVideo(videoPath);
+                }
+                else
+                {
+                    IsVideoFromCompElemNotVisisble = false;
 
+                }
+            }
+            
+        }
+        private Uri videoUrl;
+        public Uri VideoUrl
+        {
+            get => videoUrl;
+            set
+            {
+                videoUrl = value;
+                OnPropertyChanged(nameof(VideoUrl));
             }
         }
-        public struct ImageView
-        {
-            public string ImagePath { get; set; }
-            public string ItemDescription { get; set; }
-        }
+
+        //public void CinverUrlForVideo(string path)
+        //{
+        //     videoUrl = new Uri(ConvertLink(path));
+        //}
+
+        //private string ConvertLink(string link)
+        //{
+        //    IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(link, false);
+        //    VideoInfo video = videoInfos
+        //        .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 720
+        //         );
+        //    return video.DownloadUrl;
+        //}
+
         public ItemViewModel(IRecipeCategoryLogic recipeCategoryLogic,INutritionCalculator data,RecipeDTO recipe)
         {
             this.data = data;
             this.recipeCategoryLogic = recipeCategoryLogic;
             if(recipe!=null)
             {
-                this.data = data;
                 SelectedRecipe = recipe;
-                CheckVideoSource(SelectedRecipe.VideoPath);
+                CheckVideoSource(recipe.VideoPath);
                 NutritionPer100Gramm = data.CalculateNutritionPer100Gram(SelectedRecipe);
                 this.CurrentCategory = recipeCategoryLogic.GetCategoryByRecipeId(SelectedRecipe.Id);
                 var images = SelectedRecipe.Images;

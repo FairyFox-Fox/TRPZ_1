@@ -164,7 +164,8 @@
                         NotifyOnValidationError=true}" 
                                 materialDesign:HintAssist.Hint="г." IsEditable="True" ItemsSource="{Binding Measurements}" HorizontalAlignment="Left" >
                     </ComboBox>
-                    <Button VerticalAlignment="Center" Command="{Binding AddIngredientCommand}" CommandParameter="{Binding NewIngredient}" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                    <Button VerticalAlignment="Center" Command="{Binding AddIngredientCommand}" CommandParameter="{Binding NewIngredient}" 
+                            Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
                             ToolTip="Нажмите что-бы добавить ингредиент" Width="30" Height="30" Background="#e999c9">
                         <materialDesign:PackIcon Kind="Add"  Height="24" Width="24" />
                     </Button>

@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BancedHealthyDiet.Views"
              xmlns:view ="clr-namespace:BancedHealthyDiet"
+             xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
              xmlns:converters="clr-namespace:BancedHealthyDiet.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -165,9 +167,9 @@
                             <DataGridTextColumn Header="Количество" Binding="{Binding Path=Weight}" Width="Auto" />
                             <DataGridTextColumn Header="Еденица измерения" Binding="{Binding Path=MeasurementUnit}" Width="Auto" />
                         </DataGrid.Columns>
-  
+
                     </DataGrid>
-                    
+
                 </materialDesign:Card>
                 <Separator />
                 <materialDesign:Card  HorizontalAlignment="Left" Width="Auto"  Height="Auto" >
@@ -195,22 +197,32 @@
                 </ListView>
                 <Separator />
                 <TextBlock Text="Видео:"  Width="Auto" Height="Auto" FontSize="22" Foreground="#FF69033A"  FontWeight="Bold" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" FontFamily="Tw Cen MT Condensed Extra Bold"></TextBlock>
+                <wpf:ChromiumWebBrowser
+            x:Name="Browser" Width="900" Height="500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            Address="{Binding SelectedRecipe.VideoPath }" />
+                
                 <!--<MediaElement Source="{Binding  SelectedRecipe.VideoPath}" Name="mePlayer" Stretch="None"  />-->
 
-                <MediaElement Name="VideoControl" Width="200" Height ="400"
-                    Visibility="{Binding IsVideoFromCompElemNotVisisble, 
-                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" LoadedBehavior="Play"
-                  Source="{Binding SelectedRecipe.VideoPath}" >
-                    </MediaElement>
-                <WebBrowser Width="200" Height ="400" Visibility="{Binding IsVideoFromInternetElemNotVisisble, 
+                <!--<MediaElement Name="VideoControl" Width="200" Height ="400"
+                    LoadedBehavior="Play"
+                  Source="{Binding VideoUrl, Mode=OneWay}" >
+                    </MediaElement>-->
+
+                <!--<WebBrowser Width="200" Height ="400" Visibility="{Binding IsVideoFromInternetElemNotVisisble, 
                     Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" 
-                                Source="{Binding SelectedRecipe.VideoPath }">
+                                Source="{Binding SelectedRecipe.VideoPath } Visibility="{Binding IsVideoFromCompElemNotVisisble, 
+                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}"">
                     
-                </WebBrowser>
-                    <Separator />
+                </WebBrowser>-->
+
+
+                <!--<wpf:ChromiumWebBrowser x:Name="Browser"
+                                    Address="https://www.youtube.com/watch?v=UWWV2OyvkNs">-->
+                    <!--<i:Interaction.Behaviors>
+                        <behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
+                    </i:Interaction.Behaviors>-->
+                <!--</wpf:ChromiumWebBrowser>-->
             </StackPanel>
         </ScrollViewer>
-
-
     </Grid>
 </UserControl>
