@@ -26,8 +26,6 @@ namespace BancedHealthyDiet.Models
             get => proteins;
             set
             {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException("Proteins");
                 proteins = value;
             }
         }
@@ -39,7 +37,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Carbonhydrates");
+                    throw new ArgumentOutOfRangeException("Количество углеводов");
                 carbonhydrates = value;
             }
         }
@@ -51,7 +49,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Fats");
+                    throw new ArgumentOutOfRangeException("Количество жиров");
                 fats = value;
             }
         }
@@ -63,7 +61,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Vitamins");
+                    throw new ArgumentOutOfRangeException("Количество витаминов");
                 vitamins = value;
             }
         }
@@ -75,7 +73,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Minerals");
+                    throw new ArgumentOutOfRangeException("Количество минералов");
                 minerals = value;
             }
         }
@@ -87,7 +85,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Calories");
+                    throw new ArgumentOutOfRangeException("Количество калорий");
                 calories = value;
             }
         }

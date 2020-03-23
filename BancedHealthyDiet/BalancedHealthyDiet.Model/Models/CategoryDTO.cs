@@ -26,8 +26,6 @@ namespace BancedHealthyDiet.Models
             get => imagePath;
             set
             {
-                if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("ImagePath is not valid");
                 imagePath = value;
             }
         }
@@ -38,7 +36,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("Name");
+                    throw new ArgumentNullException("Введите имя категории");
                 else
                     name = value;
             }
@@ -49,8 +47,6 @@ namespace BancedHealthyDiet.Models
             get => countOfRecipes = Recipes.Count;
             set
             {
-                //if (value < 0)
-                //    throw new ArgumentOutOfRangeException("CountOfRecipes");
                 countOfRecipes = value;
             }
         }

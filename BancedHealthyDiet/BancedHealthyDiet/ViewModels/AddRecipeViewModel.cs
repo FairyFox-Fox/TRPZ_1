@@ -318,7 +318,7 @@ namespace BancedHealthyDiet.ViewModels
                 if (countOfServingsList == null)
                 {
                     countOfServingsList = new List<int>();
-                    for (int i = 0; i < 21; i++)
+                    for (int i = 1; i < 21; i++)
                         countOfServingsList.Add(i);
                     return countOfServingsList;
                 }

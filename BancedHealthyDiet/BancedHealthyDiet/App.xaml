@@ -10,6 +10,16 @@
     <Application.Resources>
       
         <ResourceDictionary>
+            <ControlTemplate x:Key="ValidationTemplate">
+                <DockPanel LastChildFill="True">
+                    <TextBlock  DockPanel.Dock="Bottom" Foreground="Red" FontSize="10pt" 
+                                Text="{Binding ElementName=MyAdorner,Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                    </TextBlock>
+                    <Border  BorderBrush="Red" BorderThickness="2">
+                        <AdornedElementPlaceholder Name="MyAdorner" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
             <DataTemplate DataType="{x:Type ViewModels:MainViewModel}">
                 <local:MainWindow />
             </DataTemplate>

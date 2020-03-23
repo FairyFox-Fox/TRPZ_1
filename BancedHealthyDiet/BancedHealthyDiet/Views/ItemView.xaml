@@ -12,7 +12,23 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+
         <ResourceDictionary>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel LastChildFill="True">
+                                <TextBlock  DockPanel.Dock="Bottom" Foreground="Red" FontSize="10pt" Text="{Binding ElementName=MyAdorner,Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                </TextBlock>
+                                <Border  BorderBrush="Red" BorderThickness="2">
+                                    <AdornedElementPlaceholder Name="MyAdorner" />
+                                </Border>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <DataTemplate x:Key="listOfRecipeImagesTemplate">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                     <materialDesign:Card Width="120" Height="Auto" >
@@ -51,6 +67,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
+    
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -59,7 +77,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Background="Black" Grid.Column="0" Width="Auto" Height="Auto">
             <Button Content="{materialDesign:PackIcon AddBox}" Width="Auto" Height="40"  ToolTip="Добавить" Background="Transparent"  BorderBrush="Transparent" 
-                      Command="{Binding DataContext.GoToAddRecipe, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"/>
+             Command="{Binding DataContext.GoToAddRecipe, RelativeSource= {RelativeSource AncestorType={x:Type view:MainWindow}}, Mode=OneWay}"/>
             <Button Content="{materialDesign:PackIcon EditOutline}" Width="Auto" Height="40"  ToolTip="Изменить" Background="Transparent"  BorderBrush="Transparent"/>
             <Button Content="{materialDesign:PackIcon ShareAll}" Width="Auto" Height="40"  ToolTip="Поделиться" Background="Transparent"  BorderBrush="Transparent"/>
             <Button Content="{materialDesign:PackIcon Favorite}" Width="Auto" Height="40"  ToolTip="Добавить в избранное" Background="Transparent"  BorderBrush="Transparent"/>
@@ -76,10 +94,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image  Source="{Binding ImagesViewsCollection[0].ImagePath, Converter={StaticResource RecipeImageConvert}}"  Width="Auto"  Stretch="Uniform" />
+                <Image  Source="{Binding SelectedRecipe.ImagePath, Converter={StaticResource RecipeImageConvert},ValidatesOnDataErrors=True,ValidatesOnExceptions=True,
+                    UpdateSourceTrigger=PropertyChanged}" 
+                        Width="Auto"  Stretch="Uniform" />
 
                 <StackPanel Grid.Row="1" Margin="8 6 8 4">
-                    <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding SelectedRecipe.RecipeName}"></TextBlock>
+                    <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding SelectedRecipe.RecipeName,ValidatesOnDataErrors=True}"></TextBlock>
                     <materialDesign:RatingBar Value="{Binding SelectedRecipe.Rating}" Orientation="Horizontal" Foreground="#FF69033A" Margin="0" />
                     <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" xml:space="preserve" FontWeight="Bold">Категория:</TextBlock>
@@ -207,21 +227,6 @@
                     LoadedBehavior="Play"
                   Source="{Binding VideoUrl, Mode=OneWay}" >
                     </MediaElement>-->
-
-                <!--<WebBrowser Width="200" Height ="400" Visibility="{Binding IsVideoFromInternetElemNotVisisble, 
-                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}" 
-                                Source="{Binding SelectedRecipe.VideoPath } Visibility="{Binding IsVideoFromCompElemNotVisisble, 
-                    Converter={StaticResource BoolToVisibilty}, UpdateSourceTrigger=PropertyChanged}"">
-                    
-                </WebBrowser>-->
-
-
-                <!--<wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="https://www.youtube.com/watch?v=UWWV2OyvkNs">-->
-                    <!--<i:Interaction.Behaviors>
-                        <behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
-                    </i:Interaction.Behaviors>-->
-                <!--</wpf:ChromiumWebBrowser>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

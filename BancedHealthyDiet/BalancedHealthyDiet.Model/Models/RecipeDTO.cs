@@ -158,10 +158,7 @@ namespace BancedHealthyDiet.Models
             get => rating;
             set
             {
-                //if (value > 0 && value<=5)
-                    rating = value;
-                //else
-                //    throw new ArgumentOutOfRangeException("Rating");
+              rating = value;
             }
         }
         private int? numberOfServings;
@@ -201,8 +198,6 @@ namespace BancedHealthyDiet.Models
             get => images ?? (images = new List<RecipeImageDTO>());
             set
             { 
-            //    if (value == null)
-            //        throw new ArgumentNullException("Images");
                 images = value;
                 OnPropertyChanged(nameof(Images));
             }

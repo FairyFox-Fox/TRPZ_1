@@ -29,7 +29,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("Name");
+                    throw new ArgumentNullException("Добавьте название для ингредиента.");
                 else
                     name = value;
             }
@@ -42,7 +42,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Weight");
+                    throw new ArgumentOutOfRangeException("Вес ингредиента должен быть больше нуля");
                 weight = value;
             }
         }
@@ -57,7 +57,6 @@ namespace BancedHealthyDiet.Models
         {
             Id = id;
             this.name = name;
-            //this.id = this.Product.Id;
             Weight = weight;
             MeasurementUnit = measurementUnit;
         }
@@ -69,7 +68,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("MeasurementUnit name is not valid");
+                    throw new ArgumentException("Единица измерения ингредиента не указана");
                 measurementUnit = value;
             }
         }
@@ -78,21 +77,21 @@ namespace BancedHealthyDiet.Models
         {
             switch (MeasurementUnit)
             {
-                case "г."://"gr":
+                case "г.":
                     return Weight;
-                case "кг."://"kg":
+                case "кг.":
                     return Weight * 1000;
-                case "л."://"l":
+                case "л.":
                     return Weight * 1000;
-                case "стак. (200 мл)"://"glasses (200 ml)":
+                case "стак. (200 мл)":
                     return Weight * 200;
-                case "мл":// "ml":
+                case "мл":
                     return Weight;
-                case "чайн. л.":// "tsp":
+                case "чайн. л.":
                     return Weight * 5;
-                case "стол. л."://"tbsp":
+                case "стол. л.":
                     return Weight * 15;
-                case "по вкусу":// "on taste":
+                case "по вкусу":
                     return Weight * 0;
                 default:
                     return Weight;

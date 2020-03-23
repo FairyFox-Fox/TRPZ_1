@@ -28,9 +28,6 @@ namespace BancedHealthyDiet.Models
             get => ingredients;
             set
             {
-                //if(value==null)
-                //    throw new ArgumentNullException("Products");
-                //else
                 ingredients = value;
             }
         }
@@ -41,7 +38,7 @@ namespace BancedHealthyDiet.Models
             set
             {
                 if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException("Product name is not valid");
+                    throw new ArgumentException("Имя продукта не указано");
                 productName = value;
             }
         }
@@ -52,9 +49,7 @@ namespace BancedHealthyDiet.Models
             get => nutrition;
             set
             {
-                //if (value != null)
-                    nutrition = value;
-                //throw new ArgumentNullException("Nutrition");
+               nutrition = value;
             }
         }
         public ProductDTO()
