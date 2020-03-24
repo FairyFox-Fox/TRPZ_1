@@ -40,9 +40,8 @@ namespace BancedHealthyDiet.ViewModels
         {
             get
             {
-                Messenger.Default.Register<List<RecipeDTO>>(this, HandleSelectedRecipe);
                 if (goToCategories == null)
-                    goToCategories = new RelayCommand(action => CurrentPageViewModel = new CurrentCategoryRecipeViewModel(data,categoryLogic));
+                    goToCategories = new RelayCommand(action => CurrentPageViewModel = new CategoriesViewModel(categoryLogic));
                 return goToCategories;
             }
         }

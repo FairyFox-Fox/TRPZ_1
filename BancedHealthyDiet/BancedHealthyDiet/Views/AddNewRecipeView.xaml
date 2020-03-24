@@ -108,7 +108,7 @@
                 <ComboBox SelectedValue="{Binding NewRecipe.NumberOfServings,Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="1" MinWidth="72" Margin="12 4 0 0" 
                           VerticalAlignment="Bottom" IsEditable="False" ItemsSource="{Binding CountOfServingsList}" HorizontalAlignment="Left" Width="180">
                     <ComboBox.Text>
-                        <Binding Path="CountOfServingsList" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" ValidatesOnExceptions="True"  >
+                        <Binding Path="CountOfServingsList" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"  ValidatesOnExceptions="True"  >
                             <Binding.ValidationRules>
                                     <validationRules:AcceptOnlyNumbersValidationRule ErrorMessage="Количество порций должно содержать только чиловые значения"/>
                                 </Binding.ValidationRules>

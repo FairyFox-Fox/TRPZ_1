@@ -155,7 +155,11 @@ namespace BancedHealthyDiet.ViewModels
                 var images = SelectedRecipe.Images;
                 this.ImagesViewsCollection = new ObservableCollection<RecipeImageDTO>(images);
                 var instructions = SelectedRecipe.Instruction?.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                this.CurrentRecipeInstructions = new ObservableCollection<string>(instructions);
+                if(instructions!=null)
+                {
+                    this.CurrentRecipeInstructions = new ObservableCollection<string>(instructions);
+                }
+               
             }
         }
     }
